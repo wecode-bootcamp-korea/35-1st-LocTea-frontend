@@ -49,8 +49,8 @@
     width: 47%;
 
     .item-explain {
-      .item-catagories {
-        .item-catagories-link {
+      .item-categories {
+        .item-categories-link {
           @include flex($justify: flex-start);
           flex-direction: row;
           color: #9d9d9d;

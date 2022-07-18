@@ -43,8 +43,8 @@ const ItemDetail = () => {
       </div>
       <div className="item-explain-purchase">
         <div className="item-explain">
-          <div className="item-catagories">
-            <ul className="item-catagories-link">
+          <div className="item-categories">
+            <ul className="item-categories-link">
               <li>티제품</li>
               <li>
                 <i className="fa-solid fa-angle-right" />
