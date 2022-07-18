@@ -3,14 +3,14 @@ import './ItemDetail.scss';
 
 const ItemDetail = () => {
   const [priceCheck, setPriceCheck] = useState(1);
-  const [price, setPrice] = useState(20000);
+  const price = 20000;
+
   const plusPrice = () => {
     setPriceCheck(priceCheck + 1);
   };
   const minusPrice = () => {
     setPriceCheck(priceCheck - 1);
   };
-
   const disabledMinus = priceCheck < 2;
 
   return (
@@ -46,7 +46,9 @@ const ItemDetail = () => {
           <div className="item-catagories">
             <ul className="item-catagories-link">
               <li>티제품</li>
-              <li> > </li>
+              <li>
+                <i className="fa-solid fa-angle-right" />
+              </li>
               <li>티 세트</li>
             </ul>
           </div>
