@@ -7,7 +7,7 @@ const Login = () => {
         <div className="login-nav">
           <h1>로그인</h1>
           <button type="submit">
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-xmark" />
           </button>
         </div>
       </header>
@@ -24,13 +24,13 @@ const Login = () => {
                 id="username"
                 name="username"
                 placeholder="아이디 입력"
-              ></input>
+              />
               <input
                 type="password"
                 id="pw"
                 name="pw"
                 placeholder="비밀번호 입력(영문,숫자,특수문자 조합)"
-              ></input>
+              />
             </div>
             <div className="checkbox">
               <input type="checkbox" id="checkbox" />
@@ -42,9 +42,9 @@ const Login = () => {
           </form>
           <div className="footer-border">
             <div className="footer">
-              <i class="fa-solid fa-mobile-screen"></i>
-              <img src="../images/login/Kakao.png" />
-              <img src="../images/login/naver.png" />
+              <i class="fa-solid fa-mobile-screen" />
+              <img src="../images/login/Kakao.png" alt="" />
+              <img src="../images/login/naver.png" alt="" />
             </div>
           </div>
         </div>
