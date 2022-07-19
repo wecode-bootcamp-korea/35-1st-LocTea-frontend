@@ -57,15 +57,16 @@
     overflow: hidden;
 
     .hottea-list {
-      width: 200%;
+      width: 220%;
       display: flex;
       position: relative;
       transition: all ease 1s;
+      left: -600px;
 
       li {
         @include flex;
         flex-direction: column;
-        width: 200px;
+        width: 250px;
         height: 300px;
         z-index: -1;
 

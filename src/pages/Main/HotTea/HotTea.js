@@ -2,14 +2,107 @@ import React, { useState, useEffect } from 'react';
 import './HotTea.scss';
 
 const HotTea = () => {
-  const [px, setpx] = useState(0);
-  const minusPx = () => setpx(px + 200);
-  const plusPx = () => setpx(px - 200);
-
+  const [px, setPx] = useState(0);
+  const [arr, setArr] = useState([]);
+  const summerArr = [
+    {
+      id: 1,
+      name: '산호섬 아이스티1',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/HC/LW/20201027143838409ZN.png?quality=80',
+    },
+    {
+      id: 2,
+      name: '산호섬 아이스티2',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+    {
+      id: 3,
+      name: '산호섬 아이스티3',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/item_overImg/6362.png?quality=80&shrink=240:268',
+    },
+    {
+      id: 4,
+      name: '산호섬 아이스티4',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/YC/MO/20200911134449649SH.png?quality=80&shrink=240:268',
+    },
+    {
+      id: 5,
+      name: '산호섬 아이스티5',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+    {
+      id: 6,
+      name: '산호섬 아이스티6',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+    {
+      id: 7,
+      name: '산호섬 아이스티7',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+    {
+      id: 8,
+      name: '산호섬 아이스티8',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+    {
+      id: 9,
+      name: '산호섬 아이스티9',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+    {
+      id: 10,
+      name: '산호섬 아이스티10',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+    {
+      id: 11,
+      name: '산호섬 아이스티11',
+      price: '13,000',
+      imgSrc:
+        'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+    },
+  ];
   useEffect(() => {
-    setInterval(plusPx, 3000);
+    setArr(summerArr);
   }, []);
+  const copyArr = arr;
+  console.log(copyArr);
+  const minusPx = () => {
+    setPx(px + 200);
+    const arrPop = copyArr.pop();
+    copyArr.unshift(arrPop);
+  };
 
+  const plusPx = () => {
+    setPx(px - 200);
+    const arrShift = copyArr.shift();
+    copyArr.push(arrShift);
+  };
+  // useEffect(() => {
+  //   setInterval(plusPx, 3000);
+  // }, []);
+  // console.log(px);
   return (
     <>
       <div className="main-hottea-title">
@@ -21,83 +114,21 @@ const HotTea = () => {
         <div className="hottea-left">
           <i className="fa-solid fa-angle-left" onClick={minusPx} />
         </div>
+
         <div className="hottea">
           <ul
             className="hottea-list"
             style={{ transform: `translate(${px}px, 0)` }}
           >
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/GB/FM/20220609110635898TW.png?quality=80&shrink=240:268"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
-            <li>
-              <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80"
-                alt=""
-              />
-              <h6>산호섬 아이스티</h6>
-              <p>13,000원</p>
-            </li>
+            {copyArr.map(a => {
+              return (
+                <li key={a.id}>
+                  <img src={a.imgSrc} alt="" />
+                  <h6>{a.name}</h6>
+                  <p>{a.price}</p>
+                </li>
+              );
+            })}
           </ul>
         </div>
         <div className="hottea-right">
