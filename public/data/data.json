@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "imgUrl": "../images/green-tea.jpg",
+    "prdName": "베스트 티박스",
+    "priceOrigin": 19000,
+    "priceSale": 15000,
+    "packingState": "포장불가"
+  },
+  {
+    "id": 2,
+    "imgUrl": "../images/matcha-tea.jpg",
+    "prdName": "프리미엄 티 컬렉션",
+    "priceOrigin": 20000,
+    "priceSale": 15000,
+    "packingState": "포장가능"
+  },
+  {
+    "id": 3,
+    "imgUrl": "../images/green-tea-bag.jpg",
+    "prdName": "가루 녹차",
+    "priceOrigin": 35000,
+    "priceSale": 25000,
+    "packingState": "포장불가"
+  }
+]
