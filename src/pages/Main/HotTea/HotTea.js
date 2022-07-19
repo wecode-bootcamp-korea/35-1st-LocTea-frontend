@@ -87,7 +87,7 @@ const HotTea = () => {
     setArr(summerArr);
   }, []);
   const copyArr = arr;
-  console.log(copyArr);
+
   const minusPx = () => {
     setPx(px + 200);
     const arrPop = copyArr.pop();
