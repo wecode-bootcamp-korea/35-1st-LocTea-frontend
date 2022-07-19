@@ -45,11 +45,6 @@ function Cart() {
                   </div>
                   {/* 장바구니 리스트  */}
                   <CartList />
-                  <ul className="list">
-                    <li className="list-item no-cart">
-                      장바구니에 담긴 상품이 없습니다.
-                    </li>
-                  </ul>
                 </div>
                 {/* 가격 정보 */}
                 <div className="content">

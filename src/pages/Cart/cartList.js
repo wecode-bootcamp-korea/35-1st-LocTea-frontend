@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import CartCount from './cartCount';
 
 function CartList() {
   const [cartList, setCartList] = useState([]);
 
+  const listItem = document.getElementsByClassName('list-item');
+
   useEffect(() => {
     fetch('data/data.json', {
-      method: 'GET', // GET method는 기본값이라서 생략이 가능합니다.
-    }) // 예시코드에서는 이해를 돕기 위해 명시적으로 기입해뒀습니다.
+      method: 'GET',
+    })
       .then(res => res.json())
       .then(data => {
         setCartList(data);
@@ -14,11 +17,22 @@ function CartList() {
   }, []);
 
   return (
-    <div className="cartList">
+    <div className="cart-list">
       <ul className="list">
-        {cartList.map(cart => {
+        {cartList.map(item => {
+          const { id, thumbnail_images, title, price, discount, quantity } =
+            item;
+
+          // if (listItem.length === 0) {
+          //   return (
+          //     <li className="list-item no-cart">
+          //       장바구니에 담긴 상품이 없습니다.
+          //     </li>
+          //   );
+          // }
+
           return (
-            <li className="list-item" key={cart.id}>
+            <li className="list-item" key={id}>
               <label className="inp-chk">
                 <input type="checkbox" id="check-all" />
                 <span className="inp-box">
@@ -27,50 +41,21 @@ function CartList() {
               </label>
               <div className="thumb-con">
                 <div className="img-box">
-                  <img src={cart.imgUrl} className="thumb" alt="" />
+                  <img src={thumbnail_images} className="thumb" alt={title} />
                 </div>
                 <div className="text-box">
-                  <p className="prd-name" name={cart.prdName}>
+                  <p className="prd-name">
                     <a href="!#" className="prd-name-url multi-line2">
-                      {cart.prdName}
+                      {title}
                     </a>
                   </p>
-                  <p className="packing-state">{cart.packingState}</p>
                 </div>
               </div>
               <div className="count-price">
-                <div className="count-box">
-                  <div className="counter">
-                    <button
-                      type="button"
-                      className="c-btn qty-down"
-                      title="수량 감소"
-                    >
-                      <i className="fa-solid fa-minus" />
-                    </button>
-                    <input
-                      type="text"
-                      className="count-num"
-                      value="1"
-                      min="1"
-                      max="1000"
-                    />
-                    <button
-                      type="button"
-                      className="c-btn qty-up"
-                      title="수량 증가"
-                    >
-                      <i className="fa-solid fa-plus" />
-                    </button>
-                  </div>
-                </div>
+                <CartCount quantity={item.quantity} />
                 <div className="price-box">
-                  <p className="price-origin">
-                    {cart.priceOrigin.toLocaleString()}
-                  </p>
-                  <p className="price-sale">
-                    {cart.priceSale.toLocaleString()}
-                  </p>
+                  <p className="price-origin">{price.toLocaleString()}원</p>
+                  <p className="price-sale">{discount.toLocaleString()}원</p>
                 </div>
               </div>
               <div className="list-btn">

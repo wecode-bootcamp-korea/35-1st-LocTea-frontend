@@ -56,7 +56,8 @@ input[type='checkbox']:checked + label::before {
 }
 
 .main {
-  padding-top: 80px;
+  min-height: 480px;
+  padding: 80px 0 60px;
   color: #000;
   font-family: 'Gowun Dodum', sans-serif;
   font-weight: 400;
@@ -155,13 +156,12 @@ input[type='checkbox']:checked + label::before {
           border: 1px solid #ddd;
           border-radius: 4px;
           .counter {
-            display: flex;
+            @include flex;
             .c-btn {
               flex: 0 0 40px;
               width: 40px;
               height: 40px;
               position: relative;
-              pointer-events: none;
               &::after {
                 content: '';
                 position: absolute;
@@ -301,10 +301,10 @@ input[type='checkbox']:checked + label::before {
         margin: 0 4px;
         height: 48px;
         border-radius: 4px;
+        font-size: 15px;
       }
       #sel-buy {
         border: 1px solid #ddd;
-        font-size: 15px;
         color: #333;
         text-align: center;
       }
