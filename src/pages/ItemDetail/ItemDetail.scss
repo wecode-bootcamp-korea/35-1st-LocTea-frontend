@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
 
-.itemdetail {
+.item-detail {
   @include flex($justify: space-between);
   font-family: 'Nanum Gothic', sans-serif;
   padding: 0 30px;
@@ -49,6 +49,7 @@
     width: 47%;
 
     .item-explain {
+      width: 100%;
       .item-categories {
         .item-categories-link {
           @include flex($justify: flex-start);
@@ -149,6 +150,7 @@
           width: 35%;
           height: 50px;
           font-size: 20px;
+          cursor: pointer;
         }
 
         .item-purchase-button-pay {
@@ -158,8 +160,33 @@
           width: 50%;
           height: 50px;
           font-size: 20px;
+          cursor: pointer;
         }
       }
     }
   }
+}
+.item-explain {
+  .explain-categories {
+    @include flex;
+    font-weight: bold;
+    font-size: 20px;
+
+    li {
+      margin: 0 60px;
+      padding: 20px 0;
+      cursor: pointer;
+
+      &:hover {
+        color: #6c801a;
+      }
+    }
+    .on {
+      border-bottom: 3px #6c801a solid;
+      color: #6c801a;
+    }
+  }
+}
+.explain-imgbox {
+  @include flex;
 }
