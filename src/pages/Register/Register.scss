@@ -21,3 +21,72 @@
     }
   }
 }
+
+.register-body {
+  @include flex;
+  min-width: 500px;
+  .register-container {
+    margin-top: 20px;
+    .header-box {
+      flex-direction: column;
+      border: 1px solid rgb(237, 237, 237);
+      border-radius: 5px;
+      background-color: #faf9f9;
+      .header {
+        margin: 10px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .header-content-container {
+        border-top: 1px solid rgb(230, 226, 226);
+        .header-content {
+          position: relative;
+          margin: 13px;
+          .info-needed {
+            font-weight: 0px;
+          }
+          .info-received {
+            position: absolute;
+            right: 10px;
+            top: -3px;
+            border: 0px solid;
+            border-bottom: 1px solid rgb(199, 199, 206);
+            background-color: #faf9f9;
+            width: 250px;
+            height: 20px;
+          }
+        }
+      }
+    }
+    .content {
+      @include flex;
+      flex-direction: column;
+      margin-top: 40px;
+
+      .inputs {
+        @include flex;
+        flex-direction: column;
+        input {
+          margin-bottom: 20px;
+          width: 400px;
+          height: 50px;
+          border-radius: 5px;
+          border: 1px solid #dad6d6;
+          text-indent: 10px;
+        }
+      }
+      button {
+        width: 400px;
+        height: 50px;
+        border-radius: 5px;
+        border: 1px solid white;
+        background-color: #0095f6;
+        color: white;
+      }
+      button:disabled {
+        color: rgba(136, 136, 136, 0.5);
+        background-color: rgb(237, 237, 237);
+      }
+    }
+  }
+}
