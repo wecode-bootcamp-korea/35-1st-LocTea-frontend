@@ -1,0 +1,23 @@
+@mixin flex($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+.register-header {
+  min-width: 500px;
+  .register-nav {
+    @include flex;
+    border-bottom: 1px solid #f0f0f0;
+    h1 {
+      padding: 15px 200px;
+      font-size: 20px;
+      font-weight: 500;
+    }
+    button {
+      border: 0;
+      background-color: white;
+      font-size: 20px;
+    }
+  }
+}
