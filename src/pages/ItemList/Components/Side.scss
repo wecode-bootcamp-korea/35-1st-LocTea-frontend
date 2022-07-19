@@ -1,0 +1,19 @@
+.side {
+  width: 165px;
+  margin-top: 15px;
+
+  .listTitle {
+    text-align: start;
+    font-size: 20px;
+  }
+
+  li {
+    padding-left: 1em;
+    font-size: 20px;
+    margin: 40px 0 0 10px;
+  }
+
+  .activatedTabSide {
+    color: rgb(108, 128, 26);
+  }
+}
