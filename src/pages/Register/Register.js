@@ -88,7 +88,7 @@ const Register = () => {
       }),
     })
       .then(response => response.json())
-      .then(result => console.log('결과: ', result));
+      .then(result => {});
   };
 
   return (
