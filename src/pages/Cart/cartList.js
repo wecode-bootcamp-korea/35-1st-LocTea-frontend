@@ -12,7 +12,6 @@ function CartList() {
         setCartList(data);
       });
   }, []);
-  console.log(cartList);
 
   return (
     <div className="cartList">
@@ -28,7 +27,7 @@ function CartList() {
               </label>
               <div className="thumb-con">
                 <div className="img-box">
-                  <img src={cart.imgUrl} className="thumb" />
+                  <img src={cart.imgUrl} className="thumb" alt="" />
                 </div>
                 <div className="text-box">
                   <p className="prd-name" name={cart.prdName}>
