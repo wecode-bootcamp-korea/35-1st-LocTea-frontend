@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Register.scss';
+import { useNavigate } from 'react-router-dom';
+
 const Register = () => {
   // 초기값 세팅 = 아이디, 비밀번호, 비밀번호 확인, 이름, 생년원일, 휴대폰 번호
   const [person, setPerson] = useState({
@@ -11,7 +13,7 @@ const Register = () => {
     phone: '',
   });
 
-  const onChange = e => {
+  const handleInput = e => {
     const { name, value } = e.target;
     setPerson({ ...person, [name]: value });
   };
@@ -19,64 +21,15 @@ const Register = () => {
   // 아이디, 비밀번호 정규식
   const passwordRegExp =
     /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$/;
-  const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/g;
-  // input란 아래 메시지 출력
-
-  function BirthMessage() {
-    if (person.birth === '') {
-      return <p />;
-    }
-    if (person.birth.includes('.')) {
-      return <p style={{ color: 'red' }}>"1998-07-05" 형태로 입력해주세요.</p>;
-    }
-  }
-
-  function IdMessage() {
-    if (person.id === '') {
-      return <p />;
-    }
-    if (!idRegExp.test(person.id)) {
-      return (
-        <p style={{ color: 'red' }}>
-          4-12사이 대소문자 또는 숫자만 입력해 주세요!
-        </p>
-      );
-    } else {
-      return <p style={{ color: 'green' }}>사용가능한 아이디 입니다.</p>;
-    }
-  }
-
-  function PwMessage() {
-    if (person.pw === '') {
-      return <p />;
-    }
-    if (!passwordRegExp.test(person.pw)) {
-      return (
-        <div>
-          <p style={{ color: 'red' }}>
-            영어(소문자),숫자,특수문자 중 최소 2가지 이상의 문자
-          </p>
-          <p style={{ color: 'red' }}>조합 8-16자로 입력해주세요</p>
-        </div>
-      );
-    } else {
-      return <p style={{ color: 'green' }}>'안전한 비밀번호 입니다.</p>;
-    }
-  }
-
-  function PwConfirmedMessage() {
-    if (person.pwConfirmed === '') {
-      return <p />;
-    }
-    if (person.pw !== person.pwConfirmed) {
-      return <p style={{ color: 'red' }}>비밀번호가 다릅니다.</p>;
-    } else {
-      return <p style={{ color: 'green' }}>비밀번호가 같습니다.</p>;
-    }
-  }
+  const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/;
+  const birthRegExp =
+    /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 
   // 통신 회원가입
-  let signUp = () => {
+
+  const navigate = useNavigate();
+
+  const signUp = () => {
     fetch('http://10.58.5.132:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
@@ -88,12 +41,24 @@ const Register = () => {
       }),
     })
       .then(response => response.json())
-      .then(result => {});
+      .then(result => {
+        if (result.message === 'EMAIL_ALREADY_EXISTS') {
+          alert('이미 있는 계정입니다.');
+        } else {
+          navigate('/login');
+        }
+      });
   };
 
+  const validation =
+    idRegExp.test(person.id) &&
+    passwordRegExp.test(person.pw) &&
+    person.birth !== 0 &&
+    person.pw === person.pwConfirmed &&
+    person.name.length > 1 &&
+    person.phone;
   return (
-    <div>
-      {' '}
+    <React.Fragment>
       <section className="register-header">
         <div className="register-nav">
           <h1>회원 가입</h1>
@@ -104,19 +69,26 @@ const Register = () => {
       </section>
       <section className="register-body">
         <div className="register-container">
-          <form className="content" onChange={onChange}>
+          <form className="content" onChange={handleInput}>
             <div className="inputs">
               <input
                 type="text"
-                className="info-received"
                 name="name"
                 maxLength="5"
                 value={person.name}
                 placeholder="이름"
               />
+              <div className="message">
+                {person.name === '' ? (
+                  ''
+                ) : person.name.length < 2 ? (
+                  <p style={{ color: 'red' }}>2글자 이상 입력해주세요!</p>
+                ) : (
+                  <p style={{ color: 'green' }}> 환영합니다!</p>
+                )}
+              </div>
               <input
                 type="text"
-                className="info-received"
                 name="phone"
                 maxLength="11"
                 value={person.phone}
@@ -124,15 +96,20 @@ const Register = () => {
               />
               <input
                 type="number"
-                min="1900.01.01"
-                max="2015.12.31"
-                className="info-received"
                 name="birth"
                 value={person.birth}
-                placeholder="생년월일 (year-mm-dd)"
+                placeholder="생년월일 (yyyy-mm-dd)"
               />
               <div className="message">
-                <BirthMessage />
+                {person.birth === '' ? (
+                  <p />
+                ) : birthRegExp.test(person.birth) ? (
+                  ''
+                ) : (
+                  <p style={{ color: 'red' }}>
+                    "2000-01-01" 형태로 입력해주세요.
+                  </p>
+                )}
               </div>
               <input
                 type="text"
@@ -141,7 +118,15 @@ const Register = () => {
                 placeholder="아이디 (영문 또는 숫자 4-12자리)"
               />
               <div className="message">
-                <IdMessage />
+                {person.id === '' ? (
+                  <p />
+                ) : idRegExp.test(person.id) ? (
+                  <p style={{ color: 'green' }}>사용가능한 아이디 입니다.</p>
+                ) : (
+                  <p style={{ color: 'red' }}>
+                    4-12사이 대소문자 또는 숫자만 입력해 주세요.
+                  </p>
+                )}
               </div>
               <input
                 type="password"
@@ -150,7 +135,18 @@ const Register = () => {
                 placeholder="비밀번호 입력(영문,숫자,특수문자 조합 8-16자)"
               />
               <div className="message">
-                <PwMessage />
+                {person.pw === '' ? (
+                  ''
+                ) : !passwordRegExp.test(person.pw) ? (
+                  <div>
+                    <p style={{ color: 'red' }}>
+                      영어(소문자),숫자,특수문자 중 최소 2가지 이상의 문자
+                    </p>
+                    <p style={{ color: 'red' }}>조합 8-16자로 입력해주세요</p>
+                  </div>
+                ) : (
+                  <p style={{ color: 'green' }}>안전한 비밀번호 입니다.</p>
+                )}
               </div>
               <input
                 type="password"
@@ -160,29 +156,24 @@ const Register = () => {
                 placeholder="비밀번호 확인"
               />
               <div className="message">
-                <PwConfirmedMessage />
+                {person.pwConfirmed === '' ? (
+                  ''
+                ) : person.pw !== person.pwConfirmed ? (
+                  <p style={{ color: 'red' }}>비밀번호가 다릅니다.</p>
+                ) : (
+                  <p style={{ color: 'green' }}>비밀번호가 같습니다.</p>
+                )}
               </div>
             </div>
             <div className="button-area">
-              <button
-                disabled={
-                  !(
-                    passwordRegExp.test(person.pw) &&
-                    person.pw === person.pwConfirmed &&
-                    idRegExp.test(person.id) &&
-                    person.name &&
-                    person.phone
-                  )
-                }
-                onClick={signUp}
-              >
+              <button disabled={!validation} onClick={signUp}>
                 회원가입
               </button>
             </div>
           </form>
         </div>
       </section>
-    </div>
+    </React.Fragment>
   );
 };
 
