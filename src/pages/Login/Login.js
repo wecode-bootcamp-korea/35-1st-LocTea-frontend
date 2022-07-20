@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.scss';
 const Login = () => {
+<<<<<<< HEAD
   return (
     <div>
       <div className="login-header">
@@ -50,6 +51,9 @@ const Login = () => {
       </section>
     </div>
   );
+=======
+  return <div />;
+>>>>>>> parent of 40a1b22 (ad: 로그인 화면 구현)
 };
 
 export default Login;
