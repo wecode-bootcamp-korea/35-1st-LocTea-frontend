@@ -26,7 +26,8 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const signUp = () => {
+  const signUp = e => {
+    e.preventDefault();
     fetch('http://10.58.5.132:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
@@ -39,7 +40,7 @@ const Register = () => {
     })
       .then(response => response.json())
       .then(result => {
-        navigate('/login');
+        result.message === 'SUCCESS' && navigate('/login');
       });
   };
 

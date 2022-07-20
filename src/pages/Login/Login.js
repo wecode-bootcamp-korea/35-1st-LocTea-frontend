@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import './Login.scss';
 import { useNavigate } from 'react-router-dom';
+import { SNS_LIST } from './SnsData';
+import './Login.scss';
+import { Sns } from './Sns';
 
 const Login = () => {
   const [person, setPerson] = useState({
@@ -21,7 +23,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const signIn = () => {
+  const signIn = e => {
+    e.preventDefault();
     fetch('http://10.58.5.132:8000/users/login', {
       method: 'POST',
       body: JSON.stringify({
@@ -31,7 +34,7 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
-        navigate('/main');
+        result.message === 'SUCCESS' && navigate('/main');
       });
   };
 
@@ -71,7 +74,11 @@ const Login = () => {
               </button>
             </div>
           </form>
-          <div className="footer-border" />
+          <div className="login-footer-border">
+            <div className="login-footer">
+              <Sns />
+            </div>
+          </div>
         </div>
       </section>
     </div>
