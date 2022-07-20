@@ -1,7 +1,6 @@
 import React from 'react';
 import './Login.scss';
 const Login = () => {
-<<<<<<< HEAD
   return (
     <div>
       <div className="login-header">
@@ -40,20 +39,31 @@ const Login = () => {
               <button disabled>로그인</button>
             </div>
           </form>
-          <div className="footer-border">
-            <div className="footer">
-              <i class="fa-solid fa-mobile-screen" />
-              <img src="../images/login/Kakao.png" alt="" />
-              <img src="../images/login/naver.png" alt="" />
+          <div className="login-footer-border">
+            <div className="login-footer">
+              <div className="login-footer-text">
+                <img className="phone" src="../images/login/phone.png" alt="" />
+                <p>휴대폰</p> <p>로그인</p>
+              </div>
+              <div className="login-footer-text">
+                <img src="../images/login/Kakao.png" alt="" />
+                <p>카카오</p> <p>로그인</p>
+              </div>
+              <div className="login-footer-text">
+                <img src="../images/login/naver.png" alt="" />
+                <p>네이버</p> <p>로그인</p>
+              </div>
+              <div className="login-footer-text">
+                <img src="../images/login/more.png" alt="" />
+                <p>더보기</p>
+                <div className="hiddenT">d</div>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </div>
   );
-=======
-  return <div />;
->>>>>>> parent of 40a1b22 (ad: 로그인 화면 구현)
 };
 
 export default Login;
