@@ -1,34 +1,39 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const Order = () => {
-  const [isSelected, setIsSelected] = useState('new');
+const Order = ({ whichProductRender }) => {
+  const [whichSelected, setwhichSelected] = useState('new');
 
   return (
     <div className="order">
-      <p className="orderTitle">티 제품</p>
+      <p className="orderTitle">{whichProductRender.title}</p>
       <ul className="ordertab">
         <li
           onClick={() => {
-            setIsSelected('new');
+            setwhichSelected('new');
           }}
-          className={isSelected === 'new' ? 'activatedTab' : 'unactivatedTab'}
+          className={
+            whichSelected === 'new' ? 'activatedTab' : 'unactivatedTab'
+          }
         >
           신상품순
         </li>
         <li
           onClick={() => {
-            setIsSelected('high');
+            setwhichSelected('high');
           }}
-          className={isSelected === 'high' ? 'activatedTab' : 'unactivatedTab'}
+          className={
+            whichSelected === 'high' ? 'activatedTab' : 'unactivatedTab'
+          }
         >
           높은 가격순
         </li>
         <li
           onClick={() => {
-            setIsSelected('low');
+            setwhichSelected('low');
           }}
-          className={isSelected === 'low' ? 'activatedTab' : 'unactivatedTab'}
+          className={
+            whichSelected === 'low' ? 'activatedTab' : 'unactivatedTab'
+          }
         >
           낮은 가격순
         </li>

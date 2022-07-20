@@ -1,23 +1,27 @@
 .contents {
-  .upperImageTitle {
+  .themashop {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 380px;
-    background-color: rgb(225, 222, 206);
-
-    .upperImage {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-    }
-
-    h2 {
-      font-size: 48px;
-      font-weight: 500;
-    }
+    background-color: rgb(236, 234, 222);
+  }
+  .bakery {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 380px;
+    background-color: rgb(212, 213, 181);
+  }
+  .teashop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 380px;
+    background-color: rgb(221, 218, 201);
   }
 
   .main {
@@ -55,7 +59,6 @@
 
       .order {
         display: flex;
-        flex-direction: row;
         position: relative;
         border-bottom: solid 2px #f1f1f1;
 
@@ -138,7 +141,7 @@
 
           img {
             width: 100%;
-            margin: 30px 0 30px 0;
+            margin-top: 30px;
           }
 
           p {
@@ -152,4 +155,15 @@
       }
     }
   }
+}
+.upperImage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.upperH2 {
+  font-size: 48px;
+  font-weight: 500;
 }

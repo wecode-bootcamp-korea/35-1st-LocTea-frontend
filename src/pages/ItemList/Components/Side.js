@@ -1,8 +1,7 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-const Side = () => {
-  const [isSelected, setIsSelected] = useState('teashop');
+const Side = ({ RenderTeaShop, RenderBakery, RenderThemaShop }) => {
+  const [whichSelected, setwhichSelected] = useState('teashop');
 
   return (
     <div className="side">
@@ -10,30 +9,33 @@ const Side = () => {
       <ul className="sideList">
         <li
           onClick={() => {
-            setIsSelected('teashop');
+            setwhichSelected('teashop');
+            RenderTeaShop();
           }}
           className={
-            isSelected === 'teashop' ? 'activatedTab' : 'unactivatedTab'
+            whichSelected === 'teashop' ? 'activatedTab' : 'unactivatedTab'
           }
         >
           티 제품
         </li>
         <li
           onClick={() => {
-            setIsSelected('bakery');
+            setwhichSelected('bakery');
+            RenderBakery();
           }}
           className={
-            isSelected === 'bakery' ? 'activatedTab' : 'unactivatedTab'
+            whichSelected === 'bakery' ? 'activatedTab' : 'unactivatedTab'
           }
         >
           티푸드
         </li>
         <li
           onClick={() => {
-            setIsSelected('themashop');
+            setwhichSelected('themashop');
+            RenderThemaShop();
           }}
           className={
-            isSelected === 'themashop' ? 'activatedTab' : 'unactivatedTab'
+            whichSelected === 'themashop' ? 'activatedTab' : 'unactivatedTab'
           }
         >
           라이프 스타일

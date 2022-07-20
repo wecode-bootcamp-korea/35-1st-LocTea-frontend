@@ -1,34 +1,28 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const Filter = () => {
-  const [isSelectedAll, setIsSelectedAll] = useState(true);
-  const [isSelected, setIsSelected] = useState({
+  const [whichSelected, setwhichSelected] = useState({
     1: false,
     2: false,
     3: false,
     4: false,
+    5: true,
   });
 
   const handleAllButton = () => {
-    setIsSelectedAll(true);
-    setIsSelected({ 1: false, 2: false, 3: false, 4: false });
+    setwhichSelected({ 1: false, 2: false, 3: false, 4: false, 5: true });
   };
   const handleButton = i => {
-    setIsSelectedAll(false);
-    setIsSelected({ ...isSelected, [i]: !isSelected[i] });
+    setwhichSelected((whichSelected[5] = false));
+    setwhichSelected({ ...whichSelected, [i]: !whichSelected[i] });
   };
   return (
     <div className="filter">
       <p>총 177개의 상품이 있습니다.</p>
       <div className="buttons">
         <button
-          onClick={() => {
-            handleAllButton();
-          }}
-          className={
-            isSelectedAll === true ? 'activatedButton' : 'unactivatedButton'
-          }
+          onClick={handleAllButton}
+          className={whichSelected[5] ? 'activatedButton' : 'unactivatedButton'}
         >
           전체
         </button>
@@ -36,9 +30,7 @@ const Filter = () => {
           onClick={() => {
             handleButton(1);
           }}
-          className={
-            isSelected[1] === true ? 'activatedButton' : 'unactivatedButton'
-          }
+          className={whichSelected[1] ? 'activatedButton' : 'unactivatedButton'}
         >
           잎차
         </button>
@@ -46,9 +38,7 @@ const Filter = () => {
           onClick={() => {
             handleButton(2);
           }}
-          className={
-            isSelected[2] === true ? 'activatedButton' : 'unactivatedButton'
-          }
+          className={whichSelected[2] ? 'activatedButton' : 'unactivatedButton'}
         >
           피라미드
         </button>
@@ -56,9 +46,7 @@ const Filter = () => {
           onClick={() => {
             handleButton(3);
           }}
-          className={
-            isSelected[3] === true ? 'activatedButton' : 'unactivatedButton'
-          }
+          className={whichSelected[3] ? 'activatedButton' : 'unactivatedButton'}
         >
           티백
         </button>
@@ -66,9 +54,7 @@ const Filter = () => {
           onClick={() => {
             handleButton(4);
           }}
-          className={
-            isSelected[4] === true ? 'activatedButton' : 'unactivatedButton'
-          }
+          className={whichSelected[4] ? 'activatedButton' : 'unactivatedButton'}
         >
           파우더
         </button>
