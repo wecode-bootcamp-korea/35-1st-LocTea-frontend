@@ -3,19 +3,18 @@ import './Login.scss';
 const Login = () => {
   return (
     <div>
-      <header>
+      <div className="login-header">
         <div className="login-nav">
           <h1>로그인</h1>
           <button type="submit">
             <i class="fa-solid fa-xmark" />
           </button>
         </div>
-      </header>
+      </div>
       <section className="body">
         <div className="login-container">
           <div className="header">
-            <p>아모레퍼시픽 뷰티포인트 통합회원</p>
-            <p>아이디로 로그인해주세요.</p>
+            <img src="../images/login/LocTea.png" alt="" />
           </div>
           <form className="content">
             <div className="inputs">
