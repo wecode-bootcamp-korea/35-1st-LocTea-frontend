@@ -12,7 +12,6 @@ const Register = () => {
     birth: '',
     phone: '',
   });
-
   const handleInput = e => {
     const { name, value } = e.target;
     setPerson({ ...person, [name]: value });
@@ -22,8 +21,6 @@ const Register = () => {
   const passwordRegExp =
     /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$/;
   const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/;
-  const birthRegExp =
-    /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
 
   // 통신 회원가입
 
@@ -42,18 +39,13 @@ const Register = () => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === 'EMAIL_ALREADY_EXISTS') {
-          alert('이미 있는 계정입니다.');
-        } else {
-          navigate('/login');
-        }
+        navigate('/login');
       });
   };
 
   const validation =
     idRegExp.test(person.id) &&
     passwordRegExp.test(person.pw) &&
-    person.birth !== 0 &&
     person.pw === person.pwConfirmed &&
     person.name.length > 1 &&
     person.phone;
@@ -95,7 +87,7 @@ const Register = () => {
                 placeholder="핸드폰 번호"
               />
               <input
-                type="number"
+                type="text"
                 name="birth"
                 value={person.birth}
                 placeholder="생년월일 (yyyy-mm-dd)"
@@ -103,12 +95,12 @@ const Register = () => {
               <div className="message">
                 {person.birth === '' ? (
                   <p />
-                ) : birthRegExp.test(person.birth) ? (
-                  ''
-                ) : (
+                ) : person.birth.includes() ? (
                   <p style={{ color: 'red' }}>
                     "2000-01-01" 형태로 입력해주세요.
                   </p>
+                ) : (
+                  ''
                 )}
               </div>
               <input

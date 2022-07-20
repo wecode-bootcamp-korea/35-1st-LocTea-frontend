@@ -27,7 +27,7 @@
 
 .register-body {
   @include flex;
-  min-width: 500px;
+  min-height: 80vh;
 
   .content {
     margin-top: 40px;
