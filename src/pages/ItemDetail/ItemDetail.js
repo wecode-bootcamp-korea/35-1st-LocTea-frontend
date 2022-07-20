@@ -55,11 +55,11 @@ const ItemDetail = () => {
             <div className="item-explain">
               <div className="item-categories">
                 <ul className="item-categories-link">
-                  <li>{data.catagories[0]}</li>
+                  <li>{data.categories[0]}</li>
                   <li>
                     <i className="fa-solid fa-angle-right" />
                   </li>
-                  <li>{data.catagories[1]}</li>
+                  <li>{data.categories[1]}</li>
                 </ul>
               </div>
               <div className="item-name">
@@ -147,7 +147,7 @@ export default ItemDetail;
 
 const ITEM_DATA = {
   id: 1,
-  catagories: ['티제품', '티 세트'],
+  categories: ['티제품', '티 세트'],
   name: '러블리 티 박스',
   explain:
     '즐겁고 행복한 티타임을 선사하는 달콤하고 향긋한 오설록 만의 특별한 블렌디드 티선물 세트',
