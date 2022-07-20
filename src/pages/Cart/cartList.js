@@ -4,7 +4,7 @@ import CartCount from './cartCount';
 function CartList() {
   const [cartList, setCartList] = useState([]);
 
-  const listItem = document.getElementsByClassName('list-item');
+  // const listItem = document.getElementsByClassName('list-item');
 
   useEffect(() => {
     fetch('data/data.json', {
@@ -20,8 +20,7 @@ function CartList() {
     <div className="cart-list">
       <ul className="list">
         {cartList.map(item => {
-          const { id, thumbnail_images, title, price, discount, quantity } =
-            item;
+          const { id, thumbnail_images, title, price, discount } = item;
 
           // if (listItem.length === 0) {
           //   return (

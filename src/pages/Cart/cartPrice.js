@@ -19,7 +19,7 @@ function CartPrice() {
         <li className="item">
           <p className="item-name">상품 금액</p>
           <p className="item-val prd-price">
-            +<span className="view-price">0</span>원
+            +<span className="view-price">{cartPrice}</span>원
           </p>
         </li>
         <li className="item">

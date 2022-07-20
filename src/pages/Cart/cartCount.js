@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-function CartCount(props) {
+function CartCount({ props }) {
   const [quantity, setQuantity] = useState(props.quantity);
   const plusPrice = () => {
     setQuantity(quantity + 1);
