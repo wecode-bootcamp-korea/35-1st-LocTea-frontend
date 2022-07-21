@@ -10,7 +10,8 @@ function Cart() {
   // }
 
   useEffect(() => {
-    fetch('data/cartData.json', {
+    //data/cartData.json
+    fetch('http://10.58.4.100:8000/cart', {
       method: 'GET',
     })
       .then(res => res.json())
