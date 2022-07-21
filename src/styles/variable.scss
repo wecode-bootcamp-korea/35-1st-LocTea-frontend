@@ -1,9 +1,8 @@
-$green: #9EB23B;
-$lightGreen: #C7D36F;
-$yellow: #FCF9C6;
-$lightGray: #E0DECA;
-
-@mixin flex($justify : center, $align : center) {
+$green: #9eb23b;
+$lightGreen: #c7d36f;
+$yellow: #fcf9c6;
+$lightGray: #e0deca;
+@mixin flex($justify: center, $align: center) {
   display: flex;
   justify-content: $justify;
   align-items: $align;
