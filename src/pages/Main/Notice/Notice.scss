@@ -1,8 +1,9 @@
 @import '../../../styles/variable.scss';
+@import '../../../styles/common.scss';
 
 .notice {
   @include flex;
-
+  font-family: 'Gowun Dodum', sans-serif;
   .main-notice {
     @include flex($justify: flex-start);
     padding: 14px 16px;
@@ -39,22 +40,22 @@
             top: 0px;
           }
           27% {
-            top: -16px;
+            top: -17px;
           }
           45% {
-            top: -16px;
+            top: -17px;
           }
           54% {
-            top: -32px;
+            top: -34px;
           }
           72% {
-            top: -32px;
+            top: -34px;
           }
           81% {
-            top: -48px;
+            top: -51px;
           }
           99% {
-            top: -48px;
+            top: -51px;
           }
           100% {
             top: 0px;

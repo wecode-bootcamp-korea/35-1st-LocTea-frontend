@@ -4,6 +4,7 @@
 .main-hottea {
   @include flex;
   flex-direction: column;
+  font-family: 'Gowun Dodum', sans-serif;
   .main-hottea-title {
     @include flex($justify: flex-start);
     margin: 40px 20px;

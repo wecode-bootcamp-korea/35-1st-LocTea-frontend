@@ -1,0 +1,7 @@
+@import '../../../styles/common.scss';
+@import '../../../styles/variable.scss';
+
+.subscribe {
+  @include flex;
+  width: 100%;
+}
