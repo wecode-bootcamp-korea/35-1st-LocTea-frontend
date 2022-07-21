@@ -3,17 +3,15 @@ import './ItemDetail.scss';
 
 const ItemDetail = () => {
   const [itemData, setItemData] = useState({});
-  // 아이템 데이터 state구조
   const [currentTab, setCurrentTab] = useState('상품상세');
-  // 현재 탭 state 구조
   const [quantity, setQuantity] = useState(1);
-  // 수량 데이터 state구조
+
   useEffect(() => {
     fetch('data/itemData.json')
       .then(res => res.json())
       .then(data => setItemData(data));
   }, []);
-  //목 데이터를 가져와서 아이템 데이터로 설정
+
   const {
     first_category,
     second_category,
@@ -24,7 +22,6 @@ const ItemDetail = () => {
     thumbnail_images,
     detail_images,
   } = itemData;
-  //구조 분해 할당하여 가독성 향상
 
   const plusPrice = () => {
     setQuantity(quantity + 1);
@@ -32,18 +29,21 @@ const ItemDetail = () => {
   const minusPrice = () => {
     setQuantity(quantity - 1);
   };
-  //수량 1씩 증가 및 1씩 감소
+
   const disabledMinus = quantity < 2;
-  //수량이 2보다 작을때 마이너스 안눌리게 설정
+
   const updateCurrentTab = ({ target }) => {
     const currentTabName = target.innerHTML;
     setCurrentTab(currentTabName);
   };
-  //현재 탭에 이름을 부여하도록 설정
+
   const discountPrice = price * ((100 - discount) / 100);
 
-  return Object.keys(itemData).length > 0 ? (
-    //아이템 데이터가 객체형식이므로 객체의 키값의 길이가 0보다클때 조건부 렌더링
+  const isData = Object.keys(itemData).length !== 0;
+
+  if (!isData) return <>Loading...</>;
+
+  return (
     <>
       <div className="item-detail">
         <div className="item-img-ul">
@@ -84,7 +84,7 @@ const ItemDetail = () => {
               <h3>{title}</h3>
             </div>
             <div className="item-name-explain">{description}</div>
-            {discount == null ? (
+            {!discount ? (
               <div className="item-price-name">
                 <strong className="price">{price.toLocaleString()}</strong>
                 <span className="won">원</span>
@@ -163,8 +163,6 @@ const ItemDetail = () => {
         <img src={detail_images[2]} alt="상품상세이미지3" />
       </div>
     </>
-  ) : (
-    <>Loading...</>
   );
 };
 
