@@ -10,17 +10,19 @@ const Notice = () => {
   ];
 
   return (
-    <div className="main-notice">
-      <p className="notice">공지사항</p>
-      <div className="notice-list-info">
-        <ul className="notice-list">
-          {noticeArr.map((a, i) => {
-            return <li key={i}>{a}</li>;
-          })}
-        </ul>
-        <p className="notice-info">
-          <i className="fa-solid fa-angle-right" />
-        </p>
+    <div className="notice">
+      <div className="main-notice">
+        <p className="notice">공지사항</p>
+        <div className="notice-list-info">
+          <ul className="notice-list">
+            {noticeArr.map((a, i) => {
+              return <li key={i}>{a}</li>;
+            })}
+          </ul>
+          <p className="notice-info">
+            <i className="fa-solid fa-angle-right" />
+          </p>
+        </div>
       </div>
     </div>
   );

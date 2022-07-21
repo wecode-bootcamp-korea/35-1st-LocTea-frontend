@@ -11,13 +11,13 @@ const HotTea = () => {
   const copyArr = arr;
 
   const minusPx = () => {
-    setPx(px + 200);
+    setPx(px + 224);
     const arrPop = copyArr.pop();
     copyArr.unshift(arrPop);
   };
 
   const plusPx = () => {
-    setPx(px - 200);
+    setPx(px - 224);
     const arrShift = copyArr.shift();
     copyArr.push(arrShift);
   };

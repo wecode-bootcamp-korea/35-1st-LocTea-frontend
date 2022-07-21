@@ -6,12 +6,13 @@
   .main-hottea-title {
     @include flex($justify: flex-start);
     margin: 40px 20px;
-    width: 1000px;
+    width: 1200px;
     background-color: #fff;
+    font-weight: bold;
 
     h3 {
       font-size: 28px;
-      width: 35%;
+      width: 30%;
     }
 
     .main-hottea-summer {
@@ -43,14 +44,16 @@
     @include flex;
     margin: 10px 30px;
     background-color: #fff;
-    width: 1000px;
+    width: 1200px;
 
     .hottea-left,
     .hottea-right {
+      @include flex;
       color: #999;
       z-index: 10;
       background-color: #fff;
       cursor: pointer;
+      width: 90px;
 
       &:hover {
         color: #333;
@@ -61,16 +64,16 @@
       overflow: hidden;
 
       .hottea-list {
-        width: 220%;
+        width: 300%;
         display: flex;
         position: relative;
         transition: all ease 1s;
-        left: -600px;
+        left: -672px;
 
         li {
           @include flex;
           flex-direction: column;
-          width: 250px;
+          width: 224px;
           height: 300px;
           z-index: -1;
 

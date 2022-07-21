@@ -1,64 +1,69 @@
 @import '../../../styles/variable.scss';
 
-.main-notice {
-  @include flex($justify: flex-start);
-  padding: 14px 16px;
-  margin: 30px 20px;
-  background-color: #f6f6f6;
-  color: #333;
-  border-radius: 4px;
+.notice {
+  @include flex;
 
-  .notice {
-    width: 13%;
-    font-size: 14px;
-    margin-right: 8px;
-    color: #999;
-  }
-  .notice-list-info {
-    @include flex($justify: space-between);
-    width: 100%;
-    overflow: hidden;
+  .main-notice {
+    @include flex($justify: flex-start);
+    padding: 14px 16px;
+    margin: 30px 20px;
+    background-color: #f6f6f6;
+    color: #333;
+    border-radius: 4px;
+    width: 1200px;
 
-    .notice-list {
-      @include flex($align: flex-start, $justify: flex-start);
-      flex-direction: column;
-      height: 13px;
-      width: 90%;
-      top: 0;
+    .notice {
+      width: 10%;
       font-size: 14px;
-      position: relative;
-      line-height: 16px;
-      animation: scroll 12s infinite;
+      margin-right: 12px;
+      color: #999;
+    }
+    .notice-list-info {
+      @include flex($justify: space-between);
+      width: 100%;
+      overflow: hidden;
 
-      @keyframes scroll {
-        18% {
-          top: 0px;
-        }
-        27% {
-          top: -16px;
-        }
-        45% {
-          top: -16px;
-        }
-        54% {
-          top: -32px;
-        }
-        72% {
-          top: -32px;
-        }
-        81% {
-          top: -48px;
-        }
-        99% {
-          top: -48px;
-        }
-        100% {
-          top: 0px;
+      .notice-list {
+        @include flex($align: flex-start, $justify: flex-start);
+        flex-direction: column;
+        height: 13px;
+        width: 90%;
+        top: 0;
+        font-size: 14px;
+        position: relative;
+        line-height: 16px;
+        animation: scroll 12s infinite;
+
+        @keyframes scroll {
+          18% {
+            top: 0px;
+          }
+          27% {
+            top: -16px;
+          }
+          45% {
+            top: -16px;
+          }
+          54% {
+            top: -32px;
+          }
+          72% {
+            top: -32px;
+          }
+          81% {
+            top: -48px;
+          }
+          99% {
+            top: -48px;
+          }
+          100% {
+            top: 0px;
+          }
         }
       }
-    }
-    .notice-info {
-      color: #999;
+      .notice-info {
+        color: #999;
+      }
     }
   }
 }
