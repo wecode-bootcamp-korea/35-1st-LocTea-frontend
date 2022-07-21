@@ -73,44 +73,53 @@
         font-size: 36px;
         margin: 15px 0;
       }
+
       .item-name-explain {
         font-size: 20px;
         color: #656565;
         line-height: 30px;
         margin-bottom: 30px;
       }
+
       .item-price-name {
         @include flex($justify: flex-end);
         padding-bottom: 17px;
         border-bottom: 1px #ececec solid;
+
         strong {
           font-family: 'Nanum Gothic', sans-serif;
           font-weight: bold;
           font-size: 28px;
         }
+
         span {
           color: #7b7b7b;
           font-size: 28px;
         }
       }
+
       .item-sale-price {
         @include flex($align: flex-end);
         flex-direction: column;
+
         .price-top {
           @include flex;
           color: #b8b8b8;
           font-size: 20px;
           text-decoration: line-through;
         }
+
         .price-bottom {
           margin: 7px 0 0;
           color: #7b7b7b;
           font-size: 28px;
+
           .price {
             color: #000000;
             font-weight: bold;
             font-size: 28px;
           }
+
           .discount-percent {
             margin: 0 0 0 4px;
             color: #fd5c5c;
@@ -119,6 +128,7 @@
         }
       }
     }
+
     .item-number {
       @include flex($justify: space-between);
       width: 100%;
@@ -137,12 +147,14 @@
           background-color: #f8f9fb;
           cursor: pointer;
         }
+
         p {
           font-size: 20px;
           padding: 5px;
         }
       }
     }
+
     .item-purchase {
       @include flex;
       width: 100%;
@@ -165,6 +177,7 @@
           }
         }
       }
+
       .item-purchase-button {
         width: 100%;
         @include flex($justify: flex-end);
@@ -215,6 +228,7 @@
 }
 .explain-imgbox {
   @include flex;
+
   img {
     width: 1200px;
   }
