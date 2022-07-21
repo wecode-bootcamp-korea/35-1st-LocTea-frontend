@@ -11,17 +11,16 @@ const HotTea = () => {
   const copyArr = arr;
 
   const minusPx = () => {
-    setPx(px + 224);
+    setPx(px + 5);
     const arrPop = copyArr.pop();
     copyArr.unshift(arrPop);
   };
 
   const plusPx = () => {
-    setPx(px - 224);
+    setPx(px - 5);
     const arrShift = copyArr.shift();
     copyArr.push(arrShift);
   };
-
   return (
     <div className="main-hottea">
       <div className="main-hottea-title">
@@ -37,7 +36,7 @@ const HotTea = () => {
         <div className="hottea">
           <ul
             className="hottea-list"
-            style={{ transform: `translate(${px}px, 0)` }}
+            style={{ transform: `translateX(${px}%)` }}
           >
             {copyArr.map(a => {
               return (
