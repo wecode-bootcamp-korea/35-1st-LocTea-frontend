@@ -6,7 +6,8 @@
   @include flex($justify: space-between);
   font-family: 'Nanum Gothic', sans-serif;
   padding: 0 30px;
-  margin: 70px 0;
+  margin: 70px auto;
+  max-width: 1200px;
 
   .item-img-ul {
     @include flex;
@@ -189,4 +190,7 @@
 }
 .explain-imgbox {
   @include flex;
+  img {
+    width: 1200px;
+  }
 }
