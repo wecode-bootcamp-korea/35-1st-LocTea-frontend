@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { SNS_LIST } from './SnsData';
 import './Login.scss';
-import { Sns } from './Sns';
+import Sns from './Sns';
 
 const Login = () => {
   const [person, setPerson] = useState({
@@ -34,7 +33,7 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
-        result.message === 'SUCCESS' && navigate('/main');
+        result.message === 'SUCCESS' && navigate('/');
       });
   };
 

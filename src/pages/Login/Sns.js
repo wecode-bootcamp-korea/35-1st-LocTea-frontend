@@ -1,6 +1,6 @@
-import { SNS_LIST } from './SnsData';
+import SNS_LIST from './SnsData';
 
-export function Sns() {
+export default function Sns() {
   return SNS_LIST.map(info => {
     return (
       <div className="login-footer-text">

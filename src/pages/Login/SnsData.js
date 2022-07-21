@@ -1,4 +1,4 @@
-export const SNS_LIST = [
+const SNS_LIST = [
   {
     id: 1,
     img: '../images/login/phone.png',
@@ -24,3 +24,5 @@ export const SNS_LIST = [
     text2: '...',
   },
 ];
+
+export default SNS_LIST;
