@@ -116,32 +116,4 @@ const SUMMER_DATA = [
     imgSrc:
       'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
   },
-  {
-    id: 8,
-    name: '산호섬 아이스티8',
-    price: '13,000',
-    imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
-  },
-  {
-    id: 9,
-    name: '산호섬 아이스티9',
-    price: '13,000',
-    imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
-  },
-  {
-    id: 10,
-    name: '산호섬 아이스티10',
-    price: '13,000',
-    imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
-  },
-  {
-    id: 11,
-    name: '산호섬 아이스티11',
-    price: '13,000',
-    imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
-  },
 ];

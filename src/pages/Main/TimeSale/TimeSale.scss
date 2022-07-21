@@ -44,8 +44,15 @@
             font-weight: bold;
           }
           .textbox-top-right {
+            width: 110px;
+            position: relative;
             font-size: 28px;
             color: rgba(255, 255, 255, 0.8);
+            i {
+              position: absolute;
+              font-size: 22px;
+              left: -30px;
+            }
           }
         }
         .textbox-bottom {

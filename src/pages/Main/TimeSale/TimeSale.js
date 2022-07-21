@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TimeSale.scss';
 const TimeSale = () => {
+  const [hour, setHour] = useState(23 - new Date().getHours());
+  const [minute, setMinute] = useState(59 - new Date().getMinutes());
+  const [second, setSecond] = useState(59 - new Date().getSeconds());
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setHour(23 - new Date().getHours());
+      setMinute(59 - new Date().getMinutes());
+      setSecond(59 - new Date().getSeconds());
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+  // console.log(time);
   return (
     <div className="timesale">
       <div className="timesale-main">
@@ -16,6 +29,9 @@ const TimeSale = () => {
               <p className="textbox-top-left">오늘만 이 가격</p>
               <p className="textbox-top-right">
                 <i className="fa-regular fa-clock" />
+                {hour < 10 ? '0' + hour : hour}:
+                {minute < 10 ? '0' + minute : minute}:
+                {second < 10 ? '0' + second : second}
               </p>
             </div>
             <div className="textbox-bottom">
