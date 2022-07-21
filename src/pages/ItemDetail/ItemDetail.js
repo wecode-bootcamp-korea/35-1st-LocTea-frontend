@@ -19,10 +19,13 @@ const ItemDetail = () => {
     second_category,
     title,
     description,
+    discount,
     price,
     thumbnail_images,
+    detail_images,
   } = itemData;
   //구조 분해 할당하여 가독성 향상
+
   const plusPrice = () => {
     setQuantity(quantity + 1);
   };
@@ -37,6 +40,8 @@ const ItemDetail = () => {
     setCurrentTab(currentTabName);
   };
   //현재 탭에 이름을 부여하도록 설정
+  const discountPrice = price * ((100 - discount) / 100);
+
   return Object.keys(itemData).length > 0 ? (
     //아이템 데이터가 객체형식이므로 객체의 키값의 길이가 0보다클때 조건부 렌더링
     <>
@@ -79,10 +84,25 @@ const ItemDetail = () => {
               <h3>{title}</h3>
             </div>
             <div className="item-name-explain">{description}</div>
-            <div className="item-price-name">
-              <strong className="price">{price.toLocaleString()}</strong>
-              <span className="won">원</span>
-            </div>
+            {discount == null ? (
+              <div className="item-price-name">
+                <strong className="price">{price.toLocaleString()}</strong>
+                <span className="won">원</span>
+              </div>
+            ) : (
+              <div className="item-sale-price">
+                <div className="price-top">
+                  <p>{price.toLocaleString()}</p>
+                  <span>원</span>
+                </div>
+                <div className="price-bottom">
+                  <strong className="price">
+                    {discountPrice.toLocaleString()}
+                  </strong>
+                  원<span className="discount-percent">{discount}%</span>
+                </div>
+              </div>
+            )}
           </div>
           <div className="item-number">
             <p>구매수량</p>
@@ -100,7 +120,7 @@ const ItemDetail = () => {
             <div className="item-purchase-total">
               <p>상품금액 합계</p>
               <div className="item-purchase-total-price">
-                <strong>{(price * quantity).toLocaleString()}</strong>
+                <strong>{(discountPrice * quantity).toLocaleString()}</strong>
                 <p>원</p>
               </div>
             </div>
@@ -134,22 +154,13 @@ const ItemDetail = () => {
         </ul>
       </div>
       <div className="explain-imgbox">
-        <img
-          src="https://cdn.pixabay.com/photo/2021/10/13/09/01/corgi-6705821_960_720.jpg"
-          alt="상품상세이미지1"
-        />
+        <img src={detail_images[0]} alt="상품상세이미지1" />
       </div>
       <div className="explain-imgbox">
-        <img
-          src="https://cdn.pixabay.com/photo/2022/07/12/17/12/dog-7317820_960_720.jpg"
-          alt="상품상세이미지2"
-        />
+        <img src={detail_images[1]} alt="상품상세이미지2" />
       </div>
       <div className="explain-imgbox">
-        <img
-          src="https://cdn.pixabay.com/photo/2022/07/10/17/46/dog-7313456_960_720.jpg"
-          alt="상품상세이미지3"
-        />
+        <img src={detail_images[2]} alt="상품상세이미지3" />
       </div>
     </>
   ) : (

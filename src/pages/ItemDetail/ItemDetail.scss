@@ -93,6 +93,31 @@
           font-size: 28px;
         }
       }
+      .item-sale-price {
+        @include flex($align: flex-end);
+        flex-direction: column;
+        .price-top {
+          @include flex;
+          color: #b8b8b8;
+          font-size: 20px;
+          text-decoration: line-through;
+        }
+        .price-bottom {
+          margin: 7px 0 0;
+          color: #7b7b7b;
+          font-size: 28px;
+          .price {
+            color: #000000;
+            font-weight: bold;
+            font-size: 28px;
+          }
+          .discount-percent {
+            margin: 0 0 0 4px;
+            color: #fd5c5c;
+            font-size: 26px;
+          }
+        }
+      }
     }
     .item-number {
       @include flex($justify: space-between);
