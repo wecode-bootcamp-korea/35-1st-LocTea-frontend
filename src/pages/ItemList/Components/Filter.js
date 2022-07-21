@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Filter = () => {
-  const [whichSelected, setwhichSelected] = useState({
+import './Filter.scss';
+
+let initialValue = {
+  1: false,
+  2: false,
+  3: false,
+  4: false,
+  5: true,
+};
+
+const Filter = whichProductRender => {
+  const [whichSelected, setWhichSelected] = useState({
     1: false,
     2: false,
     3: false,
@@ -9,12 +19,16 @@ const Filter = () => {
     5: true,
   });
 
+  useEffect(() => {
+    setWhichSelected(initialValue);
+  }, [whichProductRender]);
+
   const handleAllButton = () => {
-    setwhichSelected({ 1: false, 2: false, 3: false, 4: false, 5: true });
+    setWhichSelected({ 1: false, 2: false, 3: false, 4: false, 5: true });
   };
   const handleButton = i => {
-    setwhichSelected((whichSelected[5] = false));
-    setwhichSelected({ ...whichSelected, [i]: !whichSelected[i] });
+    setWhichSelected((whichSelected[5] = false));
+    setWhichSelected({ ...whichSelected, [i]: !whichSelected[i] });
   };
   return (
     <div className="filter">

@@ -1,9 +1,29 @@
 import React from 'react';
+import './Items.scss';
+
+const Items = () => {
+  return (
+    <div className="items">
+      <ItemCard />
+      <ItemCard />
+      <ItemCard />
+    </div>
+  );
+};
 
 const ItemCard = () => {
   return (
     <div className="item">
-      <img src="images/ItemList/osulocitem.png" alt="" />
+      <img
+        src="/images/ItemList/osulocitem.png"
+        alt="제품이미지"
+        className="imageUnhover"
+      />
+      <img
+        src="/images/ItemList/osulocitemhover.png"
+        alt="제품이미지"
+        className="imageHover"
+      />
       <p>러블리티박스</p>
       <p>20,000원</p>
       <div className="likeComment">
@@ -20,4 +40,4 @@ const ItemCard = () => {
   );
 };
 
-export default ItemCard;
+export default Items;

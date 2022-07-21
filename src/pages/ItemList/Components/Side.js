@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Side.scss';
 
 const Side = ({ RenderTeaShop, RenderBakery, RenderThemaShop }) => {
   const [whichSelected, setwhichSelected] = useState('teashop');

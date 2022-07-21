@@ -1,0 +1,48 @@
+.items {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+
+  .item {
+    position: relative;
+    height: 350px;
+    width: 30%;
+    margin: 20px 0 0 30px;
+    font-size: 20px;
+
+    .likeComment {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    .imageHover {
+      margin-top: 41.5px;
+      width: 60%;
+    }
+
+    .imageUnhover {
+      position: absolute;
+      width: 70%;
+      transition: opacity 1s;
+    }
+
+    .imageUnhover:hover {
+      opacity: 0;
+    }
+
+    .imageHover:hover {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    p {
+      margin: 15px 0 15px 0;
+    }
+
+    span {
+      margin-right: 20px;
+      margin-left: 10px;
+    }
+  }
+}

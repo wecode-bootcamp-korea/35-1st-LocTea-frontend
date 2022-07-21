@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './Order.scss';
 
 const Order = ({ whichProductRender }) => {
-  const [whichSelected, setwhichSelected] = useState('new');
+  const [whichSelected, setWhichSelected] = useState('new');
+
+  useEffect(() => {
+    setWhichSelected('new');
+  }, [whichProductRender]);
 
   return (
     <div className="order">
@@ -9,7 +14,7 @@ const Order = ({ whichProductRender }) => {
       <ul className="ordertab">
         <li
           onClick={() => {
-            setwhichSelected('new');
+            setWhichSelected('new');
           }}
           className={
             whichSelected === 'new' ? 'activatedTab' : 'unactivatedTab'
@@ -19,7 +24,7 @@ const Order = ({ whichProductRender }) => {
         </li>
         <li
           onClick={() => {
-            setwhichSelected('high');
+            setWhichSelected('high');
           }}
           className={
             whichSelected === 'high' ? 'activatedTab' : 'unactivatedTab'
@@ -29,7 +34,7 @@ const Order = ({ whichProductRender }) => {
         </li>
         <li
           onClick={() => {
-            setwhichSelected('low');
+            setWhichSelected('low');
           }}
           className={
             whichSelected === 'low' ? 'activatedTab' : 'unactivatedTab'
