@@ -40,7 +40,10 @@ const Register = () => {
     })
       .then(response => response.json())
       .then(result => {
-        result.message === 'SUCCESS' && navigate('/login');
+        if (result.message === 'SUCCESS') {
+          navigate('/');
+          alert('회원가입 성공!');
+        }
       });
   };
 
@@ -96,7 +99,7 @@ const Register = () => {
               <div className="message">
                 {person.birth === '' ? (
                   <p />
-                ) : person.birth.includes() ? (
+                ) : person.birth.includes('.') ? (
                   <p style={{ color: 'red' }}>
                     "2000-01-01" 형태로 입력해주세요.
                   </p>

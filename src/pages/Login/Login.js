@@ -33,7 +33,10 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(result => {
-        result.message === 'SUCCESS' && navigate('/');
+        if (result.message === 'SUCCESS') {
+          navigate('/');
+          alert('로그인 성공!');
+        }
       });
   };
 
