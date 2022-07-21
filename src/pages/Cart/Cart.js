@@ -1,15 +1,51 @@
-import React from 'react';
-import CartList from './cartList';
+import React, { useState, useEffect } from 'react';
+import CartProduct from './components/CartProduct';
+import CartPrice from './components/CartPrice';
 import './Cart.scss';
 
 function Cart() {
+  const [cartList, setCartList] = useState([]);
+  // if (cartList.length === 0) {
+  //   setCartList(false);
+  // }
+
+  useEffect(() => {
+    fetch('data/cartData.json', {
+      method: 'GET',
+    })
+      .then(res => res.json())
+      .then(data => {
+        setCartList(data);
+      });
+  }, []);
+
+  const plusCount = id => {
+    // 누른 상품이 어떤 상품인지 알아야 함 ( 상품 id ) => product_id
+    // Cart 컴포넌트의 cartList state에서 해당하는 상품의 quantity만 +1 해야 함 => setCartList
+    // ㄴ 특정 id를 가지고 있는 요소가 무엇인지 알아내야 함
+    // ㄴ 해당 요소의 quantity만 바꿔주는 로직을 구성해야 함
+
+    const selectedIdx = cartList.findIndex(el => el.product_id === id);
+    // spread operator (전개구문) / 불변성
+    const cartListCopy = [...cartList];
+    cartListCopy[selectedIdx].quantity += 1;
+    setCartList(cartListCopy);
+  };
+
+  const minusCount = id => {
+    const selectedIdx = cartList.findIndex(el => el.product_id === id);
+    const cartListCopy = [...cartList];
+    cartListCopy[selectedIdx].quantity -= 1;
+    setCartList(cartListCopy);
+  };
+
   return (
     <main className="main shop-cart">
       {/* 타이틀 */}
       <section className="page-tit-box container">
         <h2 className="page-tit">장바구니</h2>
       </section>
-      <form id="cart-form">
+      <form id="cart-form" defaultValue="cart">
         <section className="section">
           <div className="container">
             <div className="cart-inner">
@@ -44,65 +80,29 @@ function Cart() {
                     </div>
                   </div>
                   {/* 장바구니 리스트  */}
-                  <CartList />
+                  {cartList.map(item => {
+                    return (
+                      <CartProduct
+                        key={item.product_id}
+                        cartList={item}
+                        plusCount={() => plusCount(item.product_id)}
+                        minusCount={() => minusCount(item.product_id)}
+                      />
+                    );
+                  })}
                 </div>
                 {/* 가격 정보 */}
                 <div className="content">
                   <div className="cart-price">
-                    <div className="price-info">
-                      <ul className="list">
-                        <li className="item">
-                          <p className="item-name">상품 금액</p>
-                          <p className="item-val prd-price">
-                            +<span className="view-price">0</span>원
-                          </p>
-                        </li>
-                        <li className="item">
-                          <p className="item-name">상품 할인</p>
-                          <p className="item-val prd-sale">
-                            -<span className="view-dc">0</span>원
-                          </p>
-                        </li>
-                        <li className="item">
-                          <p className="item-name">포장비</p>
-                          <p className="item-val">
-                            +<span className="view-wrap-price">0</span>원
-                          </p>
-                        </li>
-                        <li className="item">
-                          <p className="item-name">부가 쇼핑백</p>
-                          <p className="item-val">
-                            +<span className="view-bag-price">0</span>원
-                          </p>
-                        </li>
-                        <li className="item">
-                          <p className="item-name">배송비</p>
-                          <p className="item-val">
-                            +<span className="view-delivery-fee">2,500</span>원
-                          </p>
-                        </li>
-                      </ul>
-                      <div className="expected-price">
-                        <p className="item-name">결제 예상 금액</p>
-                        <p className="item-val">
-                          <span className="view-payAmount">0</span>
-                          <span className="unit">원</span>
-                        </p>
-                      </div>
-                      <div className="list-btn">
-                        <button type="submit" className="list-buy-btn">
-                          <span className="view-payAmount">0</span>원 주문하기
-                        </button>
-                      </div>
-                    </div>
+                    <CartPrice cartList={cartList} />
                   </div>
                   {/* 주문하기 버튼 */}
                   <div className="cart-btn-box">
                     <div className="cart-btn-item">
-                      <button className="cart-btn" id="sel-buy">
+                      <button className="cart-btn sel-buy">
                         선택상품 주문
                       </button>
-                      <button className="cart-btn" id="all-buy">
+                      <button className="cart-btn all-buy">
                         전체상품 주문
                       </button>
                     </div>
