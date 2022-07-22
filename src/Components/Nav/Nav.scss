@@ -6,41 +6,35 @@
   font-weight: 400;
   font-size: 13px;
   #nav-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    min-width: 1280px;
-    height: auto;
-    background: rgba(0, 0, 0, 0.25), transparent;
     .wrapper {
-      padding: 0, 10px;
-      max-width: 1540px;
-      margin-left: auto;
-      margin-right: auto;
       .inner-box {
         @include flex($justify: space-between);
         .left-box {
-          @include flex($justify: flex-start);
+          display: flex;
           .loctea {
             font-size: 36px;
             padding-left: 44px;
             padding-top: 25px;
           }
           .nav {
-            display: block;
-            padding-left: 40px;
+            padding-left: 60px;
             .nav-list-dep1 {
               display: flex;
+              justify-content: center;
               .item-dep1 {
                 padding-right: 80px;
                 font-size: 20px;
                 .link-text {
                   display: block;
-                  height: 80px;
                   line-height: 80px;
                   font-size: 18px;
                   font-weight: 500;
                   color: black;
+                }
+                .category-title {
+                  @include flex;
+                  border: 1px solid black;
+                  width: 500px;
                 }
               }
               .item-dep1-no-child {

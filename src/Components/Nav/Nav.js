@@ -27,8 +27,10 @@ function Nav() {
                   <li className="item-dep1">
                     <a href="" className="link-text">
                       제품
+                      <div className="category-title">
+                        <ITEMTYPE values={items} />
+                      </div>
                     </a>
-                    <ITEMTYPE values={items} />
                   </li>
                   <li className="item-dep1-no-child">
                     <p className="link-text">선물추천</p>
