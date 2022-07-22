@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CartPrice.scss';
 
-function CartPrice({ CartList }) {
-  const [cartPrice, setCartPrice] = useState([]);
+function CartPrice({ cartList, salePrice, eachPrice, eachSalePrice }) {
+  const totalPrice = cartList.map(data => data.price);
+  const total = totalPrice => {
+    let result = 0;
+    for (let i = 0; i < totalPrice.length; i++) {
+      result += totalPrice[i];
+    }
+    return result;
+  };
+  const realTotal = total(totalPrice);
+  const deliveryFee = realTotal > 50000 ? 0 : 2500;
+
+  // const totalDiscount = cartList.map(data => data.discount);
+  // console.log(totalDiscount);
 
   return (
     <div className="price-info">
@@ -10,7 +22,7 @@ function CartPrice({ CartList }) {
         <li className="item">
           <p className="item-name">상품 금액</p>
           <p className="item-val prd-price">
-            +<span className="view-price">{cartPrice}</span>원
+            +<span className="view-price">{realTotal.toLocaleString()}</span>원
           </p>
         </li>
         <li className="item">
@@ -34,7 +46,11 @@ function CartPrice({ CartList }) {
         <li className="item">
           <p className="item-name">배송비</p>
           <p className="item-val">
-            +<span className="view-delivery-fee">2,500</span>원
+            +
+            <span className="view-delivery-fee">
+              {deliveryFee.toLocaleString()}
+            </span>
+            원
           </p>
         </li>
       </ul>

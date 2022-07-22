@@ -14,7 +14,7 @@
     align-items: center;
     padding: 10px 0;
     input[type='checkbox'] {
-      display: none;
+      appearance: none;
       margin-right: 5px;
     }
     .inp-box {
@@ -107,7 +107,7 @@
       }
     }
   }
-    
+
   .cart-btn-box {
     padding: 30px 20px 20px;
     border-top: 1px solid #e6e6e6;

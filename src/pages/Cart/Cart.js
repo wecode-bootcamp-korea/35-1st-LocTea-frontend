@@ -5,20 +5,37 @@ import './Cart.scss';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
-  // if (cartList.length === 0) {
+  // if (cartList.product_id.length === 0) {
   //   setCartList(false);
   // }
 
+  // useEffect(() => {
+  //   //data/cartData.json
+  //   fetch('http://10.58.7.60:8000/cart', {
+  //     method: 'GET',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       if (data.token) {
+  //         localStorage.setItem('wtw-token', data.token);
+  //       }
+  //       setCartList(data);
+  //     });
+  // }, []);
   useEffect(() => {
     //data/cartData.json
-    fetch('http://10.58.4.100:8000/cart', {
+    fetch('http://10.58.7.60:8000/cart', {
       method: 'GET',
+      headers: { autorizaion: 'access token' },
     })
       .then(res => res.json())
-      .then(data => {
-        setCartList(data);
-      });
+      .then(data => setCartList(data));
   }, []);
+
+  localStorage.setItem('token', cartList.message);
+
+  // spread operator (전개구문) / 불변성
+  // const cartListCopy = [...cartList];
 
   const plusCount = id => {
     // 누른 상품이 어떤 상품인지 알아야 함 ( 상품 id ) => product_id
@@ -27,7 +44,6 @@ function Cart() {
     // ㄴ 해당 요소의 quantity만 바꿔주는 로직을 구성해야 함
 
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
-    // spread operator (전개구문) / 불변성
     const cartListCopy = [...cartList];
     cartListCopy[selectedIdx].quantity += 1;
     setCartList(cartListCopy);
@@ -39,6 +55,12 @@ function Cart() {
     cartListCopy[selectedIdx].quantity -= 1;
     setCartList(cartListCopy);
   };
+
+  // const data = cartList.map(x => x.price);
+  // console.log(data);
+  // const salePrice = data.price - data.price * (data.discount * 0.01);
+  // const eachPrice = data.price * data.quantity;
+  // const eachSalePrice = data.salePrice * data.quantity;
 
   return (
     <main className="main shop-cart">

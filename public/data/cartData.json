@@ -6,7 +6,7 @@
     "thumbnail_images": "../images/green-tea.jpg",
     "title": "베스트 티박스",
     "price": 19000,
-    "discount": null,
+    "discount": 15,
     "quantity": 5,
     "stock": 1000
   },
