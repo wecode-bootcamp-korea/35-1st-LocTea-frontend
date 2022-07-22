@@ -3,6 +3,7 @@ import ITEMTYPE from './ItemType';
 import './Nav.scss';
 
 function Nav() {
+  // 통신
   const [items, setItems] = useState({});
 
   useEffect(() => {
@@ -13,6 +14,17 @@ function Nav() {
       });
   }, []);
 
+  // 마우스 호버
+  const [isHovering, setIsHover] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHover(false);
+  };
+
   return (
     <div className="nav-container">
       <div className="nav-header">
@@ -20,13 +32,12 @@ function Nav() {
           <div className="left-box">
             <h1 className="header">록차</h1>
             <div className="nav-title-box">
-              <div className="title-item-box">
+              <div
+                className="title-item-box"
+                onMouseEnter={handleMouseOver}
+                onMouseLeave={handleMouseOut}
+              >
                 <button className="nav-title">제품</button>
-                <div className="nav-item-box">
-                  <div className="nav-item-title">
-                    <ITEMTYPE values={items} />
-                  </div>
-                </div>
               </div>
               <div className="title-item-box">
                 <button className="nav-title">선물추천</button>
@@ -58,6 +69,17 @@ function Nav() {
           </div>
         </div>
       </div>
+      {isHovering && (
+        <div className="nav-item-box">
+          <div
+            className="nav-item-title"
+            onMouseEnter={handleMouseOver}
+            onMouseLeave={handleMouseOut}
+          >
+            <ITEMTYPE values={items} />
+          </div>
+        </div>
+      )}
     </div>
 
     //     <div className="nav-all">

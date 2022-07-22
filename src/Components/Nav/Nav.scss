@@ -6,26 +6,29 @@
   color: white; //#555;
   font-weight: 400;
   font-size: 13px;
-  background-color: rgba(0, 0, 0, 0.25);
-  transition: background-color 100s;
-  button {
-    color: white;
-  }
-  :hover {
-    background-color: white;
-    color: #555;
-
-    button {
-      color: #555;
-    }
-  }
 
   .nav-header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), transparent);
+    transition: background-color 0.5s;
+
+    button {
+      color: white;
+    }
+    :hover {
+      background-color: white;
+      color: #555;
+
+      button {
+        color: #555;
+      }
+    }
+
     .nav-inner-box {
       display: flex;
       justify-content: space-between;
       width: 100vw;
       min-width: 1200px;
+
       .left-box {
         display: flex;
         .header {
@@ -35,52 +38,19 @@
         }
         .nav-title-box {
           display: flex;
-          padding: 30px;
-          margin-left: 10px;
+          margin-left: 40px;
+
           .title-item-box {
             position: relative;
+            line-height: 90px;
+
             .nav-title {
               font-family: 'EBSHunminjeongeumSBA';
-              font-weight: 400;
+              font-weight: 500;
               font-size: 18px;
               padding-right: 50px;
-
-              &:hover + .nav-item-box {
-                display: block;
-                &:hover + .nav-item-box {
-                  display: block;
-                }
-              }
-            }
-
-            .nav-item-box {
-              display: none;
-              .nav-item-title {
-                display: flex;
-                position: absolute;
-                align-items: flex-start;
-                padding-top: 30px;
-                top: 50px;
-                left: -5px;
-                .category-box {
-                  min-width: 200px;
-                  .item-title-button {
-                    font-size: 20px;
-                    font-weight: 600;
-                    display: flex;
-                  }
-                  .item-lists-container {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    font-size: 15px;
-                    color: grey;
-                    padding-top: 10px;
-                    .item {
-                      line-height: 35px;
-                    }
-                  }
-                }
+              &:hover {
+                color: rgb(53, 157, 53);
               }
             }
           }
@@ -95,6 +65,11 @@
           font-size: 15px;
           .icon {
             margin-right: 20px;
+            i {
+              &:hover {
+                color: rgb(53, 157, 53);
+              }
+            }
           }
         }
         .right-content {
@@ -104,6 +79,50 @@
           font-weight: 900;
           .nav-login {
             margin-right: 20px;
+            &:hover {
+              color: rgb(53, 157, 53);
+            }
+          }
+        }
+      }
+    }
+  }
+  .nav-item-box {
+    .nav-item-title {
+      display: flex;
+      position: absolute;
+      align-items: flex-start;
+      padding-top: 40px;
+      left: -5px;
+      width: 100vw;
+      border-top: 1px solid #e6e6e6;
+      padding-left: 155px;
+      background-color: #fff;
+
+      .category-box {
+        width: 20%;
+        .item-title-button {
+          font-size: 20px;
+          font-weight: 600;
+          display: flex;
+          color: #333;
+          &:hover {
+            color: rgb(53, 157, 53);
+          }
+        }
+        .item-lists-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+
+          padding-top: 10px;
+          .item {
+            font-size: 15px;
+            color: #666;
+            line-height: 35px;
+            &:hover {
+              color: rgb(53, 157, 53);
+            }
           }
         }
       }
