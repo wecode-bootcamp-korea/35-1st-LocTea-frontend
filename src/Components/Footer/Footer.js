@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Footer.scss';
+import FOOTER_SNS from './FooterSnsData';
 import FOOTER_CATEGORY from './FooterData';
 import FOOTER_UTIL from './FooterUtilData';
+import './Footer.scss';
 
 const goTop = () => {
   window.scrollTo({
@@ -20,21 +21,13 @@ function Footer() {
           <Link className="footer-login" to="/login">
             로그인
           </Link>
-          <Link className="footer-icon" to="https://blog.naver.com/wecode">
-            <i className="fa-brands fa-blogger-b" />
-          </Link>
-          <Link
-            className="footer-icon"
-            to="https://www.instagram.com/wecode_bootcamp/"
-          >
-            <i className="fa-brands fa-instagram" />
-          </Link>
-          <Link
-            className="footer-icon"
-            to="https://www.youtube.com/channel/UCSBzZfbXra68mJC7nJ6qN-w"
-          >
-            <i className="fa-brands fa-youtube" />
-          </Link>
+          {FOOTER_SNS.map(sns => {
+            return (
+              <Link className="footer-icon" key={sns.id} to={sns.url}>
+                <i className={sns.icon} />
+              </Link>
+            );
+          })}
         </div>
       </div>
       <div className="footer-mid">
