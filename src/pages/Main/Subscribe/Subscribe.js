@@ -55,6 +55,31 @@ const Subscribe = () => {
           </div>
         </div>
         <div className="subscribe-article">
+          <div className="article-hover-box">
+            <div className="article-hover-textbox">
+              <div className="hover-textbox-top">
+                다르게 만나는 차, 다다일상 홈카페
+              </div>
+              <div className="hover-textbox-bottom">
+                <span className="hover-textbox-bottom-front">매월</span>
+                <span className="hover-textbox-bottom-price">25,000원</span>
+                <span className="hover-textbox-bottom-tag">배송비 Free</span>
+              </div>
+            </div>
+            <p>
+              매월 오설록이 티를 이용한 새로운 레시피를 소개해드립니다.다양한
+              레시피를 따라하면서 차를 <br />
+              색다르게 경험해보세요.
+            </p>
+            <ul>
+              <li>
+                <span>3종류 이상</span>의 다양한 티백/티푸드 구성
+              </li>
+              <li>
+                <span>3만 5천원 이상</span>정가 구성
+              </li>
+            </ul>
+          </div>
           <div className="article-imgbox">
             <img
               src="https://www.osulloc.com/upload/kr/ko/adminImage/GY/UH/20220629103940249ZN.jpg?quality=80"
@@ -71,6 +96,19 @@ const Subscribe = () => {
           </div>
         </div>
         <div className="subscribe-article">
+          <div className="article-hover-box">
+            <div className="article-hover-textbox">
+              <div className="hover-textbox-top">매일 만나는 차, 정기배송</div>
+              <div className="hover-textbox-bottom">
+                <span className="hover-textbox-bottom-tag">배송비 Free</span>
+              </div>
+            </div>
+            <p>
+              원하는 차를 집에서 매월 편하게 받아보세요.
+              <br />
+              오설록과 함께 편안한 티 라이프를 즐겨보세요
+            </p>
+          </div>
           <div className="article-imgbox">
             <img
               src="https://www.osulloc.com/kr/ko/static_cdj/images/main/dada_img03_pc_1.jpg"
