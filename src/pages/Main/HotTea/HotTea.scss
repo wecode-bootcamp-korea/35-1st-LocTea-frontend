@@ -46,7 +46,7 @@
     @include flex;
     margin: 10px 30px;
     background-color: #fff;
-    width: 1200px;
+    width: 1400px;
 
     .hottea-left,
     .hottea-right {
@@ -55,7 +55,11 @@
       z-index: 10;
       background-color: #fff;
       cursor: pointer;
-      width: 90px;
+      width: 100px;
+      i {
+        @include flex;
+        width: 100px;
+      }
 
       &:hover {
         color: #333;
@@ -66,16 +70,15 @@
       overflow: hidden;
 
       .hottea-list {
-        width: 300%;
+        width: 200%;
         display: flex;
         position: relative;
-        transition: all ease 2s;
-        left: 0px;
+        left: -240px;
 
         li {
           @include flex;
           flex-direction: column;
-          width: 224px;
+          width: 240px;
           height: 300px;
           z-index: -1;
 

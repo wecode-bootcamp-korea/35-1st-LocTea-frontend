@@ -4,23 +4,41 @@ import './HotTea.scss';
 const HotTea = () => {
   const [px, setPx] = useState(0);
   const [arr, setArr] = useState([]);
+  const [transition, setTransition] = useState('all ease 0.7s');
 
   useEffect(() => {
     setArr(SUMMER_DATA);
   }, []);
-  const copyArr = arr;
-
+  const minusArr = () => {
+    const arrPop = arr.pop();
+    arr.unshift(arrPop);
+  };
   const minusPx = () => {
-    setPx(px + 5);
-    const arrPop = copyArr.pop();
-    copyArr.unshift(arrPop);
+    setTransition('all ease 0.7s');
+    setPx(px + 240);
+
+    setTimeout(() => {
+      setTransition('none');
+      minusArr();
+      setPx(0);
+    }, 700);
   };
 
-  const plusPx = () => {
-    setPx(px - 5);
-    const arrShift = copyArr.shift();
-    copyArr.push(arrShift);
+  const plusArr = () => {
+    const arrShift = arr.shift();
+    arr.push(arrShift);
   };
+  const plusPx = () => {
+    setTransition('all ease 0.7s');
+    setPx(px - 240);
+
+    setTimeout(() => {
+      setTransition('none');
+      plusArr();
+      setPx(0);
+    }, 700);
+  };
+
   return (
     <div className="main-hottea">
       <div className="main-hottea-title">
@@ -36,9 +54,12 @@ const HotTea = () => {
         <div className="hottea">
           <ul
             className="hottea-list"
-            style={{ transform: `translateX(${px}%)` }}
+            style={{
+              transform: `translateX(${px}px)`,
+              transition: `${transition}`,
+            }}
           >
-            {copyArr.map(a => {
+            {arr.map(a => {
               return (
                 <li key={a.id}>
                   <img src={a.imgSrc} alt="" />
