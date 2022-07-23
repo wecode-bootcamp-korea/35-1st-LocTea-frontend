@@ -70,25 +70,31 @@ function Nav() {
         </div>
       </div>
       {isHovering ? (
-        <div className="nav-item-box">
-          <div
-            className="nav-item-title"
-            onMouseEnter={handleMouseOver}
-            onMouseLeave={handleMouseOut}
-          >
-            <ITEMTYPE values={items} />
+        <>
+          <div className="nav-item-box">
+            <div
+              className="nav-item-title"
+              onMouseEnter={handleMouseOver}
+              onMouseLeave={handleMouseOut}
+            >
+              <ITEMTYPE values={items} />
+            </div>
           </div>
-        </div>
+          <div className="vacant" />
+        </>
       ) : (
-        <div className="nav-item-box up">
-          <div
-            className="nav-item-title"
-            onMouseEnter={handleMouseOver}
-            onMouseLeave={handleMouseOut}
-          >
-            <ITEMTYPE values={items} />
+        <>
+          <div className="nav-item-box up">
+            <div
+              className="nav-item-title"
+              onMouseEnter={handleMouseOver}
+              onMouseLeave={handleMouseOut}
+            >
+              <ITEMTYPE values={items} />
+            </div>
           </div>
-        </div>
+          <div className="vacant none" />
+        </>
       )}
     </div>
   );

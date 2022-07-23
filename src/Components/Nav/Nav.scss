@@ -157,8 +157,17 @@
       }
     }
   }
+  .vacant {
+    width: 100vw;
+    height: 900px;
+    background: rgba(0, 0, 0, 0.25);
+    transition: all ease 0.5s;
+  }
+  .none {
+    background: none;
+  }
+
   .up {
     transform: translateY(-500px);
-    display: block;
   }
 }
