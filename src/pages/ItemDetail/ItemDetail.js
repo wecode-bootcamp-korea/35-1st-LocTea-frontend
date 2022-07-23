@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './ItemDetail.scss';
 
 const ItemDetail = () => {
   const [itemData, setItemData] = useState({});
   const [currentTab, setCurrentTab] = useState('상품상세');
   const [quantity, setQuantity] = useState(1);
+  const params = useParams();
 
   useEffect(() => {
-    fetch('data/itemData.json')
+    fetch(`http://10.58.7.130:8000/products/${params.id}`)
       .then(res => res.json())
-      .then(data => setItemData(data));
+      .then(data => setItemData(data.result));
   }, []);
 
   const {
@@ -48,7 +50,7 @@ const ItemDetail = () => {
       <div className="item-detail">
         <div className="item-img-ul">
           <div className="item-img-box">
-            <img src={thumbnail_images} alt="상품이미지" />
+            <img src={thumbnail_images[0]} alt="상품이미지" />
           </div>
           <div className="item-ul">
             <li>
@@ -86,13 +88,15 @@ const ItemDetail = () => {
             <div className="item-name-explain">{description}</div>
             {!discount ? (
               <div className="item-price-name">
-                <strong className="price">{price.toLocaleString()}</strong>
+                <strong className="price">
+                  {Number(price).toLocaleString()}
+                </strong>
                 <span className="won">원</span>
               </div>
             ) : (
               <div className="item-sale-price">
                 <div className="price-top">
-                  <p>{price.toLocaleString()}</p>
+                  <p>{Number(price).toLocaleString()}</p>
                   <span>원</span>
                 </div>
                 <div className="price-bottom">
