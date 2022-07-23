@@ -7,13 +7,14 @@ function Nav() {
   const [items, setItems] = useState({});
 
   useEffect(() => {
-    fetch('http://localhost:3000/data/NavItemType.json')
+    fetch('http://10.58.7.130:8000/categories')
       .then(res => res.json())
       .then(data => {
         setItems(data.result);
       });
   }, []);
 
+  console.log(items);
   // 마우스 호버
   const [isHovering, setIsHover] = useState(false);
 
@@ -27,7 +28,7 @@ function Nav() {
 
   return (
     <div className="nav-container">
-      <div className="nav-header">
+      <div className={isHovering ? 'nav-header-white' : 'nav-header-not'}>
         <div className="nav-inner-box">
           <div className="left-box">
             <h1 className="header">록차</h1>
@@ -70,7 +71,10 @@ function Nav() {
         </div>
       </div>
       {isHovering && (
-        <div className="nav-item-box">
+        <div
+          className="nav-item-box"
+          style={{ transform: 'translateY(0)', transition: 'all ease 1s' }}
+        >
           <div
             className="nav-item-title"
             onMouseEnter={handleMouseOver}
