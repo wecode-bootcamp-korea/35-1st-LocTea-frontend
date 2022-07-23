@@ -7,7 +7,7 @@ function Nav() {
   const [items, setItems] = useState({});
 
   useEffect(() => {
-    fetch('http://10.58.7.130:8000/categories')
+    fetch('http://localhost:3000/data/NavItemType.json')
       .then(res => res.json())
       .then(data => {
         setItems(data.result);
@@ -27,7 +27,7 @@ function Nav() {
 
   return (
     <div className="nav-container">
-      <div className={isHovering ? 'nav-header-white' : 'nav-header-not'}>
+      <div className={isHovering ? 'nav-header white' : 'nav-header'}>
         <div className="nav-inner-box">
           <div className="left-box">
             <h1 className="header">록차</h1>
@@ -69,8 +69,18 @@ function Nav() {
           </div>
         </div>
       </div>
-      {isHovering && (
+      {isHovering ? (
         <div className="nav-item-box">
+          <div
+            className="nav-item-title"
+            onMouseEnter={handleMouseOver}
+            onMouseLeave={handleMouseOut}
+          >
+            <ITEMTYPE values={items} />
+          </div>
+        </div>
+      ) : (
+        <div className="nav-item-box up">
           <div
             className="nav-item-title"
             onMouseEnter={handleMouseOver}
