@@ -2,40 +2,55 @@ import React, { useState, useEffect } from 'react';
 import './HotTea.scss';
 
 const HotTea = () => {
-  const [px, setPx] = useState(0);
-  const [arr, setArr] = useState([]);
+  const [movePx, setMovePx] = useState(0);
+  const [teaArr, setTeaArr] = useState([]);
   const [transition, setTransition] = useState('all ease 0.7s');
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
-    setArr(SUMMER_DATA);
+    setTeaArr(SUMMER_DATA);
+    // autoScroll();
   }, []);
+
   const minusArr = () => {
-    const arrPop = arr.pop();
-    arr.unshift(arrPop);
+    const copyArr = [...teaArr];
+    const arrPop = copyArr.pop();
+    copyArr.unshift(arrPop);
+    setTeaArr(copyArr);
   };
+
+  // const autoScroll = () => setInterval(() => plusPx(), 5000);
+
   const minusPx = () => {
     setTransition('all ease 0.7s');
-    setPx(px + 240);
+    setMovePx(movePx + 240);
+    setIsDisabled(true);
 
     setTimeout(() => {
       setTransition('none');
       minusArr();
-      setPx(0);
+      setMovePx(0);
+      setIsDisabled(false);
     }, 700);
   };
 
   const plusArr = () => {
-    const arrShift = arr.shift();
-    arr.push(arrShift);
+    const copyArr = [...teaArr];
+    const arrPop = copyArr.shift();
+    copyArr.push(arrPop);
+    setTeaArr(copyArr);
   };
+
   const plusPx = () => {
     setTransition('all ease 0.7s');
-    setPx(px - 240);
+    setMovePx(movePx - 240);
+    setIsDisabled(true);
 
     setTimeout(() => {
       setTransition('none');
       plusArr();
-      setPx(0);
+      setMovePx(0);
+      setIsDisabled(false);
     }, 700);
   };
 
@@ -48,30 +63,34 @@ const HotTea = () => {
       </div>
       <div className="main-hottea-scroll">
         <div className="hottea-left">
-          <i className="fa-solid fa-angle-left" onClick={minusPx} />
+          <button onClick={minusPx} disabled={isDisabled}>
+            <i className="fa-solid fa-angle-left" />
+          </button>
         </div>
 
         <div className="hottea">
           <ul
             className="hottea-list"
             style={{
-              transform: `translateX(${px}px)`,
+              transform: `translateX(${movePx}px)`,
               transition: `${transition}`,
             }}
           >
-            {arr.map(a => {
+            {teaArr.map(tea => {
               return (
-                <li key={a.id}>
-                  <img src={a.imgSrc} alt="" />
-                  <h6>{a.name}</h6>
-                  <p>{a.price}</p>
+                <li className="items" key={tea.id}>
+                  <img src={tea.imgSrc} alt="상품이미지" />
+                  <h6>{tea.name}</h6>
+                  <p>{tea.price}</p>
                 </li>
               );
             })}
           </ul>
         </div>
         <div className="hottea-right">
-          <i className="fa-solid fa-angle-right" onClick={plusPx} />
+          <button onClick={plusPx} disabled={isDisabled}>
+            <i className="fa-solid fa-angle-right" />
+          </button>
         </div>
       </div>
 

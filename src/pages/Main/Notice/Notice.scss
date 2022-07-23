@@ -27,35 +27,35 @@
       .notice-list {
         @include flex($align: flex-start, $justify: flex-start);
         flex-direction: column;
-        height: 13px;
+        height: 18px;
         width: 90%;
         top: 0;
         font-size: 14px;
         position: relative;
-        line-height: 16px;
-        animation: scroll 12s infinite;
+        line-height: 19px;
+        animation: scroll 14s infinite;
 
         @keyframes scroll {
           18% {
             top: 0px;
           }
           27% {
-            top: -17px;
+            top: -19px;
           }
           45% {
-            top: -17px;
+            top: -19px;
           }
           54% {
-            top: -34px;
+            top: -38px;
           }
           72% {
-            top: -34px;
+            top: -38px;
           }
           81% {
-            top: -51px;
+            top: -57px;
           }
           99% {
-            top: -51px;
+            top: -57px;
           }
           100% {
             top: 0px;
