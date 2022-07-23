@@ -6,10 +6,10 @@ const HotTea = () => {
   const [teaArr, setTeaArr] = useState([]);
   const [transition, setTransition] = useState('all ease 0.7s');
   const [isDisabled, setIsDisabled] = useState(false);
+  const [selectTab, setSelectTab] = useState('여름맞이 선물');
 
   useEffect(() => {
     setTeaArr(SUMMER_DATA);
-    // autoScroll();
   }, []);
 
   const minusArr = () => {
@@ -18,9 +18,6 @@ const HotTea = () => {
     copyArr.unshift(arrPop);
     setTeaArr(copyArr);
   };
-
-  // const autoScroll = () => setInterval(() => plusPx(), 5000);
-
   const minusPx = () => {
     setTransition('all ease 0.7s');
     setMovePx(movePx + 240);
@@ -54,12 +51,30 @@ const HotTea = () => {
     }, 700);
   };
 
+  const updateSelectTab = ({ target }) => {
+    const currentTabName = target.innerHTML;
+    setSelectTab(currentTabName);
+  };
   return (
     <div className="main-hottea">
       <div className="main-hottea-title">
         <h3>오늘은 어떤 차를 마셔볼까요?</h3>
-        <button className="main-hottea-summer">여름맞이 선물</button>
-        <button className="main-hottea-week">이번 주 인기 제품</button>
+        <button
+          className={`main-hottea-summer ${
+            selectTab === '여름맞이 선물' ? 'on' : 'off'
+          }`}
+          onClick={updateSelectTab}
+        >
+          여름맞이 선물
+        </button>
+        <button
+          className={`main-hottea-summer ${
+            selectTab === '이번 주 인기 제품' ? 'on' : 'off'
+          }`}
+          onClick={updateSelectTab}
+        >
+          이번 주 인기 제품
+        </button>
       </div>
       <div className="main-hottea-scroll">
         <div className="hottea-left">
@@ -125,34 +140,34 @@ const SUMMER_DATA = [
     name: '산호섬 아이스티3',
     price: '13,000',
     imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/item_overImg/6362.png?quality=80&shrink=240:268',
+      'https://www.osulloc.com/upload/kr/ko/adminImage/DF/DY/20200110161302294EE.png?quality=80',
   },
   {
     id: 4,
     name: '산호섬 아이스티4',
     price: '13,000',
     imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/YC/MO/20200911134449649SH.png?quality=80&shrink=240:268',
+      'https://www.osulloc.com/upload/kr/ko/adminImage/KR/TP/20191213162107079MN.png?quality=80',
   },
   {
     id: 5,
     name: '산호섬 아이스티5',
     price: '13,000',
     imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+      'https://www.osulloc.com/upload/kr/ko/adminImage/SW/RN/20200103141443564RH.png?quality=80',
   },
   {
     id: 6,
     name: '산호섬 아이스티6',
     price: '13,000',
     imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+      'https://www.osulloc.com/upload/kr/ko/adminImage/BS/XP/20220705092306045SP.png?quality=80',
   },
   {
     id: 7,
     name: '산호섬 아이스티7',
     price: '13,000',
     imgSrc:
-      'https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80',
+      'https://www.osulloc.com/upload/kr/ko/adminImage/IE/EF/20220120172110895WE.png?quality=80',
   },
 ];
