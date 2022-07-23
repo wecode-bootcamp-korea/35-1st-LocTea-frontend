@@ -71,10 +71,7 @@ function Nav() {
         </div>
       </div>
       {isHovering && (
-        <div
-          className="nav-item-box"
-          style={{ transform: 'translateY(0)', transition: 'all ease 1s' }}
-        >
+        <div className="nav-item-box">
           <div
             className="nav-item-title"
             onMouseEnter={handleMouseOver}

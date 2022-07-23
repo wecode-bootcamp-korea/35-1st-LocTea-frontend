@@ -15,6 +15,7 @@
     button {
       color: white;
     }
+
     :hover {
       background-color: white;
       color: #555;
@@ -29,13 +30,16 @@
       justify-content: space-between;
       min-width: 1200px;
       padding: 0px 5%;
+
       .left-box {
         display: flex;
+
         .header {
           font-size: 36px;
           padding-left: 44px;
           padding-top: 25px;
         }
+
         .nav-title-box {
           display: flex;
           margin-left: 40px;
@@ -49,6 +53,7 @@
               font-weight: 500;
               font-size: 18px;
               padding-right: 50px;
+
               &:hover {
                 color: rgb(53, 157, 53);
               }
@@ -56,15 +61,19 @@
           }
         }
       }
+
       .right-box {
         display: flex;
         align-items: center;
+
         .right-icons {
           display: flex;
           margin-right: 50px;
           font-size: 15px;
+
           .icon {
             margin-right: 20px;
+
             i {
               &:hover {
                 color: rgb(53, 157, 53);
@@ -72,13 +81,16 @@
             }
           }
         }
+
         .right-content {
           display: flex;
           margin-right: 50px;
           font-size: 15px;
           font-weight: 900;
+
           .nav-login {
             margin-right: 20px;
+
             &:hover {
               color: rgb(53, 157, 53);
             }
@@ -87,11 +99,13 @@
       }
     }
   }
+
   .nav-header-white {
     background-color: #fff;
     transition: background-color 0.5s;
     color: #555;
     width: 100vw;
+
     button {
       color: #555;
     }
@@ -101,13 +115,16 @@
       justify-content: space-between;
       min-width: 1200px;
       padding: 0px 5%;
+
       .left-box {
         display: flex;
+
         .header {
           font-size: 36px;
           padding-left: 44px;
           padding-top: 25px;
         }
+
         .nav-title-box {
           display: flex;
           margin-left: 40px;
@@ -121,6 +138,7 @@
               font-weight: 500;
               font-size: 18px;
               padding-right: 50px;
+
               &:hover {
                 color: rgb(53, 157, 53);
               }
@@ -128,15 +146,19 @@
           }
         }
       }
+
       .right-box {
         display: flex;
         align-items: center;
+
         .right-icons {
           display: flex;
           margin-right: 50px;
           font-size: 15px;
+
           .icon {
             margin-right: 20px;
+
             i {
               &:hover {
                 color: rgb(53, 157, 53);
@@ -144,13 +166,16 @@
             }
           }
         }
+
         .right-content {
           display: flex;
           margin-right: 50px;
           font-size: 15px;
           font-weight: 900;
+
           .nav-login {
             margin-right: 20px;
+
             &:hover {
               color: rgb(53, 157, 53);
             }
@@ -174,27 +199,32 @@
       padding-left: 155px;
       padding-bottom: 50px;
       background-color: #fff;
+
       .category-box {
         width: 20%;
+
         .item-title-button {
           font-size: 20px;
           font-weight: 600;
           display: flex;
           color: #333;
+
           &:hover {
             color: rgb(53, 157, 53);
           }
         }
+
         .item-lists-container {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-
           padding-top: 10px;
+
           .item {
             font-size: 15px;
             color: #666;
             line-height: 35px;
+
             &:hover {
               color: rgb(53, 157, 53);
             }
