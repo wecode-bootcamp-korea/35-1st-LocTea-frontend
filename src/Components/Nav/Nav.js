@@ -14,7 +14,6 @@ function Nav() {
       });
   }, []);
 
-  console.log(items);
   // 마우스 호버
   const [isHovering, setIsHover] = useState(false);
 
@@ -82,43 +81,6 @@ function Nav() {
         </div>
       )}
     </div>
-
-    //     <div className="nav-all">
-    //       <header id="nav-header" className="nav-header-fixed">
-    //         <div className="wrapper">
-    //           <div className="inner-box">
-    //             <div className="left-box">
-    //               <h1 className="loctea">
-    //                 <div className="loctea-white">록차 </div>
-    //               </h1>
-    //               <nav className="nav">
-    //                 <ul className="nav-list-dep1">
-    //                   <li className="item-dep1">
-    //                     <button className="link-text">
-    //                       제품
-    //                       <div className="category-title">
-    //                         <ITEMTYPE values={items} />
-    //                       </div>
-    //                     </button>
-    //                   </li>
-    //                   <li className="item-dep1-no-child">
-    //                     <p className="link-text">선물추천</p>
-    //                   </li>
-    //                   <li className="item-dep1">
-    //                     <p className="link-text">다다일상</p>
-    //                   </li>
-    //                   <li className="item-dep1">
-    //                     <p className="link-text">브랜드</p>
-    //                   </li>
-    //                 </ul>
-    //               </nav>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </header>
-    //     </div>
-    //   );
-    // }
   );
 }
 export default Nav;
