@@ -18,7 +18,7 @@ const Login = () => {
     /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$/;
   const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/;
 
-  const validation = idRegExp.test(person.id) && passwordRegExp.test(person.pw);
+  const isAllValid = idRegExp.test(person.id) && passwordRegExp.test(person.pw);
 
   const navigate = useNavigate();
 
@@ -36,12 +36,14 @@ const Login = () => {
         if (result.message === 'SUCCESS') {
           navigate('/');
           alert('로그인 성공!');
+        } else {
+          alert('로그인 실패!');
         }
       });
   };
 
   return (
-    <div>
+    <div className="login">
       <div className="login-header">
         <div className="login-nav">
           <h1>로그인</h1>
@@ -53,7 +55,7 @@ const Login = () => {
       <section className="body">
         <div className="login-container">
           <div className="header">
-            <img src="../images/login/LocTea.png" alt="" />
+            <img src="/images/login/LocTea.png" alt="LocTea" />
           </div>
           <form className="content" onChange={handleInput}>
             <div className="inputs">
@@ -71,7 +73,7 @@ const Login = () => {
               />
             </div>
             <div className="button-area">
-              <button disabled={!validation} onClick={signIn}>
+              <button disabled={!isAllValid} onClick={signIn}>
                 로그인
               </button>
             </div>

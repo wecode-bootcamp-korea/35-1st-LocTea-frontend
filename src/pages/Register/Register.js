@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './Register.scss';
 import { useNavigate } from 'react-router-dom';
+import './Register.scss';
 
 const Register = () => {
   // 초기값 세팅 = 아이디, 비밀번호, 비밀번호 확인, 이름, 생년원일, 휴대폰 번호
@@ -43,11 +43,13 @@ const Register = () => {
         if (result.message === 'SUCCESS') {
           navigate('/');
           alert('회원가입 성공!');
+        } else {
+          alert('회원가입 실패');
         }
       });
   };
 
-  const validation =
+  const isAllValid =
     idRegExp.test(person.id) &&
     passwordRegExp.test(person.pw) &&
     person.pw === person.pwConfirmed &&
@@ -162,7 +164,7 @@ const Register = () => {
               </div>
             </div>
             <div className="button-area">
-              <button disabled={!validation} onClick={signUp}>
+              <button disabled={!isAllValid} onClick={signUp}>
                 회원가입
               </button>
             </div>
