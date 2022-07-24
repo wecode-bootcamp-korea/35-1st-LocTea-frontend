@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Order.scss';
 
-const Order = ({ whichProductRender }) => {
-  const [whichSelected, setWhichSelected] = useState('new');
-
+const Order = ({ whichProductRender, whatOrder, setWhatOrder }) => {
   useEffect(() => {
-    setWhichSelected('new');
+    setWhatOrder('new-arrival');
   }, [whichProductRender]);
 
   return (
@@ -14,30 +12,33 @@ const Order = ({ whichProductRender }) => {
       <ul className="ordertab">
         <li
           onClick={() => {
-            setWhichSelected('new');
+            setWhatOrder('new-arrival');
           }}
+          id="new-arrival"
           className={
-            whichSelected === 'new' ? 'activatedTab' : 'unactivatedTab'
+            whatOrder === 'new-arrival' ? 'activatedTab' : 'unactivatedTab'
           }
         >
           신상품순
         </li>
         <li
           onClick={() => {
-            setWhichSelected('high');
+            setWhatOrder('price-desc');
           }}
+          id="price-desc"
           className={
-            whichSelected === 'high' ? 'activatedTab' : 'unactivatedTab'
+            whatOrder === 'price-desc' ? 'activatedTab' : 'unactivatedTab'
           }
         >
           높은 가격순
         </li>
         <li
           onClick={() => {
-            setWhichSelected('low');
+            setWhatOrder('price-asc');
           }}
+          id="price-asc"
           className={
-            whichSelected === 'low' ? 'activatedTab' : 'unactivatedTab'
+            whatOrder === 'price-asc' ? 'activatedTab' : 'unactivatedTab'
           }
         >
           낮은 가격순

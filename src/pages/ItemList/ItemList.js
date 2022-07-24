@@ -7,13 +7,9 @@ import CategoryState from './CategoryState.json';
 import './ItemList.scss';
 
 const ItemList = () => {
-  const [whichProductRender, setWhichProductRender] = useState({
-    category: 'first-category',
-    title: '티 제품',
-    id: 1,
-    button: true,
-    className: 'teashop',
-  });
+  const [whichProductRender, setWhichProductRender] = useState(
+    CategoryState[0]
+  );
 
   const RenderCategory = e => {
     for (let i = 0; i < CategoryState.length; i++) {
@@ -26,16 +22,39 @@ const ItemList = () => {
     }
   };
 
+  const [whatOrder, setWhatOrder] = useState('new-arrival');
+
+  const [whatType, setWhatType] = useState({
+    tealeaf: false,
+    pyramid: false,
+    teabag: false,
+    powder: false,
+    all: true,
+  });
+
   // //아이템 스테이트
   const [items, setItems] = useState([]);
   // //데이터 로딩
   useEffect(() => {
+    const whatTypeKeys = Object.keys(whatType);
+    const typeKeys = [];
+    let typeUrl;
+    for (let i = 0; i < whatTypeKeys.length - 1; i++) {
+      if (whatType[whatTypeKeys[i]] === true) {
+        typeKeys.push(whatTypeKeys[i]);
+        typeUrl = typeKeys.toString();
+      }
+    }
+    if (whatType.all === true) {
+      typeUrl = 'tealeaf,pyramid,teabag,powder';
+    }
+    console.log(typeUrl);
     fetch(
-      `http://10.58.7.130:8000/products/list?first-category=${whichProductRender.category}=${whichProductRender.id}`
+      `http://10.58.7.130:8000/products/list?first-category=${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}&type=${typeUrl}`
     )
       .then(res => res.json())
       .then(result => setItems(result.result));
-  }, [whichProductRender]);
+  }, [whichProductRender, whatOrder, whatType]);
 
   return (
     <div className="contents">
@@ -50,8 +69,17 @@ const ItemList = () => {
       <div className="main">
         <Side RenderCategory={RenderCategory} />
         <article>
-          <Order whichProductRender={whichProductRender} />
-          <Filter whichProductRender={whichProductRender} items={items} />
+          <Order
+            whichProductRender={whichProductRender}
+            whatOrder={whatOrder}
+            setWhatOrder={setWhatOrder}
+          />
+          <Filter
+            whichProductRender={whichProductRender}
+            items={items}
+            whatType={whatType}
+            setWhatType={setWhatType}
+          />
           <Items items={items} />
         </article>
       </div>

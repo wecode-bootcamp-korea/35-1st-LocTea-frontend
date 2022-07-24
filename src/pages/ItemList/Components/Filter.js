@@ -3,37 +3,35 @@ import React, { useState, useEffect } from 'react';
 import './Filter.scss';
 
 const initialValue = {
-  1: false,
-  2: false,
-  3: false,
-  4: false,
-  5: true,
+  tealeaf: false,
+  pyramid: false,
+  teabag: false,
+  powder: false,
+  all: true,
 };
 
-const Filter = ({ whichProductRender, items }) => {
-  const [whichSelected, setWhichSelected] = useState(initialValue);
-
+const Filter = ({ whichProductRender, items, whatType, setWhatType }) => {
   useEffect(() => {
-    setWhichSelected({ ...initialValue });
+    setWhatType({ ...initialValue });
   }, [whichProductRender]);
 
   useEffect(() => {
     if (
-      !whichSelected[1] &&
-      !whichSelected[2] &&
-      !whichSelected[3] &&
-      !whichSelected[4]
+      !whatType.tealeaf &&
+      !whatType.pyramid &&
+      !whatType.teabag &&
+      !whatType.powder
     ) {
-      setWhichSelected({ ...initialValue });
+      setWhatType({ ...initialValue });
     }
-  }, [whichSelected[1], whichSelected[2], whichSelected[3], whichSelected[4]]);
+  }, [whatType.tealeaf, whatType.pyramid, whatType.teabag, whatType.powder]);
 
   const handleAllButton = () => {
-    setWhichSelected({ ...initialValue });
+    setWhatType({ ...initialValue });
   };
   const handleButton = i => {
-    setWhichSelected((whichSelected[5] = false));
-    setWhichSelected({ ...whichSelected, [i]: !whichSelected[i] });
+    setWhatType((whatType.all = false));
+    setWhatType({ ...whatType, [i]: !whatType[i] });
   };
   return (
     <div className="filter">
@@ -43,52 +41,57 @@ const Filter = ({ whichProductRender, items }) => {
         {whichProductRender.button === true && (
           <>
             <button
-              onClick={handleAllButton}
+              onClick={e => {
+                handleAllButton();
+              }}
+              id="all"
               className={
-                whichSelected[5] === true
-                  ? 'activatedButton'
-                  : 'unactivatedButton'
+                whatType.all === true ? 'activatedButton' : 'unactivatedButton'
               }
             >
               전체
             </button>
             <button
-              onClick={() => {
-                handleButton(1);
+              onClick={e => {
+                handleButton('tealeaf');
               }}
+              id="tealeaf"
               className={
-                whichSelected[1] ? 'activatedButton' : 'unactivatedButton'
+                whatType.tealeaf ? 'activatedButton' : 'unactivatedButton'
               }
             >
               잎차
             </button>
 
             <button
-              onClick={() => {
-                handleButton(2);
+              onClick={e => {
+                handleButton('pyramid');
               }}
+              id="pyramid"
               className={
-                whichSelected[2] ? 'activatedButton' : 'unactivatedButton'
+                whatType.pyramid ? 'activatedButton' : 'unactivatedButton'
               }
             >
               피라미드
             </button>
             <button
-              onClick={() => {
-                handleButton(3);
+              onClick={e => {
+                handleButton('teabag');
               }}
+              id="teabag"
               className={
-                whichSelected[3] ? 'activatedButton' : 'unactivatedButton'
+                whatType.teabag ? 'activatedButton' : 'unactivatedButton'
               }
             >
               티백
             </button>
             <button
-              onClick={() => {
-                handleButton(4);
+              onClick={e => {
+                handleButton('powder');
               }}
+              id="powder"
               className={
-                whichSelected[4] ? 'activatedButton' : 'unactivatedButton'
+                whatType.powder ? 'activatedButton' : 'unactivatedButton'
               }
             >
               파우더
