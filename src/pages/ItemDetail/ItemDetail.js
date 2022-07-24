@@ -12,7 +12,7 @@ const ItemDetail = () => {
     fetch(`http://10.58.7.130:8000/products/${params.id}`)
       .then(res => res.json())
       .then(data => setItemData(data.result));
-  }, []);
+  }, [params.id]);
 
   const {
     first_category,
