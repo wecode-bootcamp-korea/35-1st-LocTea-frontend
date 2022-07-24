@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500&display=swap');
 
 footer {
+  margin-top: 20px;
   img {
     max-width: 100%;
   }
@@ -184,5 +185,6 @@ footer {
     bottom: 30px;
     width: 50px;
     z-index: 10;
+    transition: all 0.2s;
   }
 }

@@ -13,6 +13,17 @@ const goTop = () => {
   });
 };
 
+const fadeBtn = () => {
+  if (
+    document.body.scrollTop > 200 ||
+    document.documentElement.scrollTop > 200
+  ) {
+    document.getElementsByClassName('btnForUp')[0].style.right = '0';
+  } else {
+    document.getElementsByClassName('btnForUp')[0].style.right = '-50px';
+  }
+};
+
 function Footer() {
   return (
     <footer>
@@ -35,15 +46,15 @@ function Footer() {
           <div className="mid-left">
             <div className="cs-center">
               <p className="mid-tit">고객상담센터 · 주문/배송문의</p>
-              <p className="tel">080-805-5555</p>
+              <p className="tel">080-123-4567</p>
               <p className="runtime">평일 09:30 - 17:00 (점심 11:30 - 13:00)</p>
             </div>
             <div className="bulk-buying">
               <p className="mid-tit">특판, 대량구매 문의</p>
-              <a className="email" href="mailto:help@osulloc.com">
-                help@osulloc.com
+              <a className="email" href="mailto:help@loctea.com">
+                help@loctea.com
               </a>
-              <p className="kakao-id">카카오톡ID : osullocmall</p>
+              <p className="kakao-id">카카오톡ID : locteamall</p>
               <p className="runtime">평일 09:30 - 17:00 (점심 11:30 - 13:00)</p>
             </div>
           </div>
@@ -83,14 +94,14 @@ function Footer() {
                 })}
               </ul>
               <p className="footer-txt">
-                ㈜ 오설록
-                <br /> 대표이사:서혁제 주소:서울특별시 용산구 한강대로 100,
-                14층(한강로2가) 사업자등록번호: 390-87-01499
+                ㈜ 록차
+                <br /> 대표이사:이금관 주소:서울특별시 강남구 테헤란로 427
+                위워크 타워(위워크 선릉 2호점) 사업자등록번호: 123-45-6789
                 <br />
-                통신판매업신고번호:2019-서울용산-1173호 호스팅제공자: ㈜오설록
+                통신판매업신고번호:2022-서울용산-1234호 호스팅제공자: ㈜록차
               </p>
               <p className="footer-txt">
-                (주)오설록은 오설록 브랜드를 제외한 입점 브랜드에 대해서는
+                (주)록차는 록차 브랜드를 제외한 입점 브랜드에 대해서는
                 통신판매중개자 이며 통신판매의 당사자가 아닙니다.
                 <br /> 따라서 입점판매자가 등록한 상품정보 및 거래에 대해 책임을
                 지지 않습니다.
@@ -111,7 +122,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <button className="btnForUp" onClick={goTop}>
+      <button className="btnForUp" onClick={goTop} onScroll={fadeBtn}>
         <img src="/images/Footer/up-arrow.png" alt="up" />
       </button>
     </footer>
