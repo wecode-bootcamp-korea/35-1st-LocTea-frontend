@@ -7,13 +7,59 @@
     font-size: 20px;
   }
 
-  li {
+  .firstMenu {
     padding-left: 1em;
     font-size: 20px;
     margin: 40px 0 0 10px;
+
+    li {
+      position: relative;
+      margin: 30px auto 30px auto;
+    }
+
+    .activatedTabTeaShop:hover .secondMenu1,
+    .unactivatedTabTeaShop:hover .secondMenu1 {
+      opacity: 1;
+      display: block;
+    }
+    .activatedTabBakery:hover .secondMenu2,
+    .unactivatedTabBakery:hover .secondMenu2 {
+      opacity: 1;
+      display: block;
+    }
+    .activatedTabThemaShop:hover .secondMenu3,
+    .unactivatedTabThemaShop:hover .secondMenu3 {
+      opacity: 1;
+      display: block;
+    }
+
+    .secondMenu1,
+    .secondMenu2,
+    .secondMenu3 {
+      position: absolute;
+      display: none;
+      opacity: 0;
+      z-index: 1;
+      width: 180px;
+      top: -20px;
+      right: 0;
+      padding: 10px;
+      border: 1px solid #f1f1f1;
+      background-color: white;
+      transform: translateX(100%);
+      transition: opacity 0.2s;
+
+      li {
+        margin: 15px auto 15px auto;
+        font-size: 18px;
+        color: gray;
+      }
+    }
   }
 
-  .activatedTab {
+  .activatedTabTeaShop,
+  .activatedTabBakery,
+  .activatedTabThemaShop {
     color: rgb(108, 128, 26);
   }
 }

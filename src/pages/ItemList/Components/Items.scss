@@ -1,7 +1,7 @@
 .items {
+  flex-wrap: wrap;
   margin-top: 10px;
   display: flex;
-  flex-direction: row;
 
   .item {
     position: relative;
@@ -12,25 +12,17 @@
 
     .likeComment {
       display: flex;
-      flex-direction: row;
       justify-content: flex-start;
-    }
-
-    .imageHover {
-      margin-top: 41.5px;
-      width: 60%;
     }
 
     .imageUnhover {
       position: absolute;
-      width: 70%;
       transition: opacity 1s;
     }
 
     .imageUnhover:hover {
       opacity: 0;
     }
-
     .imageHover:hover {
       opacity: 0;
       transition: opacity 1s;

@@ -1,31 +1,32 @@
 import React from 'react';
 import './Items.scss';
 
-const Items = () => {
+const Items = ({ items }) => {
   return (
     <div className="items">
-      <ItemCard />
-      <ItemCard />
-      <ItemCard />
+      {items.map((item, index) => {
+        return (
+          <ItemCard
+            key={index}
+            id={item.id}
+            name={item.name}
+            price={item.price}
+            thumbnailImage={item.thumbnail_images}
+            types={item.types}
+          />
+        );
+      })}
     </div>
   );
 };
 
-const ItemCard = () => {
+const ItemCard = ({ name, price, thumnailImage }) => {
   return (
     <div className="item">
-      <img
-        src="/images/ItemList/osulocitem.png"
-        alt="제품이미지"
-        className="imageUnhover"
-      />
-      <img
-        src="/images/ItemList/osulocitemhover.png"
-        alt="제품이미지"
-        className="imageHover"
-      />
-      <p>러블리티박스</p>
-      <p>20,000원</p>
+      <img src={thumnailImage[0]} alt="제품이미지" className="imageUnhover" />
+      <img src={thumnailImage[1]} alt="제품이미지" className="imageHover" />
+      <p>{name}</p>
+      <p>{price}</p>
       <div className="likeComment">
         <div className="likeNumber">
           <i class="fa-regular fa-heart" alt="좋아요" />

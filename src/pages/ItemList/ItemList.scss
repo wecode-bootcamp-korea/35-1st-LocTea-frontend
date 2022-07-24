@@ -1,32 +1,23 @@
 .contents {
-  .themashop {
+  .upper {
     position: relative;
     display: flex;
-    align-items: center;
     justify-content: center;
     height: 380px;
-    background-color: rgb(236, 234, 222);
-  }
-  .bakery {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 380px;
-    background-color: rgb(216, 216, 185);
-  }
-  .teashop {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 380px;
-    background-color: rgb(221, 218, 201);
-  }
 
+    .upperImage {
+      object-fit: cover;
+      width: 100%;
+      overflow: hidden;
+    }
+    h2 {
+      position: absolute;
+      top: 50%;
+      font-size: 48px;
+    }
+  }
   .main {
     display: flex;
-    flex-direction: row;
     max-width: 100%;
     margin-top: 30px;
     padding-left: 40px;
@@ -38,16 +29,4 @@
       width: 100%;
     }
   }
-}
-.upperImage {
-  position: absolute;
-  left: 0;
-  top: 0;
-  max-width: 35%;
-  max-height: 100%;
-}
-
-.upperH2 {
-  font-size: 48px;
-  font-weight: 500;
 }

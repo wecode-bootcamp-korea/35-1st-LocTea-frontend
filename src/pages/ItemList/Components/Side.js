@@ -1,45 +1,174 @@
 import React, { useState } from 'react';
 import './Side.scss';
 
-const Side = ({ RenderTeaShop, RenderBakery, RenderThemaShop }) => {
+const Side = ({ RenderCategory }) => {
   const [whichSelected, setwhichSelected] = useState('teashop');
 
   return (
     <div className="side">
       <p className="listTitle">제품</p>
-      <ul className="sideList">
+      <ul className="firstMenu">
         <li
-          onClick={() => {
+          data-category="first-category"
+          id="1"
+          onClick={e => {
             setwhichSelected('teashop');
-            RenderTeaShop();
+            RenderCategory(e);
           }}
           className={
-            whichSelected === 'teashop' ? 'activatedTab' : 'unactivatedTab'
+            whichSelected === 'teashop'
+              ? 'activatedTabTeaShop'
+              : 'unactivatedTabTeaShop'
           }
         >
           티 제품
+          <div className="secondMenu1">
+            <ul>
+              <li
+                data-category="first-category"
+                id="1"
+                onClick={e => RenderCategory(e)}
+              >
+                전체상품
+              </li>
+              <li
+                data-category="second-category"
+                id="1"
+                onClick={e => RenderCategory(e)}
+              >
+                티 제품
+              </li>
+              <li
+                data-category="second-category"
+                id="2"
+                onClick={e => RenderCategory(e)}
+              >
+                명차
+              </li>
+              <li
+                data-category="second-category"
+                id="3"
+                onClick={e => RenderCategory(e)}
+              >
+                녹차/말차
+              </li>
+              <li
+                data-category="second-category"
+                id="4"
+                onClick={e => RenderCategory(e)}
+              >
+                발효차/홍차
+              </li>
+              <li
+                data-category="second-category"
+                id="5"
+                onClick={e => RenderCategory(e)}
+              >
+                블렌디드티
+              </li>
+              <li
+                data-category="second-category"
+                id="6"
+                onClick={e => RenderCategory(e)}
+              >
+                허브티
+              </li>
+              <li
+                data-category="second-category"
+                id="7"
+                onClick={e => RenderCategory(e)}
+              >
+                밀크티/아이스티
+              </li>
+            </ul>
+          </div>
         </li>
         <li
-          onClick={() => {
+          data-category="first-category"
+          id="2"
+          onClick={e => {
             setwhichSelected('bakery');
-            RenderBakery();
+            RenderCategory(e);
           }}
           className={
-            whichSelected === 'bakery' ? 'activatedTab' : 'unactivatedTab'
+            whichSelected === 'bakery'
+              ? 'activatedTabBakery'
+              : 'unactivatedTabBakery'
           }
         >
           티푸드
+          <div className="secondMenu2">
+            <ul>
+              <li
+                data-category="first-category"
+                id="2"
+                onClick={e => RenderCategory(e)}
+              >
+                전체상품
+              </li>
+              <li
+                data-category="second-category"
+                id="8"
+                onClick={e => RenderCategory(e)}
+              >
+                과자/초콜릿
+              </li>
+              <li
+                data-category="second-category"
+                id="9"
+                onClick={e => RenderCategory(e)}
+              >
+                베이커리
+              </li>
+              <li
+                data-category="second-category"
+                id="10"
+                onClick={e => RenderCategory(e)}
+              >
+                아이스크림
+              </li>
+            </ul>
+          </div>
         </li>
         <li
-          onClick={() => {
+          data-category="first-category"
+          id="3"
+          onClick={e => {
             setwhichSelected('themashop');
-            RenderThemaShop();
+            RenderCategory(e);
           }}
           className={
-            whichSelected === 'themashop' ? 'activatedTab' : 'unactivatedTab'
+            whichSelected === 'themashop'
+              ? 'activatedTabThemaShop'
+              : 'unactivatedTabThemaShop'
           }
         >
           라이프 스타일
+          <div className="secondMenu3">
+            <ul>
+              <li
+                data-category="first-category"
+                id="3"
+                onClick={e => RenderCategory(e)}
+              >
+                전체상품
+              </li>
+              <li
+                data-category="second-category"
+                id="11"
+                onClick={e => RenderCategory(e)}
+              >
+                건강기능식품
+              </li>
+              <li
+                data-category="second-category"
+                id="12"
+                onClick={e => RenderCategory(e)}
+              >
+                스킨케어
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
