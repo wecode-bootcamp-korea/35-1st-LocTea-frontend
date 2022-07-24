@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "title": "시크릿 티 스토리",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "45000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/HC/LW/20201027143838409ZN.png?quality=80",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1616122313/auctions/20_qb3vjo.jpg"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "시크릿 티 스토리",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "30000.000",
+    "stock": 10,
+    "discount": 20,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1616122313/auctions/20_qb3vjo.jpg"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "시크릿 티 스토리",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "15000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/DF/DY/20200110161302294EE.png?quality=80",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1616122313/auctions/20_qb3vjo.jpg"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "시크릿 티 스토리",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "20000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/KR/TP/20191213162107079MN.png?quality=80",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1616122313/auctions/20_qb3vjo.jpg"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "시크릿 티 스토리",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "23000.000",
+    "stock": 10,
+    "discount": 10,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/SW/RN/20200103141443564RH.png?quality=80",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1616122313/auctions/20_qb3vjo.jpg"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "시크릿 티 스토리",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "3000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/BS/XP/20220705092306045SP.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/adminImage/XH/QS/20220617142554410SC.png?quality=80&shrink=240:268"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "시크릿 티 스토리",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "15000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/IE/EF/20220120172110895WE.png?quality=80",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1616122313/auctions/20_qb3vjo.jpg"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  }
+]
