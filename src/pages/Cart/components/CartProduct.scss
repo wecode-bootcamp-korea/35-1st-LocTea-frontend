@@ -5,7 +5,6 @@
     @include flex;
     padding: 20px 8px;
     border-bottom: 1px solid #e6e6e6;
-
     .thumb-con {
       @include flex;
       flex: 1 1 auto;
@@ -94,6 +93,26 @@
         font-size: 13px;
         color: #666;
       }
+    }
+  }
+
+  .no-stock {
+    color: #ddd !important;
+    img {
+      opacity: 0.3;
+    }
+    a,
+    p,
+    i,
+    input,
+    button {
+      color: #ddd !important;
+    }
+    .fa-check {
+      color: #fff !important;
+    }
+    .inp-chk {
+      pointer-events: none;
     }
   }
 

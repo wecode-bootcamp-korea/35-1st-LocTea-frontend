@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CartPrice.scss';
 
-function CartPrice({ cartList, salePrice, eachPrice, eachSalePrice }) {
+function CartPrice({ cartList, scrollActive }) {
+  const [price, setPrice] = useState([]);
   const totalPrice = cartList.map(data => data.price);
   const total = totalPrice => {
     let result = 0;
@@ -10,19 +11,36 @@ function CartPrice({ cartList, salePrice, eachPrice, eachSalePrice }) {
     }
     return result;
   };
-  const realTotal = total(totalPrice);
-  const deliveryFee = realTotal > 50000 ? 0 : 2500;
+  const realTotal = total(totalPrice); //정적 데이터
+  const realRealTotal = realTotal > 0 ? realTotal : 0;
+  const deliveryFee = realTotal > 30000 ? 0 : 2500;
 
-  // const totalDiscount = cartList.map(data => data.discount);
-  // console.log(totalDiscount);
+  const totalDiscount = cartList.map(data => data.discount);
+  console.log(totalDiscount);
+  // const totalDc = totalDiscount => {
+  //   let result = 0;
+  //   for (let i = 0; i < totalPrice.length; i++) {
+  //     for (let j = 0; j < totalDiscount.length; j++) {
+  //       if (i === j) {
+  //         result = totalPrice[i] - totalDiscount[j] * 0.01;
+  //       }
+  //     }
+  //     console.log(result);
+  //   }
+  //   console.log(result);
+  //   return result;
+  // };
+  // const realDc = totalDc(totalDiscount);
 
   return (
-    <div className="price-info">
+    <div className={scrollActive ? 'price-info fixed' : 'price-info'}>
       <ul className="list">
         <li className="item">
           <p className="item-name">상품 금액</p>
           <p className="item-val prd-price">
-            +<span className="view-price">{realTotal.toLocaleString()}</span>원
+            +
+            <span className="view-price">{realRealTotal.toLocaleString()}</span>
+            원
           </p>
         </li>
         <li className="item">

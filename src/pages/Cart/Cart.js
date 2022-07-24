@@ -1,30 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import CartControlBar from './components/CartControlBar';
 import CartProduct from './components/CartProduct';
 import CartPrice from './components/CartPrice';
 import './Cart.scss';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
-  // if (cartList.product_id.length === 0) {
-  //   setCartList(false);
-  // }
 
-  // useEffect(() => {
-  //   //data/cartData.json
-  //   fetch('http://10.58.7.60:8000/cart', {
-  //     method: 'GET',
-  //   })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       if (data.token) {
-  //         localStorage.setItem('wtw-token', data.token);
-  //       }
-  //       setCartList(data);
-  //     });
-  // }, []);
   useEffect(() => {
-    //data/cartData.json
-    fetch('http://10.58.7.60:8000/cart', {
+    //http://10.58.7.60:8000/cart
+    fetch('data/cartData.json', {
       method: 'GET',
       headers: { autorizaion: 'access token' },
     })
@@ -34,8 +19,29 @@ function Cart() {
 
   localStorage.setItem('token', cartList.message);
 
+  const [ScrollY, setScrollY] = useState(0);
+  const [scrollActive, setScrollActive] = useState(false);
+  function handleScroll() {
+    if (ScrollY > 200) {
+      setScrollY(window.pageYOffset);
+      setScrollActive(true);
+    } else {
+      setScrollY(window.pageYOffset);
+      setScrollActive(false);
+    }
+  }
+  useEffect(() => {
+    function scrollListener() {
+      window.addEventListener('scroll', handleScroll);
+    }
+    scrollListener();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
+
   // spread operator (전개구문) / 불변성
-  // const cartListCopy = [...cartList];
+  const cartListCopy = [...cartList];
 
   const plusCount = id => {
     // 누른 상품이 어떤 상품인지 알아야 함 ( 상품 id ) => product_id
@@ -44,16 +50,22 @@ function Cart() {
     // ㄴ 해당 요소의 quantity만 바꿔주는 로직을 구성해야 함
 
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
-    const cartListCopy = [...cartList];
     cartListCopy[selectedIdx].quantity += 1;
+    console.log(
+      cartListCopy[selectedIdx].price,
+      cartListCopy[selectedIdx].quantity
+    );
     setCartList(cartListCopy);
   };
 
   const minusCount = id => {
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
-    const cartListCopy = [...cartList];
     cartListCopy[selectedIdx].quantity -= 1;
     setCartList(cartListCopy);
+  };
+
+  const deleteSoldOut = () => {
+    setCartList(cartListCopy.filter(cartListCopy => cartListCopy.stock !== 0));
   };
 
   // const data = cartList.map(x => x.price);
@@ -69,40 +81,14 @@ function Cart() {
         <h2 className="page-tit">장바구니</h2>
       </section>
       <form id="cart-form" defaultValue="cart">
-        <section className="section">
-          <div className="container">
-            <div className="cart-inner">
-              <div className="content">
-                <div className="cart-content">
-                  {/* 장바구니 리스트 상단 */}
-                  <div className="cart-chk">
-                    <div className="left-box">
-                      <label className="inp-chk">
-                        <input type="checkbox" id="check-all" />
-                        <span className="inp-box">
-                          <i className="fa-solid fa-check" />
-                        </span>
-                        <label htmlFor="check-all">전체선택</label>
-                      </label>
-                    </div>
-                    <div className="right-box">
-                      <button
-                        type="button"
-                        className="del-btn soldout-del-btn"
-                        title="품절 삭제"
-                      >
-                        품절 삭제
-                      </button>
-                      <button
-                        type="button"
-                        className="del-btn sel-del-btn"
-                        title="선택 삭제"
-                      >
-                        선택 삭제
-                      </button>
-                    </div>
-                  </div>
-                  {/* 장바구니 리스트  */}
+        <div className="container">
+          <div className="cart-inner">
+            <div className="cart-content">
+              {/* 장바구니 리스트 상단 */}
+              <CartControlBar deleteSoldOut={deleteSoldOut} />
+              {/* 장바구니 리스트  */}
+              <div className="cart-list">
+                <ul className="list">
                   {cartList.map(item => {
                     return (
                       <CartProduct
@@ -113,28 +99,22 @@ function Cart() {
                       />
                     );
                   })}
-                </div>
-                {/* 가격 정보 */}
-                <div className="content">
-                  <div className="cart-price">
-                    <CartPrice cartList={cartList} />
-                  </div>
-                  {/* 주문하기 버튼 */}
-                  <div className="cart-btn-box">
-                    <div className="cart-btn-item">
-                      <button className="cart-btn sel-buy">
-                        선택상품 주문
-                      </button>
-                      <button className="cart-btn all-buy">
-                        전체상품 주문
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                </ul>
+              </div>
+            </div>
+            {/* 가격 정보 */}
+            <div className="cart-price">
+              <CartPrice cartList={cartList} scrollActive={scrollActive} />
+            </div>
+            {/* 주문하기 버튼 */}
+            <div className="cart-btn-box">
+              <div className="cart-btn-item">
+                <button className="cart-btn sel-buy">선택상품 주문</button>
+                <button className="cart-btn all-buy">전체상품 주문</button>
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </form>
     </main>
   );

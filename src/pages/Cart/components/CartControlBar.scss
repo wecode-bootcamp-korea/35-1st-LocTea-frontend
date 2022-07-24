@@ -1,0 +1,35 @@
+@import '../../../styles/variable.scss';
+
+.cart-chk {
+  @include flex($justify: space-between);
+  margin-top: 40px;
+  padding: 0 8px 15px 8px;
+  border-bottom: 2px solid #000;
+
+  .left-box {
+    .inp-chk {
+      #check-all {
+      }
+      label {
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .right-box {
+    .del-btn {
+      color: #666;
+      font-size: 13px;
+    }
+    .sel-del-btn::before {
+      content: '';
+      display: inline-block;
+      width: 1px;
+      height: 13px;
+      background-color: #e6e6e6;
+      margin: 0 10px 0 0;
+      vertical-align: middle;
+    }
+  }
+}
