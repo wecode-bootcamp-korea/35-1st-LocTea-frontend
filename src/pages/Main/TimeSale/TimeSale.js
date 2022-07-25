@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import './TimeSale.scss';
+
 const TimeSale = () => {
   const [hour, setHour] = useState(23 - new Date().getHours());
   const [minute, setMinute] = useState(59 - new Date().getMinutes());
   const [second, setSecond] = useState(59 - new Date().getSeconds());
 
   useEffect(() => {
-    const id = setInterval(() => {
+    const timeInterval = setInterval(() => {
       setHour(23 - new Date().getHours());
       setMinute(59 - new Date().getMinutes());
       setSecond(59 - new Date().getSeconds());
     }, 1000);
-    return () => clearInterval(id);
+    return () => clearInterval(timeInterval);
   }, []);
-  // console.log(time);
+
   return (
     <div className="timesale">
       <div className="timesale-main">

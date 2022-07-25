@@ -1,5 +1,6 @@
 import React from 'react';
 import './Subscribe.scss';
+
 const Subscribe = () => {
   return (
     <div className="subscribe">

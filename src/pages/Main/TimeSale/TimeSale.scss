@@ -6,6 +6,7 @@
   background-color: #f6f6f6;
   font-family: 'Gowun Dodum', sans-serif;
   margin: 48px 0;
+
   .timesale-main {
     @include flex($justify: space-between);
     margin-top: 40px;
@@ -25,6 +26,7 @@
           height: 100%;
         }
       }
+
       .left-textbox {
         width: 95%;
         height: 100%;
@@ -42,15 +44,18 @@
           justify-content: space-between;
           color: #fff;
           font-size: 30px;
+
           .textbox-top-left {
             font-weight: bold;
           }
+
           .textbox-top-right {
             width: 110px;
             position: relative;
             font-size: 28px;
             color: rgba(255, 255, 255, 0.8);
             font-weight: 700;
+
             i {
               position: absolute;
               font-size: 22px;
@@ -59,6 +64,7 @@
             }
           }
         }
+
         .textbox-bottom {
           @include flex($align: flex-start);
           flex-direction: column;
@@ -99,6 +105,7 @@
         }
       }
     }
+
     .timesale-right {
       width: 50%;
       display: flex;
@@ -110,13 +117,16 @@
         width: 95%;
         position: relative;
         padding-bottom: 12px;
+
         .event-imgbox {
           @include flex;
           width: 95%;
+
           img {
             width: 95%;
           }
         }
+
         .event-textbox {
           position: absolute;
           flex-direction: column;
@@ -127,6 +137,7 @@
             color: #333;
             font-weight: bold;
           }
+
           .event-time {
             margin-top: 5px;
             display: flex;
@@ -138,6 +149,7 @@
           }
         }
       }
+
       .right-story {
         @include flex($justify: flex-start);
         width: 95%;
@@ -145,20 +157,24 @@
         padding-top: 15px;
 
         .story-imgbox {
-          width: 95%;
           @include flex;
+          width: 95%;
+
           img {
             width: 95%;
           }
         }
+
         .story-textbox {
           position: absolute;
           flex-direction: column;
           margin-left: 40px;
+
           .story-sidename {
             font-size: 18px;
             color: rgba(255, 255, 255, 0.7);
           }
+
           .story-name {
             font-size: 26px;
             color: #fff;

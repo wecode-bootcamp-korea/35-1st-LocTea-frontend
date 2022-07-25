@@ -4,6 +4,7 @@
 .notice {
   @include flex;
   font-family: 'Gowun Dodum', sans-serif;
+
   .main-notice {
     @include flex($justify: flex-start);
     padding: 14px 16px;
@@ -19,6 +20,7 @@
       margin-right: 12px;
       color: #999;
     }
+
     .notice-list-info {
       @include flex($justify: space-between);
       width: 100%;
@@ -62,6 +64,7 @@
           }
         }
       }
+
       .notice-info {
         color: #999;
       }

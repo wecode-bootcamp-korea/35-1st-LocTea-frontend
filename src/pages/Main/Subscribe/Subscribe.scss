@@ -47,6 +47,7 @@
       .article-imgbox {
         @include flex($align: flex-end);
       }
+
       .article-textbox {
         flex-direction: column;
         position: absolute;
@@ -59,6 +60,7 @@
           color: #fff;
           font-weight: bold;
         }
+
         .textbox-bottom {
           display: flex;
           align-items: center;
@@ -90,6 +92,7 @@
           }
         }
       }
+
       .article-hover-box {
         position: absolute;
         display: flex;
@@ -110,11 +113,13 @@
           top: 40%;
           padding-bottom: 25px;
           border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
           .hover-textbox-top {
             font-size: 22px;
             color: #fff;
             font-weight: bold;
           }
+
           .hover-textbox-bottom {
             display: flex;
             align-items: center;
@@ -146,6 +151,7 @@
             }
           }
         }
+
         p {
           @include flex;
           position: absolute;
@@ -155,6 +161,7 @@
           word-break: keep-all;
           line-height: 1.5;
         }
+
         ul {
           display: flex;
           flex-direction: column;
@@ -176,6 +183,7 @@
               background-color: rgba(255, 255, 255, 0.7);
             }
           }
+
           span {
             font-weight: bold;
           }
@@ -183,6 +191,7 @@
       }
     }
   }
+
   .article-more {
     margin-top: 40px;
     text-align: center;
