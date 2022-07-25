@@ -1,5 +1,39 @@
 .main-header {
   .main-header-container {
-    display: flex;
+    .main-header-wrapper {
+      position: relative;
+
+      img {
+        width: 100vw;
+      }
+      .main-header-text {
+        position: absolute;
+        top: 30%;
+        left: 10%;
+        h1 {
+          font-size: 36px;
+          font-weight: 600;
+          margin-top: 10px;
+        }
+        h2 {
+          font-size: 16px;
+          margin-top: 15px;
+          font-weight: 350;
+          width: 300px;
+        }
+        h3 {
+          font-size: 13px;
+          margin-top: 20px;
+          font-weight: 800;
+        }
+        .event-btn {
+          font-size: 13px;
+          margin-top: 5px;
+          border: 1px solid black;
+          padding: 5px 15px;
+          border-radius: 5px;
+        }
+      }
+    }
   }
 }
