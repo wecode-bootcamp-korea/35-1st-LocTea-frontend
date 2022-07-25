@@ -1,28 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import BtnForUp from './BtnForUp';
 import FOOTER_SNS from './FooterSnsData';
 import FOOTER_CATEGORY from './FooterData';
 import FOOTER_UTIL from './FooterUtilData';
 import './Footer.scss';
-
-const goTop = () => {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  });
-};
-
-const fadeBtn = () => {
-  if (
-    document.body.scrollTop > 200 ||
-    document.documentElement.scrollTop > 200
-  ) {
-    document.getElementsByClassName('btnForUp')[0].style.right = '0';
-  } else {
-    document.getElementsByClassName('btnForUp')[0].style.right = '-50px';
-  }
-};
 
 function Footer() {
   return (
@@ -122,9 +104,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <button className="btnForUp" onClick={goTop} onScroll={fadeBtn}>
-        <img src="/images/Footer/up-arrow.png" alt="up" />
-      </button>
+      <BtnForUp />
     </footer>
   );
 }
