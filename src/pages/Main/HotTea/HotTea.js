@@ -89,13 +89,13 @@ const HotTea = ({ data }) => {
                   <div className="img-box">
                     <img
                       src={thumbnail_images[0]}
-                      alt="상품이미지"
+                      alt="상품이미지1"
                       className="items-img"
                     />
                     <div className="hover-box">
                       <img
                         src={thumbnail_images[1]}
-                        alt="상품호버이미지"
+                        alt="상품이미지2"
                         className="items-hover-img"
                       />
                       <div className="hover-icon">
