@@ -7,6 +7,7 @@ import ItemDetail from '../src/pages/ItemDetail/ItemDetail';
 import ItemList from '../src/pages/ItemList/ItemList';
 import Login from '../src/pages/Login/Login';
 import Register from '../src/pages/Register/Register';
+import Footer from '../src/Components/Footer/Footer';
 
 function Router() {
   return (
@@ -15,11 +16,12 @@ function Router() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/itemdetail" element={<ItemDetail />} />
+        <Route path="/itemdetail/:id" element={<ItemDetail />} />
         <Route path="/itemlist" element={<ItemList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

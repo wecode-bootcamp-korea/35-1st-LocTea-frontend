@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import ITEMTYPE from './ItemType';
 import './Nav.scss';
 
 function Nav() {
-  // 통신
+  const navigate = useNavigate();
+
   const [items, setItems] = useState({});
 
   useEffect(() => {
@@ -63,7 +66,9 @@ function Nav() {
               </div>
             </div>
             <div className="right-content">
-              <div className="nav-login">로그인 </div>
+              <div className="nav-login" onClick={navigate('/login')}>
+                로그인{' '}
+              </div>
               <div className="nav-login">Korean</div>
             </div>
           </div>
