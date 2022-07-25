@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Register.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   // 초기값 세팅 = 아이디, 비밀번호, 비밀번호 확인, 이름, 생년원일, 휴대폰 번호
@@ -28,7 +28,7 @@ const Register = () => {
 
   const signUp = e => {
     e.preventDefault();
-    fetch('http://10.58.5.132:8000/users/signup', {
+    fetch('http://10.58.1.100:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         name: person.name,
@@ -41,15 +41,15 @@ const Register = () => {
       .then(response => response.json())
       .then(result => {
         if (result.message === 'SUCCESS') {
-          navigate('/');
+          navigate('/login');
           alert('회원가입 성공!');
         } else {
-          alert('회원가입 실패');
+          alert('로그인 실패');
         }
       });
   };
 
-  const isAllValid =
+  const validation =
     idRegExp.test(person.id) &&
     passwordRegExp.test(person.pw) &&
     person.pw === person.pwConfirmed &&
@@ -138,7 +138,7 @@ const Register = () => {
                 ) : !passwordRegExp.test(person.pw) ? (
                   <div>
                     <p style={{ color: 'red' }}>
-                      영어(소문자),숫자,특수문자 중 최소 2가지 이상의 문자
+                      영어(소문자),숫자,특수문자를 포함한 8-16자로 입력해주세요
                     </p>
                     <p style={{ color: 'red' }}>조합 8-16자로 입력해주세요</p>
                   </div>
@@ -164,7 +164,7 @@ const Register = () => {
               </div>
             </div>
             <div className="button-area">
-              <button disabled={!isAllValid} onClick={signUp}>
+              <button disabled={!validation} onClick={signUp}>
                 회원가입
               </button>
             </div>

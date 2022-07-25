@@ -1,92 +1,112 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.scss';
-import Sns from './Sns';
+import ITEMTYPE from './ItemType';
+import './Nav.scss';
 
-const Login = () => {
-  const [person, setPerson] = useState({
-    id: '',
-    pw: '',
-  });
-
-  const handleInput = e => {
-    const { name, value } = e.target;
-    setPerson({ ...person, [name]: value });
-  };
-  // 아이디, 비밀번호 정규식
-  const passwordRegExp =
-    /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$/;
-  const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/;
-
-  const isAllValid = idRegExp.test(person.id) && passwordRegExp.test(person.pw);
-
+function Nav() {
+  // 통신
+  const [items, setItems] = useState({});
   const navigate = useNavigate();
-
-  const signIn = e => {
-    e.preventDefault();
-    fetch('http://10.58.5.132:8000/users/login', {
-      method: 'POST',
-      body: JSON.stringify({
-        username: person.id,
-        password: person.pw,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.message === 'SUCCESS') {
-          navigate('/');
-          alert('로그인 성공!');
-        } else {
-          alert('로그인 실패!');
-        }
+  useEffect(() => {
+    fetch('http://localhost:3000/data/NavItemType.json')
+      .then(res => res.json())
+      .then(data => {
+        setItems(data.result);
       });
+  }, []);
+
+  // 마우스 호버
+  const [isHovering, setIsHover] = useState(false);
+
+  const handleMouseOver = () => {
+    setIsHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHover(false);
   };
 
   return (
-    <div className="login">
-      <div className="login-header">
-        <div className="login-nav">
-          <h1>로그인</h1>
-          <button type="submit">
-            <i class="fa-solid fa-xmark" />
-          </button>
+    <div className="nav-container">
+      <div className={isHovering ? 'nav-header white' : 'nav-header'}>
+        <div className="nav-inner-box">
+          <div className="left-box">
+            <h1 className="header" onClick={() => navigate('/')}>
+              록차
+            </h1>
+            <div className="nav-title-box">
+              <div
+                className="title-item-box"
+                onMouseEnter={handleMouseOver}
+                onMouseLeave={handleMouseOut}
+              >
+                <button
+                  className="nav-title"
+                  onClick={() => navigate('/itemlist')}
+                >
+                  제품
+                </button>
+              </div>
+              <div className="title-item-box">
+                <button className="nav-title">선물추천</button>
+              </div>
+              <div className="title-item-box">
+                <button className="nav-title">다다일상</button>
+              </div>
+              <div className="title-item-box">
+                <button className="nav-title">브랜드</button>
+              </div>
+            </div>
+          </div>
+          <div className="right-box">
+            <div className="right-icons">
+              <div className="icon">
+                <i class="fa-solid fa-magnifying-glass" />
+              </div>
+              <div className="icon">
+                <i class="fa-solid fa-cart-shopping" />
+              </div>
+              <div className="icon">
+                <i class="fa-solid fa-ellipsis-vertical" />
+              </div>
+            </div>
+            <div className="right-content">
+              <div className="nav-login" onClick={() => navigate('/login')}>
+                로그인
+              </div>
+              <div className="nav-login">Korean</div>
+            </div>
+          </div>
         </div>
       </div>
-      <section className="body">
-        <div className="login-container">
-          <div className="header">
-            <img src="/images/login/LocTea.png" alt="LocTea" />
-          </div>
-          <form className="content" onChange={handleInput}>
-            <div className="inputs">
-              <input
-                type="text"
-                name="id"
-                value={person.id}
-                placeholder="아이디 입력"
-              />
-              <input
-                type="password"
-                name="pw"
-                value={person.pw}
-                placeholder="비밀번호 입력(영문,숫자,특수문자 조합)"
-              />
-            </div>
-            <div className="button-area">
-              <button disabled={!isAllValid} onClick={signIn}>
-                로그인
-              </button>
-            </div>
-          </form>
-          <div className="login-footer-border">
-            <div className="login-footer">
-              <Sns />
+      {isHovering ? (
+        <>
+          <div className="nav-item-box">
+            <div
+              className="nav-item-title"
+              onMouseEnter={handleMouseOver}
+              onMouseLeave={handleMouseOut}
+            >
+              <ITEMTYPE values={items} />
             </div>
           </div>
-        </div>
-      </section>
+          <div className="vacant" />
+        </>
+      ) : (
+        <>
+          <div className="nav-item-box up">
+            <div
+              className="nav-item-title"
+              onMouseEnter={handleMouseOver}
+              onMouseLeave={handleMouseOut}
+            >
+              <ITEMTYPE values={items} />
+            </div>
+          </div>
+          <div className="vacant none" />
+        </>
+      )}
     </div>
   );
-};
-
-export default Login;
+}
+export default Nav;
