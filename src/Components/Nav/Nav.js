@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import ITEMTYPE from './ItemType';
+import ItemType from './ItemType';
 import './Nav.scss';
 
 function Nav() {
-  const navigate = useNavigate();
-
+  // 통신
   const [items, setItems] = useState({});
-
+  const navigate = useNavigate();
   useEffect(() => {
-    fetch('http://localhost:3000/data/NavItemType.json')
+    fetch('/data/NavItemType.json')
       .then(res => res.json())
       .then(data => {
         setItems(data.result);
@@ -18,14 +16,24 @@ function Nav() {
   }, []);
 
   // 마우스 호버
-  const [isHovering, setIsHover] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => {
-    setIsHover(true);
+    setIsHovering(true);
   };
 
   const handleMouseOut = () => {
-    setIsHover(false);
+    setIsHovering(false);
+  };
+
+  const [LoginisHovering, setLoginIsHovering] = useState(false);
+
+  const LoginHandleMouseOver = () => {
+    setLoginIsHovering(true);
+  };
+
+  const LoginHandleMouseOut = () => {
+    setLoginIsHovering(false);
   };
 
   return (
@@ -33,14 +41,21 @@ function Nav() {
       <div className={isHovering ? 'nav-header white' : 'nav-header'}>
         <div className="nav-inner-box">
           <div className="left-box">
-            <h1 className="header">록차</h1>
+            <h1 className="header" onClick={() => navigate('/')}>
+              록차
+            </h1>
             <div className="nav-title-box">
               <div
                 className="title-item-box"
                 onMouseEnter={handleMouseOver}
                 onMouseLeave={handleMouseOut}
               >
-                <button className="nav-title">제품</button>
+                <button
+                  className="nav-title"
+                  onClick={() => navigate('/itemlist')}
+                >
+                  제품
+                </button>
               </div>
               <div className="title-item-box">
                 <button className="nav-title">선물추천</button>
@@ -66,7 +81,33 @@ function Nav() {
               </div>
             </div>
             <div className="right-content">
-              <div className="nav-login">로그인</div>
+              <div
+                className="nav-login"
+                onMouseEnter={LoginHandleMouseOver}
+                onMouseLeave={LoginHandleMouseOut}
+              >
+                <div className="login-text" onClick={() => navigate('/login')}>
+                  로그인
+                </div>
+                {LoginisHovering ? (
+                  <div className="nav-login-box">
+                    <div className="nav-register-box">
+                      <div
+                        className="text"
+                        onClick={() => navigate('/register')}
+                      >
+                        회원가입
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="nav-login-box up">
+                    <div className="nav-register-box">
+                      <div className="text">회원가입</div>
+                    </div>
+                  </div>
+                )}
+              </div>
               <div className="nav-login">Korean</div>
             </div>
           </div>
@@ -80,7 +121,7 @@ function Nav() {
               onMouseEnter={handleMouseOver}
               onMouseLeave={handleMouseOut}
             >
-              <ITEMTYPE values={items} />
+              <ItemType values={items} />
             </div>
           </div>
           <div className="vacant" />
@@ -93,7 +134,7 @@ function Nav() {
               onMouseEnter={handleMouseOver}
               onMouseLeave={handleMouseOut}
             >
-              <ITEMTYPE values={items} />
+              <ItemType values={items} />
             </div>
           </div>
           <div className="vacant none" />

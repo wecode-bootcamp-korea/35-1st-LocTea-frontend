@@ -2,7 +2,7 @@ import React from 'react';
 import './Cart.scss';
 
 function Cart() {
-  return;
+  return <div />;
 }
 
 export default Cart;

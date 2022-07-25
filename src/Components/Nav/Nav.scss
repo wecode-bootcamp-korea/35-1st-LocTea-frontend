@@ -93,9 +93,24 @@
 
           .nav-login {
             margin-right: 20px;
-
-            &:hover {
+            line-height: 80px;
+            .login-text:hover {
               color: rgb(53, 157, 53);
+            }
+            .nav-login-box {
+              position: relative;
+              transition: all ease 0.1s;
+              .nav-register-box {
+                display: flex;
+                position: absolute;
+                align-items: flex-start;
+                width: 60px;
+                background-color: #fff;
+                line-height: 20px;
+                .text:hover {
+                  color: rgb(53, 157, 53);
+                }
+              }
             }
           }
         }
