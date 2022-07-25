@@ -66,9 +66,7 @@ function Nav() {
               </div>
             </div>
             <div className="right-content">
-              <div className="nav-login" onClick={navigate('/login')}>
-                로그인{' '}
-              </div>
+              <div className="nav-login">로그인</div>
               <div className="nav-login">Korean</div>
             </div>
           </div>
