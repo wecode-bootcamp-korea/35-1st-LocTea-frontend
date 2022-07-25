@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './HotTea.scss';
 
-const HotTea = ({ data }) => {
+const HotTea = ({ data, summerData, weekData }) => {
   const [movePx, setMovePx] = useState(0);
   const [transition, setTransition] = useState('all ease 0.7s');
   const [isDisabled, setIsDisabled] = useState(false);
@@ -55,7 +55,8 @@ const HotTea = ({ data }) => {
           className={`main-hottea-summer ${
             selectTab === '여름맞이 선물' ? 'on' : 'off'
           }`}
-          onClick={updateSelectTab}
+          onClick={summerData}
+          onMouseDown={updateSelectTab}
         >
           여름맞이 선물
         </button>
@@ -63,7 +64,8 @@ const HotTea = ({ data }) => {
           className={`main-hottea-summer ${
             selectTab === '이번 주 인기 제품' ? 'on' : 'off'
           }`}
-          onClick={updateSelectTab}
+          onClick={weekData}
+          onMouseDown={updateSelectTab}
         >
           이번 주 인기 제품
         </button>
@@ -99,7 +101,7 @@ const HotTea = ({ data }) => {
                         className="items-hover-img"
                       />
                       <div className="hover-icon">
-                        <i class="fa-solid fa-cart-shopping" />
+                        <i className="fa-solid fa-cart-shopping" />
                       </div>
                     </div>
                   </div>

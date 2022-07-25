@@ -93,15 +93,19 @@
 
             &:hover {
               .items-img {
-                display: none;
+                opacity: 0;
+                transition: ease 500ms;
               }
               .hover-box {
-                display: block;
+                position: absolute;
+                top: 0;
+                opacity: 1;
+                transition: ease 500ms;
               }
             }
             .hover-box {
               @include flex;
-              display: none;
+              opacity: 0;
               position: relative;
               width: 240px;
               height: 260px;

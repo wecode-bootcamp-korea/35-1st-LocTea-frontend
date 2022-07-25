@@ -13,10 +13,26 @@ const Main = () => {
       .then(data => setMainData(data));
   }, []);
 
+  const weekBestData = () => {
+    fetch('data/weekBest.json')
+      .then(res => res.json())
+      .then(data => setMainData(data));
+  };
+
+  const summerData = () => {
+    fetch('data/summerData.json')
+      .then(res => res.json())
+      .then(data => setMainData(data));
+  };
+
   return (
     <div>
       <Notice />
-      <HotTea data={mainData} />
+      <HotTea
+        data={mainData}
+        summerData={() => summerData()}
+        weekData={() => weekBestData()}
+      />
       <TimeSale />
       <Subscribe />
     </div>

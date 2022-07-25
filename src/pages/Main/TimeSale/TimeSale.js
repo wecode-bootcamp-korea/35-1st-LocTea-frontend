@@ -20,8 +20,8 @@ const TimeSale = () => {
         <div className="timesale-left">
           <div className="left-imgbox">
             <img
-              src="https://www.osulloc.com/upload/kr/ko/adminImage/KB/DS/20220622132024173GQ.jpg?quality=80"
-              alt="프리미엄 말차 세일"
+              src="https://www.osulloc.com/upload/kr/ko/adminImage/RD/LF/20220622133041132VS.jpg?quality=80"
+              alt="벚꽃향 가득한 올레 20입 세일"
             />
           </div>
           <div className="left-textbox">
@@ -35,7 +35,7 @@ const TimeSale = () => {
               </p>
             </div>
             <div className="textbox-bottom">
-              <p>프리미엄 말차</p>
+              <p>벚꽃향 가득한 올레 20입</p>
               <div className="sale-price">
                 <div className="sale-percent">30%</div>
                 <div className="price-origin">23,000</div>
