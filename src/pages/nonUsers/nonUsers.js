@@ -1,14 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './nonUsers.scss';
 
 const NonUsers = () => {
+  const [purchaseInfo, setPurchaseInfo] = useState({
+    userName: '',
+    sendingName: '',
+    sendingPhone: '',
+    receiverName: '',
+    receiverPhone: '',
+    address: '',
+    deliveryRequest: '',
+    requestPlus: '',
+  });
+
+  const handleInput = e => {
+    const { name, value } = e.target;
+    setPurchaseInfo({ ...purchaseInfo, [name]: value });
+  };
+
+  const {
+    userName,
+    sendingPhone,
+    sendingName,
+    receiverName,
+    receiverPhone,
+    address,
+    deliveryRequest,
+    requestPlus,
+  } = purchaseInfo;
+
+  const userSame = e => {
+    e.preventDefault();
+    setPurchaseInfo({
+      ...purchaseInfo,
+      receiverName: userName,
+      receiverPhone: sendingPhone,
+    });
+  };
   return (
     <div className="order-page">
       <div className="nonusers">
         <div className="nonusers-title">
           <h2>결제하기</h2>
         </div>
-        <form name="form-order" className="form-order">
+        <form name="form-order" className="form-order" onChange={handleInput}>
           <div className="form-order-left">
             <div className="order-user-info">
               <div className="order-user-title">
@@ -16,17 +51,18 @@ const NonUsers = () => {
               </div>
               <div className="order-user-name">
                 <p>이름</p>
-                <input type="text" />
+                <input type="text" name="userName" defaultValue={userName} />
               </div>
               <div className="order-user-phone">
                 <p>휴대전화</p>
                 <div className="mobile-number-box">
-                  <input type="hidden" />
                   <div className="inp-select-box">
-                    <select className="inp-select">
-                      <option value="010" selected="">
-                        010
-                      </option>
+                    <select
+                      className="inp-select"
+                      name="firstPhone"
+                      defaultValue=""
+                    >
+                      <option value="010">010</option>
                       <option value="011">011</option>
                       <option value="016">016</option>
                       <option value="017">017</option>
@@ -36,23 +72,27 @@ const NonUsers = () => {
                   </div>
                   <span className="hyphen">-</span>
                   <input
-                    type="text"
-                    id="user-phone2"
+                    type="number"
                     className="inp-text mobile-number"
                     title="휴대전화 입력"
-                    value=""
+                    defaultValue={sendingPhone}
                     placeholder="'-' 없이 휴대폰번호 입력"
-                    max="8"
                     maxLength="8"
                     inputMode="numeric"
                     pattern="[0-9]*"
+                    name="sendingPhone"
                   />
                 </div>
               </div>
               <div className="order-user-sendingname">
                 <p>보내는 분</p>
                 <div className="sendingname-input">
-                  <input placeholder="보내는 분 입력(7자이내)" type="text" />
+                  <input
+                    placeholder="보내는 분 입력(7자이내)"
+                    type="text"
+                    name="sendingName"
+                    defaultValue={sendingName}
+                  />
                   <ul className="textbox">
                     <li>
                       보내는 분 별도 표기하더라도 고객님 정보보호를 위해 마스킹
@@ -68,21 +108,22 @@ const NonUsers = () => {
             <div className="delivery-info">
               <div className="delivery-user-title">
                 <h6>배송지 정보</h6>
-                <button>주문 고객과 동일</button>
+                <button onClick={userSame}>주문 고객과 동일</button>
               </div>
               <div className="delivery-user-name">
                 <p>받는 분</p>
-                <input type="text" />
+                <input
+                  type="text"
+                  name="receiverName"
+                  defaultValue={receiverName}
+                />
               </div>
               <div className="delivery-user-phone">
                 <p>연락처</p>
                 <div className="mobile-number-box">
-                  <input type="hidden" />
                   <div className="inp-select-box">
-                    <select className="inp-select">
-                      <option value="010" selected="">
-                        010
-                      </option>
+                    <select className="inp-select" defaultValue="">
+                      <option value="010">010</option>
                       <option value="011">011</option>
                       <option value="016">016</option>
                       <option value="017">017</option>
@@ -92,28 +133,31 @@ const NonUsers = () => {
                   </div>
                   <span className="hyphen">-</span>
                   <input
-                    type="text"
-                    id="user-phone2"
+                    type="number"
                     className="inp-text mobile-number"
                     title="휴대전화 입력"
-                    value=""
+                    defaultValue={receiverPhone}
                     placeholder="'-' 없이 휴대폰번호 입력"
                     max="8"
                     maxLength="8"
                     inputMode="numeric"
                     pattern="[0-9]*"
+                    name="receiverPhone"
                   />
                 </div>
               </div>
               <div className="delivery-user-home">
                 <p>주소</p>
-                <input type="text" />
+                <input type="text" name="address" defaultValue={address} />
               </div>
               <div className="delivery-request">
                 <p>배송 요청사항</p>
                 <div className="delivery-request-detail">
                   <div className="detail-request">
-                    <select name="request">
+                    <select
+                      name="deliveryRequest"
+                      defaultValue={deliveryRequest}
+                    >
                       <option value="배송 요청사항 선택">
                         배송 요청사항 선택
                       </option>
@@ -125,9 +169,15 @@ const NonUsers = () => {
                       </option>
                       <option value="직접입력">직접입력</option>
                     </select>
-                    <i class="fa-solid fa-angle-down" />
+                    <i className="fa-solid fa-angle-down" />
                   </div>
-                  <input type="text" />
+                  {deliveryRequest === '직접입력' && (
+                    <input
+                      type="text"
+                      name="requestPlus"
+                      defaultValue={requestPlus}
+                    />
+                  )}
                 </div>
               </div>
               <div className="delivery-items">

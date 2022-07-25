@@ -128,11 +128,13 @@
                 color: #333;
                 background-color: #fff;
                 letter-spacing: -0.03em;
-
                 vertical-align: middle;
                 outline: 0;
-                &:hover {
+
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
                   -webkit-appearance: none;
+                  margin: 0;
                 }
               }
             }
@@ -315,11 +317,12 @@
                 color: #333;
                 background-color: #fff;
                 letter-spacing: -0.03em;
-
                 vertical-align: middle;
                 outline: 0;
-                &:hover {
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
                   -webkit-appearance: none;
+                  margin: 0;
                 }
               }
             }
@@ -362,7 +365,6 @@
               }
 
               input {
-                display: none;
                 width: 100%;
                 height: 40px;
                 padding: 0 16px;
