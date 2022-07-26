@@ -49,7 +49,7 @@ const TimeSale = () => {
           <div className="right-event">
             <div className="event-imgbox">
               <img
-                src="https://www.osulloc.com/upload/kr/ko/adminImage/GO/TL/20220610171140122MX.png?quality=80"
+                src="https://images.pexels.com/photos/3723874/pexels-photo-3723874.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 alt="7월 출석체크 이벤트"
               />
             </div>
@@ -67,7 +67,7 @@ const TimeSale = () => {
             </div>
             <div className="story-textbox">
               <p className="story-sidename">TEA FROM JEJU</p>
-              <p className="story-name">오설록 스토리</p>
+              <p className="story-name">록차 스토리</p>
             </div>
           </div>
         </div>

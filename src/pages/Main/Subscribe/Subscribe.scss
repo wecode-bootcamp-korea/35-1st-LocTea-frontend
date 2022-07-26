@@ -46,6 +46,10 @@
 
       .article-imgbox {
         @include flex($align: flex-end);
+        img {
+          width: 386px;
+          height: 480px;
+        }
       }
 
       .article-textbox {
