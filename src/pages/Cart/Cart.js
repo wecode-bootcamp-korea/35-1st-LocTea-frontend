@@ -40,15 +40,9 @@ function Cart() {
     };
   });
 
-  // spread operator (전개구문) / 불변성
   const cartListCopy = [...cartList];
 
   const plusCount = id => {
-    // 누른 상품이 어떤 상품인지 알아야 함 ( 상품 id ) => product_id
-    // Cart 컴포넌트의 cartList state에서 해당하는 상품의 quantity만 +1 해야 함 => setCartList
-    // ㄴ 특정 id를 가지고 있는 요소가 무엇인지 알아내야 함
-    // ㄴ 해당 요소의 quantity만 바꿔주는 로직을 구성해야 함
-
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
     cartListCopy[selectedIdx].quantity += 1;
     console.log(
