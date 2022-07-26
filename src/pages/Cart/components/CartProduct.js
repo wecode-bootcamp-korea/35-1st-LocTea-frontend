@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import './CartProduct.scss';
 
@@ -17,12 +17,6 @@ function CartProduct({ cartList, plusCount, minusCount }) {
   const eachPrice = price * quantity; //정가x수량
   const eachSalePrice = salePrice * quantity; //세일가x수량
 
-  // const originPriceDisplayNone =
-  //   eachPrice === eachSalePrice
-  //     ? (document.getElementsByClassName('price-origin').style.display = 'none')
-  //     : eachPrice;
-  // console.log(salePrice, eachPrice, eachSalePrice, product_id);
-
   const disabledMinus = quantity < 2;
   const disabledPlus = stock === 0;
 
@@ -34,10 +28,10 @@ function CartProduct({ cartList, plusCount, minusCount }) {
     }
   };
 
-  // const [countInput, setCountInput] = useState();
+  // const [countInput, setCountInput] = useState({ quantity });
 
-  // const inputCount = e => {
-  //   setCountInput(e.target.value);
+  // const inputCount = () => {
+  //   setCountInput(countInput);
   // };
 
   if (product_id === null || product_id === undefined) {
@@ -101,7 +95,13 @@ function CartProduct({ cartList, plusCount, minusCount }) {
             </div>
           </div>
           <div className="price-box">
-            <p className="price-origin">{eachPrice.toLocaleString()}원</p>
+            <p
+              className={
+                eachPrice !== eachSalePrice ? 'price-origin' : 'display-none'
+              }
+            >
+              {eachPrice.toLocaleString()}원
+            </p>
             <p className="price-sale">{eachSalePrice.toLocaleString()}원</p>
           </div>
         </div>

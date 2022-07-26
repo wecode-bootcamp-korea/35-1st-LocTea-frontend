@@ -62,6 +62,10 @@ function Cart() {
     setCartList(cartListCopy.filter(cartListCopy => cartListCopy.stock !== 0));
   };
 
+  // const [salePrice, setSalePrice] = useState([])
+
+  // setSalePrice()
+  // }
   // const data = cartList.map(x => x.price);
   // console.log(data);
   // const salePrice = data.price - data.price * (data.discount * 0.01);
