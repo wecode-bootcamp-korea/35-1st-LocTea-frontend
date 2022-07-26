@@ -14,6 +14,7 @@ const Items = ({ items }) => {
             price={Number(item.price)}
             thumbnailImage={item.thumbnail_images}
             types={item.types}
+            discount={Number(item.discount)}
           />
         );
       })}
@@ -21,11 +22,11 @@ const Items = ({ items }) => {
   );
 };
 
-const ItemCard = ({ id, name, price, thumbnailImage }) => {
+const ItemCard = ({ id, name, price, thumbnailImage, discount }) => {
   const rand_0_100 = Math.floor(Math.random() * 101);
   const rand_0_99 = Math.floor(Math.random() * 100);
   return (
-    <Link to={`/itemDetail/${id}`}>
+    <Link to={`/itemdetail/${id}`}>
       <div className="item">
         {name && (
           <>
@@ -40,7 +41,7 @@ const ItemCard = ({ id, name, price, thumbnailImage }) => {
               className="imageHover"
             />
             <p>{name}</p>
-            <p>{price.toLocaleString()}원</p>
+            <p>{(price - (price * discount) / 100).toLocaleString()}원</p>
             <div className="likeComment">
               <div className="likeNumber">
                 <i class="fa-regular fa-heart" alt="좋아요" />

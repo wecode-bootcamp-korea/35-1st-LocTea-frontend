@@ -1,3 +1,4 @@
+import { toContainHTML } from '@testing-library/jest-dom/dist/matchers';
 import React, { useEffect } from 'react';
 
 import './Filter.scss';
@@ -10,7 +11,13 @@ const initialValue = {
   all: true,
 };
 
-const Filter = ({ whichProductRender, items, whatType, setWhatType }) => {
+const Filter = ({
+  whichProductRender,
+  items,
+  whatType,
+  setWhatType,
+  total,
+}) => {
   useEffect(() => {
     setWhatType({ ...initialValue });
   }, [whichProductRender]);
@@ -37,7 +44,7 @@ const Filter = ({ whichProductRender, items, whatType, setWhatType }) => {
     <div className="filter">
       <div>
         <span>총</span>
-        <span className="itemNumber">{items.length}</span>
+        <span className="itemNumber">{total.total_items}</span>
         <span>개의 상품이 있습니다.</span>
       </div>
       <div className="buttons">

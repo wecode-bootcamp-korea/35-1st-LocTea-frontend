@@ -3,21 +3,20 @@ import Side from './Components/Side';
 import Order from './Components/Order';
 import Filter from './Components/Filter';
 import Items from './Components/Items';
-import CategoryState from './CategoryState.json';
+import categoryList from './categoryList';
 import './ItemList.scss';
 
 const ItemList = () => {
-  const [whichProductRender, setWhichProductRender] = useState(
-    CategoryState[0]
-  );
+  const [whichProductRender, setWhichProductRender] = useState(categoryList[0]);
+  const [total, setTotal] = useState({});
 
-  const RenderCategory = e => {
-    for (let i = 0; i < CategoryState.length; i++) {
+  const renderCategory = e => {
+    for (let i = 0; i < categoryList.length; i++) {
       if (
-        CategoryState[i].category === e.target.dataset.category &&
-        CategoryState[i].id === Number(e.target.id)
+        categoryList[i].category === e.target.dataset.category &&
+        categoryList[i].id === Number(e.target.id)
       ) {
-        setWhichProductRender(CategoryState[i]);
+        setWhichProductRender(categoryList[i]);
       }
     }
   };
@@ -34,6 +33,7 @@ const ItemList = () => {
 
   // //아이템 스테이트
   const [items, setItems] = useState([]);
+
   // //데이터 로딩ƒ
   useEffect(() => {
     const whatTypeKeys = Object.keys(whatType);
@@ -57,7 +57,10 @@ const ItemList = () => {
       `http://10.58.4.134:8000/products/list?${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}${typeUrl}`
     )
       .then(res => res.json())
-      .then(result => setItems(result.products));
+      .then(result => {
+        setItems(result.products);
+        setTotal(result.total);
+      });
   }, [whichProductRender, whatOrder, whatType]);
 
   return (
@@ -71,7 +74,7 @@ const ItemList = () => {
         <h2>{whichProductRender.title}</h2>
       </div>
       <div className="main">
-        <Side RenderCategory={RenderCategory} />
+        <Side renderCategory={renderCategory} />
         <article>
           <Order
             whichProductRender={whichProductRender}
@@ -83,6 +86,7 @@ const ItemList = () => {
             items={items}
             whatType={whatType}
             setWhatType={setWhatType}
+            total={total}
           />
           {items.length > 0 && <Items items={items} />}
         </article>
