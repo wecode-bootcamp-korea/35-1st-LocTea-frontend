@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import BtnForUp from './BtnForUp';
-import FOOTER_SNS from './FooterSnsData';
-import FOOTER_CATEGORY from './FooterData';
-import FOOTER_UTIL from './FooterUtilData';
+import FOOTER_SNS from './footerSnsData';
+import FOOTER_CATEGORY from './footerData';
+import FOOTER_UTIL from './footerUtilData';
 import './Footer.scss';
 
 function Footer() {

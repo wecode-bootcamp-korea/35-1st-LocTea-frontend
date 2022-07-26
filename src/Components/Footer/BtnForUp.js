@@ -2,16 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './BtnForUp.scss';
 
 const BtnForUp = () => {
-  const [ScrollY, setScrollY] = useState(0);
-  const [BtnStatus, setBtnStatus] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const isBtnActive = scrollY > 200;
 
   const fadeUpBtn = () => {
     setScrollY(window.pageYOffset);
-    if (ScrollY > 200) {
-      setBtnStatus(true);
-    } else {
-      setBtnStatus(false);
-    }
   };
 
   const scrollingToTop = () => {
@@ -20,22 +15,19 @@ const BtnForUp = () => {
       behavior: 'smooth',
     });
     setScrollY(0);
-    setBtnStatus(false);
   };
 
   useEffect(() => {
-    const watch = () => {
-      window.addEventListener('scroll', fadeUpBtn);
-    };
-    watch();
+    window.addEventListener('scroll', fadeUpBtn);
+
     return () => {
       window.removeEventListener('scroll', fadeUpBtn);
     };
-  });
+  }, []);
 
   return (
     <button
-      className={BtnStatus ? 'btnForUp active' : 'btnForUp'}
+      className={isBtnActive ? 'btnForUp active' : 'btnForUp'}
       onClick={scrollingToTop}
     >
       <img src="/images/Footer/up-arrow.png" alt="up" />
