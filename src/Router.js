@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-
 import Main from './pages/Main/Main';
 import Nav from './Components/Nav/Nav';
 import Cart from './pages/Cart/Cart';
