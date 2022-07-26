@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Notice/Notice.scss';
+import './Notice.scss';
 
 const Notice = () => {
   const noticeArr = [
@@ -15,8 +15,8 @@ const Notice = () => {
         <p className="notice">공지사항</p>
         <div className="notice-list-info">
           <ul className="notice-list">
-            {noticeArr.map((a, i) => {
-              return <li key={i}>{a}</li>;
+            {noticeArr.map((notice, index) => {
+              return <li key={index}>{notice}</li>;
             })}
           </ul>
           <p className="notice-info">

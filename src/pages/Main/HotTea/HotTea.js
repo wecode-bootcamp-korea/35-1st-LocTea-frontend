@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './HotTea.scss';
 
+const movingPixel = 240;
+
 const HotTea = ({ data, summerData, weekData }) => {
   const [movePx, setMovePx] = useState(0);
   const [transition, setTransition] = useState('all ease 0.7s');
@@ -11,9 +13,10 @@ const HotTea = ({ data, summerData, weekData }) => {
     const arrPop = data.pop();
     data.unshift(arrPop);
   };
+
   const minusPx = () => {
     setTransition('all ease 0.7s');
-    setMovePx(movePx + 240);
+    setMovePx(movePx + movingPixel);
     setIsDisabled(true);
 
     setTimeout(() => {
@@ -31,7 +34,7 @@ const HotTea = ({ data, summerData, weekData }) => {
 
   const plusPx = () => {
     setTransition('all ease 0.7s');
-    setMovePx(movePx - 240);
+    setMovePx(movePx - movingPixel);
     setIsDisabled(true);
 
     setTimeout(() => {
@@ -105,14 +108,7 @@ const HotTea = ({ data, summerData, weekData }) => {
                       </div>
                     </div>
                   </div>
-                  {!discount ? (
-                    <div className="price-box">
-                      <h6>{title}</h6>
-                      <p className="nonsale-price">
-                        {Number(price).toLocaleString()}원
-                      </p>
-                    </div>
-                  ) : (
+                  {discount ? (
                     <div className="price-box">
                       <h6>{title}</h6>
                       <div className="sale">
@@ -130,6 +126,13 @@ const HotTea = ({ data, summerData, weekData }) => {
                           <p className="sale-percent">{discount}%</p>
                         </div>
                       </div>
+                    </div>
+                  ) : (
+                    <div className="price-box">
+                      <h6>{title}</h6>
+                      <p className="nonsale-price">
+                        {Number(price).toLocaleString()}원
+                      </p>
                     </div>
                   )}
                 </li>

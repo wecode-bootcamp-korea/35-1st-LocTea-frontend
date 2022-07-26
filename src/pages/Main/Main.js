@@ -28,11 +28,7 @@ const Main = () => {
   return (
     <div>
       <Notice />
-      <HotTea
-        data={mainData}
-        summerData={() => summerData()}
-        weekData={() => weekBestData()}
-      />
+      <HotTea data={mainData} summerData={summerData} weekData={weekBestData} />
       <TimeSale />
       <Subscribe />
     </div>
