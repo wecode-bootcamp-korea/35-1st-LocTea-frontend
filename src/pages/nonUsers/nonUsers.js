@@ -41,6 +41,9 @@ const NonUsers = () => {
   const handlePhone = e => {
     if (e.target.value.length > e.target.maxLength)
       e.target.value = e.target.value.slice(0, e.target.maxLength);
+    e.target.value = e.target.value
+      .replace(/[^0-9.]/g, '')
+      .replace(/(\..*)\./g, '$1');
   };
 
   return (
@@ -61,7 +64,7 @@ const NonUsers = () => {
                   type="text"
                   name="userName"
                   defaultValue={userName}
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
               <div className="order-user-phone">
@@ -107,7 +110,7 @@ const NonUsers = () => {
                     type="text"
                     name="sendingName"
                     defaultValue={sendingName}
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                   <ul className="textbox">
                     <li>
@@ -132,7 +135,7 @@ const NonUsers = () => {
                   type="text"
                   name="receiverName"
                   defaultValue={receiverName}
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
               <div className="delivery-user-phone">
@@ -172,7 +175,7 @@ const NonUsers = () => {
                   type="text"
                   name="address"
                   defaultValue={address}
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </div>
               <div className="delivery-request">
@@ -201,7 +204,7 @@ const NonUsers = () => {
                       type="text"
                       name="requestPlus"
                       defaultValue={requestPlus}
-                      autocomplete="off"
+                      autoComplete="off"
                     />
                   )}
                 </div>
