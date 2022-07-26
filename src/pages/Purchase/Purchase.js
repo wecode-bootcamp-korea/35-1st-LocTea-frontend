@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './nonUsers.scss';
+import './Purchase.scss';
 
-const NonUsers = () => {
+const Purchase = () => {
   const [purchaseInfo, setPurchaseInfo] = useState({
     userName: '',
     sendingName: '',
@@ -259,4 +259,4 @@ const NonUsers = () => {
   );
 };
 
-export default NonUsers;
+export default Purchase;
