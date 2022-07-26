@@ -93,7 +93,7 @@ const Register = () => {
                 placeholder="핸드폰 번호"
               />
               <input
-                type="text"
+                type="date"
                 name="birth"
                 value={person.birth}
                 placeholder="생년월일 (yyyy-mm-dd)"
@@ -126,12 +126,16 @@ const Register = () => {
                   </p>
                 )}
               </div>
-              <input
-                type="password"
-                name="pw"
-                value={person.pw}
-                placeholder="비밀번호 입력(영문,숫자,특수문자 조합 8-16자)"
-              />
+              <div className="password-shown">
+                <input
+                  type="password"
+                  name="pw"
+                  value={person.pw}
+                  placeholder="비밀번호 입력(영문,숫자,특수문자 조합 8-16자)"
+                />
+
+                <i class="fa-solid fa-eye" />
+              </div>
               <div className="message">
                 {person.pw === '' ? (
                   ''
