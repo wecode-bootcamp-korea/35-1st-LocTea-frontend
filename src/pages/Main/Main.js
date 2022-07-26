@@ -1,12 +1,16 @@
 import React from 'react';
-import HeaderImg from './Slider';
+import SliderImg from './Slider';
 import './Main.scss';
 const Main = () => {
   return (
     <div className="main-header">
-      <div className="main-header-container">
-        <HeaderImg />
-      </div>
+      <SliderImg />
+      {/* <div className="under-button">
+        <button onClick={}/>
+        <button />
+        <button />
+        <button />
+      </div> */}
     </div>
   );
 };
