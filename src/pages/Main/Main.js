@@ -5,12 +5,6 @@ const Main = () => {
   return (
     <div className="main-header">
       <SliderImg />
-      {/* <div className="under-button">
-        <button onClick={}/>
-        <button />
-        <button />
-        <button />
-      </div> */}
     </div>
   );
 };

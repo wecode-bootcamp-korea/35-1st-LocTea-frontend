@@ -23,17 +23,14 @@ function SliderImg() {
 
   return (
     <div className="slider-container">
-      {HeaderList.map((info, index) => {
+      {HeaderList.map(info => {
         return (
           <div
             key={info.id}
-            className={slideIndex === index + 1 ? 'slide active-ani' : 'slide'}
+            className={slideIndex === info.id ? 'slide active-ani' : 'slide'}
           >
             <div className="main-header-img">
-              <img
-                src={`../images/main/product${index + 1}.png`}
-                alt="이미지"
-              />
+              <img src={`../images/main/product${info.id}.png`} alt="이미지" />
             </div>
             <div className="main-header-text">
               <h1>다다일상 홈카페</h1>
