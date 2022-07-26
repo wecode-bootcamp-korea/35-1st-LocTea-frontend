@@ -1,37 +1,51 @@
 .main-header {
   .main-header-container {
-    .main-header-wrapper {
+    .slider-container {
       position: relative;
+      display: flex;
 
-      img {
-        width: 100vw;
-      }
-      .main-header-text {
+      .btn-slide {
         position: absolute;
-        top: 30%;
-        left: 10%;
-        h1 {
-          font-size: 36px;
-          font-weight: 600;
-          margin-top: 10px;
+        top: 200px;
+        width: 50px;
+      }
+      .next {
+        right: 50px;
+      }
+      .prev {
+        left: 50px;
+      }
+      .main-header-wrapper {
+        position: relative;
+        .main-header-img img {
         }
-        h2 {
-          font-size: 16px;
-          margin-top: 15px;
-          font-weight: 350;
-          width: 300px;
-        }
-        h3 {
-          font-size: 13px;
-          margin-top: 20px;
-          font-weight: 800;
-        }
-        .event-btn {
-          font-size: 13px;
-          margin-top: 5px;
-          border: 1px solid black;
-          padding: 5px 15px;
-          border-radius: 5px;
+        .main-header-text {
+          position: absolute;
+          top: 30%;
+          left: 10%;
+          h1 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-top: 10px;
+          }
+          h2 {
+            font-size: 16px;
+            margin-top: 15px;
+            font-weight: 350;
+            width: 300px;
+          }
+          h3 {
+            font-size: 13px;
+            margin-top: 20px;
+            font-weight: 800;
+          }
+          .event-btn {
+            font-size: 13px;
+            margin-top: 5px;
+            border: 1px solid black;
+            padding: 5px 15px;
+            border-radius: 5px;
+          }
         }
       }
     }

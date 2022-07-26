@@ -1,13 +1,20 @@
 import React from 'react';
 
-const BtnSlider = () => {
+function BtnSlider({ direction, moveSlide }) {
   return (
     <div>
-      <button className="btn-slide">
-        <i class="fa-solid fa-angle-left" />
+      <button
+        onClick={moveSlide}
+        className={direction === 'next' ? 'btn-slide next' : 'btn-slide prev'}
+      >
+        {direction === 'prev' ? (
+          <i className="fa-solid fa-angle-left" />
+        ) : (
+          <i className="fa-solid fa-chevron-right" />
+        )}
       </button>
     </div>
   );
-};
+}
 
 export default BtnSlider;
