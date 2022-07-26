@@ -35,8 +35,11 @@ const Filter = ({ whichProductRender, items, whatType, setWhatType }) => {
   };
   return (
     <div className="filter">
-      <p>총 {items.total_items}개의 상품이 있습니다.</p>
-
+      <div>
+        <span>총</span>
+        <span className="itemNumber">{items.length}</span>
+        <span>개의 상품이 있습니다.</span>
+      </div>
       <div className="buttons">
         {whichProductRender.button === true && (
           <>

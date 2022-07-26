@@ -42,7 +42,7 @@ const ItemList = () => {
     if (whichProductRender.button === false) {
       typeUrl = '';
     } else if (whatType.all === true) {
-      typeUrl = '&type=teabag&type=pyramid&type=teabag&type=powder';
+      typeUrl = '&type=tealeaf&type=pyramid&type=teabag&type=powder';
     } else {
       for (let i = 0; i < whatTypeKeys.length - 1; i++) {
         if (whatType[whatTypeKeys[i]] === true) {
@@ -53,7 +53,6 @@ const ItemList = () => {
         }
       }
     }
-
     fetch(
       `http://10.58.4.134:8000/products/list?${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}${typeUrl}`
     )
