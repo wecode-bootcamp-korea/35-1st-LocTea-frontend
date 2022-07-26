@@ -5,7 +5,7 @@ import './Nav.scss';
 
 function Nav() {
   // 통신
-  const [items, setItems] = useState({});
+  const [items, setItems] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
     fetch('/data/NavItemType.json')
