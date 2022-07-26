@@ -11,5 +11,8 @@
   "title": "러블리 티 박스",
   "price": 20000,
   "stock": 10,
-  "thumbnail_images": "https://www.osulloc.com/upload/kr/ko/adminImage/HB/XA/20211026141423508CU.png?quality=80"
+  "thumbnail_images": [
+    "https://www.osulloc.com/upload/kr/ko/adminImage/HB/XA/20211026141423508CU.png?quality=80",
+    "https://www.osulloc.com/upload/kr/ko/adminImage/HB/XA/20211026141423508CU.png?quality=80"
+  ]
 }

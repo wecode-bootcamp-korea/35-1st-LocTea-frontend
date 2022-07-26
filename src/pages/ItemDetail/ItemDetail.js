@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import './ItemDetail.scss';
 
 const ItemDetail = () => {
   const [itemData, setItemData] = useState({});
   const [currentTab, setCurrentTab] = useState('상품상세');
   const [quantity, setQuantity] = useState(1);
-  const params = useParams();
+  // const params = useParams();
 
   useEffect(() => {
-    fetch(`http://10.58.7.130:8000/products/${params.id}`)
+    // fetch(`http://10.58.7.130:8000/products/${params.id}`)
+    fetch('/data/itemData.json')
       .then(res => res.json())
-      .then(data => setItemData(data.result));
-  }, [params.id]);
+      .then(data => setItemData(data));
+  }, []);
 
   const {
     first_category,
