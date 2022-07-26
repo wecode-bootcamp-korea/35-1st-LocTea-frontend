@@ -5,17 +5,31 @@ import BtnSlider from './BtnSlider';
 function HeaderImg() {
   const [slideIndex, setSlideIndex] = useState(1);
 
-  const nextslide = () => {};
+  const nextslide = () => {
+    slideIndex !== HeaderList.length
+      ? setSlideIndex(slideIndex + 1)
+      : setSlideIndex(1);
+  };
 
-  const prevSlide = () => {};
+  const prevSlide = () => {
+    slideIndex !== 1
+      ? setSlideIndex(slideIndex - 1)
+      : setSlideIndex(HeaderList.length);
+  };
 
   return (
     <div className="slider-container">
       {HeaderList.map((info, index) => {
         return (
-          <div key={info.id} className="main-header-wrapper">
+          <div
+            key={info.id}
+            className={slideIndex === index + 1 ? 'slide active-ani' : 'slide'}
+          >
             <div className="main-header-img">
-              <img src={info.img} alt="이미지" />
+              <img
+                src={`../images/main/product${index + 1}.png`}
+                alt="이미지"
+              />
             </div>
             <div className="main-header-text">
               <h1>다다일상 홈카페</h1>

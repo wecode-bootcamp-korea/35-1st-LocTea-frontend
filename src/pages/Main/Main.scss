@@ -15,8 +15,11 @@
       .prev {
         left: 50px;
       }
-      .main-header-wrapper {
-        position: relative;
+      .slide {
+        position: absolute;
+        transition: opacity ease-in-out 0.4s;
+        opacity: 0;
+        z-index: none;
         .main-header-img img {
         }
         .main-header-text {
@@ -47,6 +50,9 @@
             border-radius: 5px;
           }
         }
+      }
+      .active-ani {
+        opacity: 1;
       }
     }
   }
