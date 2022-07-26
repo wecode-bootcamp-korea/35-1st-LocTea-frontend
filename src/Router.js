@@ -7,7 +7,7 @@ import ItemDetail from '../src/pages/ItemDetail/ItemDetail';
 import ItemList from '../src/pages/ItemList/ItemList';
 import Login from '../src/pages/Login/Login';
 import Register from '../src/pages/Register/Register';
-import NonUsers from './pages/nonUsers/nonUsers';
+import Purchase from './pages/Purchase/Purchase';
 
 function Router() {
   return (
@@ -20,7 +20,7 @@ function Router() {
         <Route path="/itemlist" element={<ItemList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/order" element={<NonUsers />} />
+        <Route path="/order" element={<Purchase />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Purchase.scss';
 
 const Purchase = () => {
+  const [purchaseData, setPurchaseData] = useState([]);
   const [purchaseInfo, setPurchaseInfo] = useState({
     userName: '',
     sendingName: '',
@@ -12,6 +13,12 @@ const Purchase = () => {
     deliveryRequest: '',
     requestPlus: '',
   });
+
+  useEffect(() => {
+    fetch('/data/purchaseData.json')
+      .then(res => res.json())
+      .then(data => setPurchaseData(data));
+  }, []);
 
   const handleInput = e => {
     const { name, value } = e.target;
@@ -45,7 +52,15 @@ const Purchase = () => {
       .replace(/[^0-9.]/g, '')
       .replace(/(\..*)\./g, '$1');
   };
+  if (purchaseData.length === 0) return <>Loading...</>;
 
+  const priceArr = purchaseData.map(data => data.price);
+  const discountArr = purchaseData.map(data => {
+    return data.price * (data.discount / 100);
+  });
+  const totalDiscount = discountArr.reduce((x, y) => x + y);
+  const totalPrice = priceArr.reduce((x, y) => x + y);
+  const deliveryFee = 2500;
   return (
     <div className="order-page">
       <div className="nonusers">
@@ -111,6 +126,7 @@ const Purchase = () => {
                     name="sendingName"
                     defaultValue={sendingName}
                     autoComplete="off"
+                    maxLength={7}
                   />
                   <ul className="textbox">
                     <li>
@@ -212,23 +228,52 @@ const Purchase = () => {
               <div className="delivery-items">
                 <div className="delivery-items-title">
                   <p className="title-left">주문상품</p>
-                  <p className="title-right">총 1건</p>
+                  <p className="title-right">총 {purchaseData.length}건</p>
                 </div>
-                <div className="delivery-items-product">
-                  <div className="product-imgbox">
-                    <img
-                      src="https://www.osulloc.com/upload/kr/ko/adminImage/CS/TM/304_20200103140038011DF.png?quality=80"
-                      alt=""
-                    />
-                  </div>
-                  <div className="product-name-quantity">
-                    <p className="name">벚꽃향 가득한 올레 20입</p>
-                    <div className="price-quantity">
-                      <p className="price">{'23000'.toLocaleString()}원</p>
-                      <p>/1개</p>
-                    </div>
-                  </div>
-                </div>
+                {purchaseData.map(
+                  ({
+                    product_id,
+                    thumbnail_images,
+                    title,
+                    quantity,
+                    price,
+                    discount,
+                  }) => {
+                    return (
+                      <div className="delivery-items-product" key={product_id}>
+                        <div className="product-imgbox">
+                          <img src={thumbnail_images} alt="" />
+                        </div>
+                        <div className="product-name-quantity">
+                          <p className="name">{title}</p>
+                          <div className="price-quantity">
+                            {discount ? (
+                              <>
+                                <p className="discount-price">
+                                  {(price * quantity).toLocaleString()}원
+                                </p>
+                                <p className="discount">/{discount}%할인</p>
+                                <p className="price">
+                                  {(
+                                    price *
+                                    quantity *
+                                    ((100 - discount) / 100)
+                                  ).toLocaleString()}
+                                  원
+                                </p>
+                              </>
+                            ) : (
+                              <p className="price">
+                                {(price * quantity).toLocaleString()}원
+                              </p>
+                            )}
+                            <p>/{quantity}개</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </div>
           </div>
@@ -236,16 +281,29 @@ const Purchase = () => {
             <div className="order-right">
               <div className="order-price">
                 <p>총 상품 금액</p>
-                <p>23,000원</p>
+                <p>{totalPrice.toLocaleString()}원</p>
+              </div>
+              <div className="sale-price">
+                <p>할인가격</p>
+                <p className="sale-price-red">
+                  -{totalDiscount.toLocaleString()}원
+                </p>
               </div>
               <div className="delivery-price">
                 <p>배송비</p>
-                <p>2,500원</p>
+                <p>{totalPrice < 30000 ? deliveryFee.toLocaleString() : 0}원</p>
               </div>
               <div className="total-price">
                 <p className="price">최종 결제 금액</p>
                 <p>
-                  <strong>25,500</strong>원
+                  <strong>
+                    {(
+                      totalPrice -
+                      totalDiscount +
+                      deliveryFee
+                    ).toLocaleString()}
+                  </strong>
+                  원
                 </p>
               </div>
               <div className="purchase">

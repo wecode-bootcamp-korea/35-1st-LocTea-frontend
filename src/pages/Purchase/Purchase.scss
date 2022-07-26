@@ -444,6 +444,9 @@
             }
           }
           .delivery-items {
+            padding-bottom: 20px;
+            border-bottom: 2px solid #333;
+
             .delivery-items-title {
               @include flex($justify: space-between);
               height: 60px;
@@ -465,8 +468,11 @@
           .delivery-items-product {
             display: flex;
             align-items: center;
-            padding-bottom: 40px;
-            border-bottom: 2px solid #333;
+            border-bottom: 1px solid #ddd;
+
+            &:last-child {
+              border: none;
+            }
 
             .product-imgbox {
               width: 25%;
@@ -486,12 +492,22 @@
 
               .name {
                 font-size: 18px;
+                font-weight: 900;
               }
 
               .price-quantity {
                 display: flex;
                 align-items: center;
 
+                .discount-price {
+                  text-decoration: line-through;
+                  color: #999;
+                }
+                .discount {
+                  color: #6c801a;
+                  margin-right: 10px;
+                  font-weight: 700;
+                }
                 .price {
                   font-weight: bold;
                   font-size: 18px;
@@ -517,17 +533,23 @@
           overflow: hidden;
           background-color: #fff;
 
-          .order-price {
+          .order-price,
+          .sale-price {
             @include flex($justify: space-between);
             padding: 10px 0;
             margin: 10px 20px;
+            border-bottom: 1px solid #f6f6f6;
+
+            .sale-price-red {
+              color: red;
+            }
           }
 
           .delivery-price {
             @include flex($justify: space-between);
             padding: 10px 0;
             margin: 10px 20px;
-            border-top: 1px solid #f6f6f6;
+
             border-bottom: 1px solid #e6e6e6;
           }
 
