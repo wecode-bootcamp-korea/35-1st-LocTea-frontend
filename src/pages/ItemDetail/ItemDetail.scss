@@ -1,0 +1,235 @@
+@import '../../styles/variable.scss';
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&display=swap');
+
+.item-detail {
+  @include flex($justify: space-between);
+  font-family: 'Nanum Gothic', sans-serif;
+  padding: 0 30px;
+  margin: 70px auto;
+  max-width: 1200px;
+
+  .item-img-ul {
+    @include flex;
+    flex-direction: column;
+    background-color: #f8f9fb;
+    position: relative;
+    padding: 30px 43px 110px;
+    width: 45%;
+
+    .item-img-box {
+      width: 353px;
+      height: 353px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .item-ul {
+      display: block;
+      position: absolute;
+      bottom: 5px;
+
+      li {
+        display: inline;
+        float: left;
+        position: relative;
+        padding: 15px;
+        color: #505051;
+        margin: 10px 0 0;
+        width: 50%;
+      }
+    }
+  }
+
+  .item-explain-purchase {
+    @include flex($align: flex-start);
+    flex-direction: column;
+    width: 47%;
+
+    .item-explain {
+      width: 100%;
+      .item-categories {
+        .item-categories-link {
+          @include flex($justify: flex-start);
+          flex-direction: row;
+          color: #9d9d9d;
+
+          li {
+            margin: 5px;
+
+            &:first-child:hover,
+            &:last-child:hover {
+              border-bottom: 1px solid #9d9d9d;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      .item-name {
+        font-size: 36px;
+        margin: 15px 0;
+      }
+
+      .item-name-explain {
+        font-size: 20px;
+        color: #656565;
+        line-height: 30px;
+        margin-bottom: 30px;
+      }
+
+      .item-price-name {
+        @include flex($justify: flex-end);
+        padding-bottom: 17px;
+        border-bottom: 1px #ececec solid;
+
+        strong {
+          font-family: 'Nanum Gothic', sans-serif;
+          font-weight: bold;
+          font-size: 28px;
+        }
+
+        span {
+          color: #7b7b7b;
+          font-size: 28px;
+        }
+      }
+
+      .item-sale-price {
+        @include flex($align: flex-end);
+        flex-direction: column;
+
+        .price-top {
+          @include flex;
+          color: #b8b8b8;
+          font-size: 20px;
+          text-decoration: line-through;
+        }
+
+        .price-bottom {
+          margin: 7px 0 0;
+          color: #7b7b7b;
+          font-size: 28px;
+
+          .price {
+            color: #000000;
+            font-weight: bold;
+            font-size: 28px;
+          }
+
+          .discount-percent {
+            margin: 0 0 0 4px;
+            color: #fd5c5c;
+            font-size: 26px;
+          }
+        }
+      }
+    }
+
+    .item-number {
+      @include flex($justify: space-between);
+      width: 100%;
+      padding: 30px 20px;
+      text-align: left;
+      background-color: #f8f9fb;
+      border: 1px #ececec solid;
+      margin-top: 10px;
+
+      .item-number-button {
+        @include flex;
+        font-size: 15px;
+
+        button {
+          border: none;
+          background-color: #f8f9fb;
+          cursor: pointer;
+        }
+
+        p {
+          font-size: 20px;
+          padding: 5px;
+        }
+      }
+    }
+
+    .item-purchase {
+      @include flex;
+      width: 100%;
+      flex-direction: column;
+
+      .item-purchase-total {
+        @include flex($justify: space-between, $align: flex-end);
+        color: #6c801a;
+        width: 100%;
+        font-size: 24px;
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+        .item-purchase-total-price {
+          @include flex;
+
+          strong {
+            font-family: 'Nanum Gothic', sans-serif;
+            font-size: 46px;
+          }
+        }
+      }
+
+      .item-purchase-button {
+        width: 100%;
+        @include flex($justify: flex-end);
+
+        .item-purchase-button-cart {
+          background-color: #313131;
+          color: #fff;
+          border: none;
+          width: 35%;
+          height: 50px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+
+        .item-purchase-button-pay {
+          border: none;
+          background-color: #6c801a;
+          color: #fff;
+          width: 50%;
+          height: 50px;
+          font-size: 20px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.item-explain {
+  .explain-categories {
+    @include flex;
+    font-weight: bold;
+    font-size: 20px;
+
+    li {
+      margin: 0 60px;
+      padding: 20px 0;
+      cursor: pointer;
+
+      &:hover {
+        color: #6c801a;
+      }
+    }
+    .on {
+      border-bottom: 3px #6c801a solid;
+      color: #6c801a;
+    }
+  }
+}
+.explain-imgbox {
+  @include flex;
+
+  img {
+    width: 1200px;
+  }
+}
