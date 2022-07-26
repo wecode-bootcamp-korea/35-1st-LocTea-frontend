@@ -37,6 +37,12 @@ const NonUsers = () => {
       receiverPhone: sendingPhone,
     });
   };
+
+  const handlePhone = e => {
+    if (e.target.value.length > e.target.maxLength)
+      e.target.value = e.target.value.slice(0, e.target.maxLength);
+  };
+
   return (
     <div className="order-page">
       <div className="nonusers">
@@ -51,10 +57,15 @@ const NonUsers = () => {
               </div>
               <div className="order-user-name">
                 <p>이름</p>
-                <input type="text" name="userName" defaultValue={userName} />
+                <input
+                  type="text"
+                  name="userName"
+                  defaultValue={userName}
+                  autocomplete="off"
+                />
               </div>
               <div className="order-user-phone">
-                <p>휴대전화</p>
+                <p>연락처</p>
                 <div className="mobile-number-box">
                   <div className="inp-select-box">
                     <select
@@ -77,10 +88,14 @@ const NonUsers = () => {
                     title="휴대전화 입력"
                     defaultValue={sendingPhone}
                     placeholder="'-' 없이 휴대폰번호 입력"
-                    maxLength="8"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     name="sendingPhone"
+                    onInput={handlePhone}
+                    maxLength={8}
+                    onWheel={function (e) {
+                      e.target.blur();
+                    }}
                   />
                 </div>
               </div>
@@ -92,6 +107,7 @@ const NonUsers = () => {
                     type="text"
                     name="sendingName"
                     defaultValue={sendingName}
+                    autocomplete="off"
                   />
                   <ul className="textbox">
                     <li>
@@ -116,6 +132,7 @@ const NonUsers = () => {
                   type="text"
                   name="receiverName"
                   defaultValue={receiverName}
+                  autocomplete="off"
                 />
               </div>
               <div className="delivery-user-phone">
@@ -138,17 +155,25 @@ const NonUsers = () => {
                     title="휴대전화 입력"
                     defaultValue={receiverPhone}
                     placeholder="'-' 없이 휴대폰번호 입력"
-                    max="8"
-                    maxLength="8"
                     inputMode="numeric"
                     pattern="[0-9]*"
                     name="receiverPhone"
+                    onInput={handlePhone}
+                    maxLength={8}
+                    onWheel={function (e) {
+                      e.target.blur();
+                    }}
                   />
                 </div>
               </div>
               <div className="delivery-user-home">
                 <p>주소</p>
-                <input type="text" name="address" defaultValue={address} />
+                <input
+                  type="text"
+                  name="address"
+                  defaultValue={address}
+                  autocomplete="off"
+                />
               </div>
               <div className="delivery-request">
                 <p>배송 요청사항</p>

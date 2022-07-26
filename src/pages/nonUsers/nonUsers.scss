@@ -13,6 +13,7 @@
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
+
       h2 {
         height: auto;
         line-height: initial;
@@ -22,18 +23,21 @@
         color: #333;
       }
     }
+
     .form-order {
       display: flex;
       justify-content: center;
 
       .form-order-left {
         padding: 0 40px;
+
         .order-user-info {
           background-color: #fff;
           color: #333;
           font-weight: 400;
           font-size: 13px;
           padding: 20px 20px 60px 20px;
+
           .order-user-title {
             @include flex($justify: space-between);
             border-bottom: none;
@@ -44,11 +48,13 @@
             padding: 0 20px;
             user-select: none;
             position: relative;
+
             h6 {
               font-size: 18px;
               font-weight: 900;
             }
           }
+
           .order-user-name {
             display: flex;
             font-size: 14px;
@@ -58,6 +64,7 @@
             position: relative;
             padding-top: 20px;
             padding-bottom: 10px;
+
             p {
               @include flex;
               width: 20%;
@@ -67,6 +74,7 @@
               text-align: left;
               position: relative;
             }
+
             input {
               width: 100%;
               height: 40px;
@@ -78,11 +86,17 @@
               color: #333;
               background-color: #fff;
               letter-spacing: -0.03em;
+
+              &:focus {
+                outline: none;
+              }
             }
           }
+
           .order-user-phone {
             display: flex;
             padding: 10px 0;
+
             p {
               @include flex;
               width: 20%;
@@ -96,8 +110,10 @@
             .mobile-number-box {
               display: flex;
               width: 100%;
+
               .inp-select-box {
                 width: 31%;
+
                 .inp-select {
                   width: 100%;
                   height: 40px;
@@ -107,6 +123,10 @@
                   font-size: 14px;
                   font-weight: 500;
                   color: #333;
+
+                  &:focus {
+                    outline: none;
+                  }
                 }
               }
 
@@ -117,6 +137,7 @@
                 font-size: 15px;
                 color: #666;
               }
+
               .inp-text {
                 width: 100%;
                 height: 40px;
@@ -139,9 +160,11 @@
               }
             }
           }
+
           .order-user-sendingname {
             display: flex;
             padding-top: 12px;
+
             p {
               padding-top: 12px;
               @include flex($align: flex-start);
@@ -166,18 +189,25 @@
                 color: #333;
                 background-color: #fff;
                 letter-spacing: -0.03em;
+
+                &:focus {
+                  outline: none;
+                }
               }
+
               .textbox {
                 padding: 24px;
                 margin-top: 20px;
                 background-color: #f6f6f6;
                 border-radius: 5px;
+
                 li {
                   font-size: 14px;
                   color: #999;
                   line-height: 1.53;
                   text-indent: -10px;
                   padding-left: 10px;
+
                   &::before {
                     content: '';
                     display: inline-block;
@@ -188,6 +218,7 @@
                     vertical-align: middle;
                     margin-right: 8px;
                   }
+
                   span {
                     display: block;
                     color: #333;
@@ -200,12 +231,14 @@
             }
           }
         }
+
         .delivery-info {
           background-color: #fff;
           color: #333;
           font-weight: 400;
           font-size: 13px;
           padding: 20px 20px 60px 20px;
+
           .delivery-user-title {
             @include flex($justify: space-between);
             border-bottom: none;
@@ -237,6 +270,7 @@
               text-align: center;
             }
           }
+
           .delivery-user-name,
           .delivery-user-home {
             display: flex;
@@ -247,6 +281,7 @@
             position: relative;
             padding-top: 20px;
             padding-bottom: 10px;
+
             p {
               @include flex;
               width: 20%;
@@ -256,6 +291,7 @@
               text-align: left;
               position: relative;
             }
+
             input {
               width: 100%;
               height: 40px;
@@ -267,11 +303,17 @@
               color: #333;
               background-color: #fff;
               letter-spacing: -0.03em;
+
+              &:focus {
+                outline: none;
+              }
             }
           }
+
           .delivery-user-phone {
             display: flex;
             padding: 10px 0;
+
             p {
               @include flex;
               width: 20%;
@@ -285,8 +327,10 @@
             .mobile-number-box {
               display: flex;
               width: 100%;
+
               .inp-select-box {
                 width: 31%;
+
                 .inp-select {
                   width: 100%;
                   height: 40px;
@@ -296,6 +340,10 @@
                   font-size: 14px;
                   font-weight: 500;
                   color: #333;
+
+                  &:focus {
+                    outline: none;
+                  }
                 }
               }
 
@@ -306,6 +354,7 @@
                 font-size: 15px;
                 color: #666;
               }
+
               .inp-text {
                 width: 100%;
                 height: 40px;
@@ -319,6 +368,7 @@
                 letter-spacing: -0.03em;
                 vertical-align: middle;
                 outline: 0;
+
                 &::-webkit-inner-spin-button,
                 &::-webkit-outer-spin-button {
                   -webkit-appearance: none;
@@ -327,25 +377,30 @@
               }
             }
           }
+
           .delivery-request {
             padding: 24px 24px 30px 24px;
             margin-top: 20px;
             background-color: #f6f6f6;
             border-radius: 4px;
             margin-bottom: 50px;
+
             p {
               display: block;
               font-size: 14px;
               font-weight: 800;
               margin-bottom: 15px;
             }
+
             .delivery-request-detail {
               @include flex($align: flex-start);
               flex-direction: column;
+
               .detail-request {
                 display: flex;
                 width: 100%;
                 position: relative;
+
                 select {
                   width: 100%;
                   height: 40px;
@@ -356,7 +411,12 @@
                   font-weight: 500;
                   color: #333;
                   -webkit-appearance: none;
+
+                  &:focus {
+                    outline: none;
+                  }
                 }
+
                 i {
                   position: absolute;
                   right: 15px;
@@ -376,6 +436,10 @@
                 color: #333;
                 background-color: #fff;
                 letter-spacing: -0.03em;
+
+                &:focus {
+                  outline: none;
+                }
               }
             }
           }
@@ -386,10 +450,12 @@
               line-height: 60px;
               border-top: 1px solid #e6e6e6;
               border-bottom: none;
+
               .title-left {
                 font-size: 18px;
                 font-weight: 900;
               }
+
               .title-right {
                 font-size: 14px;
                 color: #6c801a;
@@ -404,10 +470,12 @@
 
             .product-imgbox {
               width: 25%;
+
               img {
                 width: 100%;
               }
             }
+
             .product-name-quantity {
               @include flex($justify: space-between);
               width: 100%;
@@ -415,12 +483,15 @@
               font-weight: 500;
               line-height: 1.57;
               margin-right: 10px;
+
               .name {
                 font-size: 18px;
               }
+
               .price-quantity {
                 display: flex;
                 align-items: center;
+
                 .price {
                   font-weight: bold;
                   font-size: 18px;
@@ -434,23 +505,24 @@
       .form-order-right {
         position: relative;
         font-size: 15px;
+
         .order-right {
           position: sticky;
           font-weight: 900;
           width: 25%;
           top: 100px;
-
           width: 260px;
-
           border: 1px solid #333;
           border-radius: 8px;
           overflow: hidden;
           background-color: #fff;
+
           .order-price {
             @include flex($justify: space-between);
             padding: 10px 0;
             margin: 10px 20px;
           }
+
           .delivery-price {
             @include flex($justify: space-between);
             padding: 10px 0;
@@ -458,20 +530,25 @@
             border-top: 1px solid #f6f6f6;
             border-bottom: 1px solid #e6e6e6;
           }
+
           .total-price {
             @include flex($justify: space-between);
             padding: 10px 0;
             margin: 10px 20px;
+
             .price {
               font-size: 18px;
             }
+
             p {
               color: #6c801a;
+
               strong {
                 font-size: 18px;
               }
             }
           }
+
           .purchase {
             button {
               display: block;
