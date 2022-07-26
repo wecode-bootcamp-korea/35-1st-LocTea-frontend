@@ -18,13 +18,19 @@ const Login = () => {
     /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$/;
   const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/;
 
-  const validation = idRegExp.test(person.id) && passwordRegExp.test(person.pw);
+  const isAllValid = idRegExp.test(person.id) && passwordRegExp.test(person.pw);
 
   const navigate = useNavigate();
 
+  const [passwordShown, setPassword] = useState(true);
+
+  const passwordChange = () => {
+    setPassword(!passwordShown);
+  };
+
   const signIn = e => {
     e.preventDefault();
-    fetch('http://10.58.1.100:8000/users/login', {
+    fetch('http://10.58.2.209:8000/users/login', {
       method: 'POST',
       body: JSON.stringify({
         username: person.id,
@@ -44,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login">
       <div className="login-header">
         <div className="login-nav">
           <h1>로그인</h1>
@@ -56,7 +62,7 @@ const Login = () => {
       <section className="body">
         <div className="login-container">
           <div className="header">
-            <img src="../images/login/LocTea.png" alt="" />
+            <img src="/images/login/LocTea.png" alt="" />
           </div>
           <form className="content" onChange={handleInput}>
             <div className="inputs">
@@ -66,15 +72,23 @@ const Login = () => {
                 value={person.id}
                 placeholder="아이디 입력"
               />
-              <input
-                type="password"
-                name="pw"
-                value={person.pw}
-                placeholder="비밀번호 입력(영문,숫자,특수문자 조합)"
-              />
+              <div className="password-Show">
+                <input
+                  type={passwordShown ? 'password' : 'text'}
+                  name="pw"
+                  value={person.pw}
+                  placeholder="비밀번호 입력(영문,숫자,특수문자 조합)"
+                />
+                <i
+                  onClick={passwordChange}
+                  className={`fa-solid ${
+                    passwordShown ? 'fa-eye-slash' : 'fa-eye'
+                  }`}
+                />
+              </div>
             </div>
             <div className="button-area">
-              <button disabled={!validation} onClick={signIn}>
+              <button disabled={!isAllValid} onClick={signIn}>
                 로그인
               </button>
             </div>

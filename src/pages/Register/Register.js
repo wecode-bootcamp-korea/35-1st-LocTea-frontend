@@ -12,6 +12,18 @@ const Register = () => {
     birth: '',
     phone: '',
   });
+
+  const [passwordShown, setPassword] = useState(true);
+  const [passwordShownCon, setPasswordCon] = useState(true);
+
+  const passwordChange = () => {
+    setPassword(!passwordShown);
+  };
+
+  const passwordChange1 = () => {
+    setPasswordCon(!passwordShownCon);
+  };
+
   const handleInput = e => {
     const { name, value } = e.target;
     setPerson({ ...person, [name]: value });
@@ -49,7 +61,7 @@ const Register = () => {
       });
   };
 
-  const validation =
+  const isAllValid =
     idRegExp.test(person.id) &&
     passwordRegExp.test(person.pw) &&
     person.pw === person.pwConfirmed &&
@@ -94,8 +106,11 @@ const Register = () => {
               />
               <input
                 type="date"
+                className="date"
                 name="birth"
                 value={person.birth}
+                min="1900-01-01"
+                max="2015-01-01"
                 placeholder="생년월일 (yyyy-mm-dd)"
               />
               <div className="message">
@@ -128,13 +143,18 @@ const Register = () => {
               </div>
               <div className="password-shown">
                 <input
-                  type="password"
+                  type={passwordShown ? 'password' : 'text'}
                   name="pw"
                   value={person.pw}
                   placeholder="비밀번호 입력(영문,숫자,특수문자 조합 8-16자)"
                 />
 
-                <i class="fa-solid fa-eye" />
+                <i
+                  onClick={passwordChange}
+                  className={`fa-solid ${
+                    passwordShown ? 'fa-eye-slash' : 'fa-eye'
+                  }`}
+                />
               </div>
               <div className="message">
                 {person.pw === '' ? (
@@ -150,13 +170,21 @@ const Register = () => {
                   <p style={{ color: 'green' }}>안전한 비밀번호 입니다.</p>
                 )}
               </div>
-              <input
-                type="password"
-                id="pw"
-                name="pwConfirmed"
-                value={person.pwConfirmed}
-                placeholder="비밀번호 확인"
-              />
+              <div className="password-shown">
+                <input
+                  type={passwordShownCon ? 'password' : 'text'}
+                  id="pw"
+                  name="pwConfirmed"
+                  value={person.pwConfirmed}
+                  placeholder="비밀번호 확인"
+                />
+                <i
+                  onClick={passwordChange1}
+                  className={`fa-solid ${
+                    passwordShownCon ? 'fa-eye-slash' : 'fa-eye'
+                  }`}
+                />
+              </div>
               <div className="message">
                 {person.pwConfirmed === '' ? (
                   ''
@@ -168,7 +196,7 @@ const Register = () => {
               </div>
             </div>
             <div className="button-area">
-              <button disabled={!validation} onClick={signUp}>
+              <button disabled={!isAllValid} onClick={signUp}>
                 회원가입
               </button>
             </div>
