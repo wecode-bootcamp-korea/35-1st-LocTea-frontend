@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Main from '../src/pages/Main/Main';
-import Nav from '../src/Components/Nav/Nav';
-import Cart from '../src/pages/Cart/Cart';
-import ItemDetail from '../src/pages/ItemDetail/ItemDetail';
-import ItemList from '../src/pages/ItemList/ItemList';
-import Login from '../src/pages/Login/Login';
-import Register from '../src/pages/Register/Register';
+import Main from './pages/Main/Main';
+import Nav from './Components/Nav/Nav';
+import Cart from './pages/Cart/Cart';
+import ItemDetail from './pages/ItemDetail/ItemDetail';
+import ItemList from './pages/ItemList/ItemList';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 
 function Router() {
   return (
