@@ -1,4 +1,3 @@
-import { toContainHTML } from '@testing-library/jest-dom/dist/matchers';
 import React, { useEffect } from 'react';
 
 import './Filter.scss';
@@ -11,13 +10,7 @@ const initialValue = {
   all: true,
 };
 
-const Filter = ({
-  whichProductRender,
-  items,
-  whatType,
-  setWhatType,
-  total,
-}) => {
+const Filter = ({ whichProductRender, whatType, setWhatType, total }) => {
   useEffect(() => {
     setWhatType({ ...initialValue });
   }, [whichProductRender]);

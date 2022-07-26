@@ -7,7 +7,7 @@ const ItemDetail = () => {
   const [currentTab, setCurrentTab] = useState('상품상세');
   const [quantity, setQuantity] = useState(1);
   const params = useParams();
-  console.log(itemData);
+
   useEffect(() => {
     fetch(`http://10.58.4.134:8000/products/${params.id}`)
       .then(res => res.json())
