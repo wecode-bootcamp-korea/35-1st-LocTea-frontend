@@ -4,21 +4,21 @@
     "title": "티 제품",
     "id": 1,
     "button": true,
-    "className": "teashop"
+    "className": "tea-products"
   },
   {
     "category": "first-category",
     "title": "티푸드",
     "id": 2,
     "button": false,
-    "className": "teafood"
+    "className": "tea-food"
   },
   {
     "category": "first-category",
-    "title": "라이프스타일",
+    "title": "티웨어",
     "id": 3,
     "button": false,
-    "className": "themashop"
+    "className": "teawear"
   },
   {
     "category": "second-category",
@@ -29,79 +29,79 @@
   },
   {
     "category": "second-category",
-    "title": "명차",
-    "id": 2,
-    "button": true,
-    "className": "goodtea"
-  },
-  {
-    "category": "second-category",
     "title": "녹차/말차",
-    "id": 3,
+    "id": 2,
     "button": true,
     "className": "greentea"
   },
   {
     "category": "second-category",
-    "title": "발효차/홍차",
-    "id": 4,
+    "title": "블렌디드 티",
+    "id": 3,
     "button": true,
-    "className": "redtea"
-  },
-  {
-    "category": "second-category",
-    "title": "블렌디드티",
-    "id": 5,
-    "button": true,
-    "className": "blended"
+    "className": "blended-tea"
   },
   {
     "category": "second-category",
     "title": "허브티",
-    "id": 6,
+    "id": 4,
     "button": true,
-    "className": "herbtea"
+    "className": "herb-tea"
   },
   {
     "category": "second-category",
     "title": "밀크티/아이스티",
-    "id": 7,
+    "id": 5,
     "button": true,
-    "className": "milktea"
+    "className": "milk-tea"
   },
   {
     "category": "second-category",
     "title": "과자/초콜릿",
-    "id": 8,
+    "id": 6,
     "button": false,
     "className": "snack"
   },
   {
     "category": "second-category",
     "title": "베이커리",
-    "id": 9,
+    "id": 7,
     "button": false,
     "className": "bakery"
   },
   {
     "category": "second-category",
     "title": "아이스크림",
-    "id": 10,
+    "id": 8,
     "button": false,
     "className": "icecream"
   },
   {
     "category": "second-category",
-    "title": "건강기능식품",
-    "id": 11,
+    "title": "티팟",
+    "id": 9,
     "button": false,
-    "className": "health"
+    "className": "teapot"
   },
   {
     "category": "second-category",
-    "title": "스킨케어",
+    "title": "소도구",
+    "id": 10,
+    "button": false,
+    "className": "saucers"
+  },
+  {
+    "category": "second-category",
+    "title": "티푸드/플레이트",
+    "id": 11,
+    "button": false,
+    "className": "plates"
+  },
+  {
+    "category": "second-category",
+    "title": "찻잔",
     "id": 12,
     "button": false,
-    "className": "skin"
+    "className": "teacup"
   }
 ]

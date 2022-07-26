@@ -34,26 +34,31 @@ const ItemList = () => {
 
   // //아이템 스테이트
   const [items, setItems] = useState([]);
-  // //데이터 로딩
+  // //데이터 로딩ƒ
   useEffect(() => {
     const whatTypeKeys = Object.keys(whatType);
     const typeKeys = [];
-    let typeUrl;
-    for (let i = 0; i < whatTypeKeys.length - 1; i++) {
-      if (whatType[whatTypeKeys[i]] === true) {
-        typeKeys.push(whatTypeKeys[i]);
-        typeUrl = typeKeys.toString();
+    let typeUrl = '';
+    if (whichProductRender.button === false) {
+      typeUrl = '';
+    } else if (whatType.all === true) {
+      typeUrl = '&type=teabag&type=pyramid&type=teabag&type=powder';
+    } else {
+      for (let i = 0; i < whatTypeKeys.length - 1; i++) {
+        if (whatType[whatTypeKeys[i]] === true) {
+          typeKeys.push(whatTypeKeys[i]);
+          for (let i = 0; i < typeKeys.length; i++) {
+            typeUrl = typeUrl + `&type=${typeKeys[i]}`;
+          }
+        }
       }
     }
-    if (whatType.all === true) {
-      typeUrl = 'tealeaf,pyramid,teabag,powder';
-    }
-    console.log(typeUrl);
+
     fetch(
-      `http://10.58.7.130:8000/products/list?first-category=${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}&type=${typeUrl}`
+      `http://10.58.4.134:8000/products/list?${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}${typeUrl}`
     )
       .then(res => res.json())
-      .then(result => setItems(result.result));
+      .then(result => setItems(result.products));
   }, [whichProductRender, whatOrder, whatType]);
 
   return (
@@ -80,7 +85,7 @@ const ItemList = () => {
             whatType={whatType}
             setWhatType={setWhatType}
           />
-          <Items items={items} />
+          {items.length > 0 && <Items items={items} />}
         </article>
       </div>
     </div>

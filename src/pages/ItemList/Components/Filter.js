@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import './Filter.scss';
 
@@ -35,7 +35,7 @@ const Filter = ({ whichProductRender, items, whatType, setWhatType }) => {
   };
   return (
     <div className="filter">
-      <p>총 {items.length}개의 상품이 있습니다.</p>
+      <p>총 {items.total_items}개의 상품이 있습니다.</p>
 
       <div className="buttons">
         {whichProductRender.button === true && (
