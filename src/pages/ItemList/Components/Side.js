@@ -3,7 +3,6 @@ import './Side.scss';
 
 const Side = ({ renderCategory }) => {
   const [whichSelected, setwhichSelected] = useState('teashop');
-
   return (
     <div className="side">
       <p className="listTitle">제품</p>

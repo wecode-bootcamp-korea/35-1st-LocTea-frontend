@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Items.scss';
 
 const Items = ({ items }) => {
-  console.log(items);
   return (
     <div className="items">
       {items.map((item, index) => {
@@ -26,8 +25,6 @@ const Items = ({ items }) => {
 const ItemCard = ({ id, name, price, thumbnailImage, discount }) => {
   const rand_0_100 = Math.floor(Math.random() * 101);
   const rand_0_99 = Math.floor(Math.random() * 100);
-  console.log(discount);
-
   return (
     <div className="item">
       <Link to={`/itemdetail/${id}`}>
@@ -53,7 +50,7 @@ const ItemCard = ({ id, name, price, thumbnailImage, discount }) => {
                 {(price - (price * discount) / 100).toLocaleString()}원
               </p>
               <div className="discoutnNumber">
-                {discount != 0 && (
+                {discount !== 0 && (
                   <>
                     <span className="beforeDiscount">
                       {price.toLocaleString()}원

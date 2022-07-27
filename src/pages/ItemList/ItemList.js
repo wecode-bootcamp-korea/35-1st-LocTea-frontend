@@ -5,11 +5,14 @@ import Filter from './Components/Filter';
 import Items from './Components/Items';
 import categoryList from './categoryList';
 import './ItemList.scss';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ItemList = () => {
   const [whichProductRender, setWhichProductRender] = useState(categoryList[0]);
   const [total, setTotal] = useState({});
-
+  const navigate = useNavigate();
+  const params = useParams();
+  console.log(params);
   const renderCategory = e => {
     for (let i = 0; i < categoryList.length; i++) {
       if (
@@ -22,7 +25,6 @@ const ItemList = () => {
   };
 
   const [whatOrder, setWhatOrder] = useState('new-arrival');
-
   const [whatType, setWhatType] = useState({
     tealeaf: false,
     pyramid: false,
@@ -34,7 +36,7 @@ const ItemList = () => {
   // //아이템 스테이트
   const [items, setItems] = useState([]);
 
-  // //데이터 로딩ƒ
+  // //데이터 로딩
   useEffect(() => {
     const whatTypeKeys = Object.keys(whatType);
     const typeKeys = [];
@@ -54,15 +56,15 @@ const ItemList = () => {
       }
     }
     fetch(
-      `http://10.58.7.200:8000/products/list?${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}${typeUrl}`
+      `http://10.58.7.200:8000/products/list?${params.category}=${params.id}&sort=${whatOrder}${typeUrl}`
     )
       .then(res => res.json())
       .then(result => {
         setItems(result.products);
         setTotal(result.total);
       });
-  }, [whichProductRender, whatOrder, whatType]);
-
+  }, [whichProductRender, whatOrder, whatType, params.category, params.id]);
+  console.log('test');
   return (
     <div className="contents">
       <div className="upper">

@@ -41,21 +41,17 @@ const Filter = ({ whichProductRender, whatType, setWhatType, total }) => {
         <span>개의 상품이 있습니다.</span>
       </div>
       <div className="buttons">
-        {whichProductRender.button === true && (
+        {whichProductRender.button && (
           <>
             <button
-              onClick={e => {
-                handleAllButton();
-              }}
+              onClick={handleAllButton}
               id="all"
-              className={
-                whatType.all === true ? 'activatedButton' : 'unactivatedButton'
-              }
+              className={whatType.all ? 'activatedButton' : 'unactivatedButton'}
             >
               전체
             </button>
             <button
-              onClick={e => {
+              onClick={() => {
                 handleButton('tealeaf');
               }}
               id="tealeaf"
@@ -67,7 +63,7 @@ const Filter = ({ whichProductRender, whatType, setWhatType, total }) => {
             </button>
 
             <button
-              onClick={e => {
+              onClick={() => {
                 handleButton('pyramid');
               }}
               id="pyramid"
@@ -78,7 +74,7 @@ const Filter = ({ whichProductRender, whatType, setWhatType, total }) => {
               피라미드
             </button>
             <button
-              onClick={e => {
+              onClick={() => {
                 handleButton('teabag');
               }}
               id="teabag"
@@ -89,7 +85,7 @@ const Filter = ({ whichProductRender, whatType, setWhatType, total }) => {
               티백
             </button>
             <button
-              onClick={e => {
+              onClick={() => {
                 handleButton('powder');
               }}
               id="powder"
