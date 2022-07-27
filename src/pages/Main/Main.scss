@@ -10,17 +10,18 @@
     .btn-slide {
       position: absolute;
       top: 50%;
+
       transform: translate(0%, -50%);
       font-size: 30px;
       color: #d3d2d6;
     }
 
     .next {
-      right: 50px;
+      right: 3%;
     }
 
     .prev {
-      left: 50px;
+      left: 3%;
     }
 
     .slide {
@@ -28,15 +29,17 @@
       transition: opacity ease-in-out 0.4s;
       opacity: 0;
       z-index: none;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
+      img {
+        height: 33.021vw;
 
+        overflow: hidden;
+      }
       .main-header-text {
         width: 1200px;
         position: absolute;
-        top: 30%;
-        left: 10%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 
         h1 {
           font-size: 36px;
