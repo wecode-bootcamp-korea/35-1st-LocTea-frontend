@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './HotTea.scss';
 
 const movingPixel = 240;
@@ -8,6 +9,7 @@ const HotTea = ({ data, summerData, weekData }) => {
   const [transition, setTransition] = useState('all ease 0.7s');
   const [isDisabled, setIsDisabled] = useState(false);
   const [selectTab, setSelectTab] = useState('여름맞이 선물');
+  const navigate = useNavigate();
 
   const minusArr = () => {
     const arrPop = data.pop();
@@ -49,7 +51,6 @@ const HotTea = ({ data, summerData, weekData }) => {
     const currentTabName = target.innerHTML;
     setSelectTab(currentTabName);
   };
-
   return (
     <div className="main-hottea">
       <div className="main-hottea-title">
@@ -91,7 +92,10 @@ const HotTea = ({ data, summerData, weekData }) => {
             {data.map(({ id, thumbnail_images, title, price, discount }) => {
               return (
                 <li className="items" key={id}>
-                  <div className="img-box">
+                  <div
+                    className="img-box"
+                    onClick={() => navigate(`/itemdetail/${id}`)}
+                  >
                     <img
                       src={thumbnail_images[0]}
                       alt="상품이미지1"
@@ -108,9 +112,11 @@ const HotTea = ({ data, summerData, weekData }) => {
                       </div>
                     </div>
                   </div>
-                  {discount ? (
+                  {discount !== '0' ? (
                     <div className="price-box">
-                      <h6>{title}</h6>
+                      <h6 onClick={() => navigate(`/itemdetail/${id}`)}>
+                        {title}
+                      </h6>
                       <div className="sale">
                         <p className="current-price">
                           {Number(price).toLocaleString()}원

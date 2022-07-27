@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './TimeSale.scss';
 
-const TimeSale = () => {
+const TimeSale = ({ timeSaleData }) => {
   const [hour, setHour] = useState(23 - new Date().getHours());
   const [minute, setMinute] = useState(59 - new Date().getMinutes());
   const [second, setSecond] = useState(59 - new Date().getSeconds());
-
+  const navigate = useNavigate();
   useEffect(() => {
     const timeInterval = setInterval(() => {
       setHour(23 - new Date().getHours());
@@ -15,15 +16,15 @@ const TimeSale = () => {
     return () => clearInterval(timeInterval);
   }, []);
 
+  const { id, discount, price, thumbnail_images, title } = timeSaleData;
+  const goToItemDetail = () => navigate(`/itemdetail/${id}`);
+  if (Object.keys(timeSaleData).length === 0) return <>Loading...</>;
   return (
     <div className="timesale">
       <div className="timesale-main">
-        <div className="timesale-left">
+        <div className="timesale-left" onClick={goToItemDetail}>
           <div className="left-imgbox">
-            <img
-              src="https://www.osulloc.com/upload/kr/ko/adminImage/RD/LF/20220622133041132VS.jpg?quality=80"
-              alt="벚꽃향 가득한 올레 20입 세일"
-            />
+            <img src={thumbnail_images[0]} alt={title} />
           </div>
           <div className="left-textbox">
             <div className="textbox-top">
@@ -36,11 +37,15 @@ const TimeSale = () => {
               </p>
             </div>
             <div className="textbox-bottom">
-              <p>벚꽃향 가득한 올레 20입</p>
+              <p>{title}</p>
               <div className="sale-price">
-                <div className="sale-percent">30%</div>
-                <div className="price-origin">23,000</div>
-                <div className="price-result">16,100원</div>
+                <div className="sale-percent">{discount}%</div>
+                <div className="price-origin">
+                  {Number(price).toLocaleString()}
+                </div>
+                <div className="price-result">
+                  {(price * ((100 - discount) / 100)).toLocaleString()}
+                </div>
               </div>
             </div>
           </div>
