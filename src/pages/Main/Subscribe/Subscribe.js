@@ -132,7 +132,7 @@ const Subscribe = () => {
       </div>
       <div className="article-more">
         <button>
-          다다일상 자세히 보기
+          코드일상 자세히 보기
           <i className="fa-solid fa-angle-right" />
         </button>
       </div>
