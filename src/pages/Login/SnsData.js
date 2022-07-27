@@ -21,7 +21,7 @@ const SNS_LIST = [
     id: 4,
     img: '/images/login/more.png',
     text: '더보기',
-    text2: '...',
+    text3: '...',
   },
 ];
 

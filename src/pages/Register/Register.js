@@ -11,7 +11,10 @@ const Register = () => {
     name: '',
     birth: '',
     phone: '',
+    email: '',
   });
+
+  const { id, pw, pwConfirmed, name, birth, phone, email } = person;
 
   const [passwordShown, setPassword] = useState(true);
   const [passwordShownCon, setPasswordCon] = useState(true);
@@ -33,6 +36,7 @@ const Register = () => {
   const passwordRegExp =
     /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$/;
   const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/;
+  const REGEXEMAIL = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
   // 통신 회원가입
 
@@ -43,11 +47,11 @@ const Register = () => {
     fetch('http://10.58.1.100:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
-        name: person.name,
-        username: person.id,
-        password: person.pw,
-        mobile_number: person.phone,
-        birth_day: person.birth,
+        name: name,
+        username: id,
+        password: pw,
+        mobile_number: phone,
+        birth_day: birth,
       }),
     })
       .then(response => response.json())
@@ -62,18 +66,22 @@ const Register = () => {
   };
 
   const isAllValid =
-    idRegExp.test(person.id) &&
-    passwordRegExp.test(person.pw) &&
-    person.pw === person.pwConfirmed &&
-    person.name.length > 1 &&
-    person.phone;
+    idRegExp.test(id) &&
+    passwordRegExp.test(pw) &&
+    pw === pwConfirmed &&
+    name.length > 1 &&
+    REGEXEMAIL.test(email) &&
+    phone;
   return (
     <React.Fragment>
       <section className="register-header">
         <div className="register-nav">
           <h1>회원 가입</h1>
           <button type="submit">
-            <i class="fa-solid fa-xmark" />
+            <i
+              onClick={() => navigate('/login')}
+              className="fa-solid fa-xmark"
+            />
           </button>
         </div>
       </section>
@@ -82,59 +90,103 @@ const Register = () => {
           <form className="content" onChange={handleInput}>
             <div className="inputs">
               <input
+                className={
+                  name === ''
+                    ? 'input'
+                    : name.length < 2
+                    ? 'input wrong'
+                    : 'input right'
+                }
                 type="text"
                 name="name"
                 maxLength="5"
-                value={person.name}
+                value={name}
                 placeholder="이름"
+                autoComplete="off"
               />
               <div className="message">
-                {person.name === '' ? (
+                {name === '' ? (
                   ''
-                ) : person.name.length < 2 ? (
+                ) : name.length < 2 ? (
                   <p style={{ color: 'red' }}>2글자 이상 입력해주세요!</p>
                 ) : (
-                  <p style={{ color: 'green' }}> 환영합니다!</p>
+                  <p style={{ color: '#7bbced' }}> 환영합니다!</p>
                 )}
               </div>
               <input
+                className={
+                  email === ''
+                    ? 'input'
+                    : REGEXEMAIL.test(email)
+                    ? 'input right'
+                    : 'input wrong'
+                }
+                type="text"
+                name="email"
+                value={email}
+                placeholder="이메일"
+                autoComplete="off"
+              />
+              <div className="message">
+                {email === '' ? (
+                  ''
+                ) : REGEXEMAIL.test(email) ? (
+                  <p style={{ color: '#7bbced' }}>환영합니다!</p>
+                ) : (
+                  <p style={{ color: 'red' }}>
+                    loctea@gmail.com 형식으로 작성해주세요.
+                  </p>
+                )}
+              </div>
+
+              <input
+                className={
+                  phone === ''
+                    ? 'input'
+                    : phone.length < 11
+                    ? 'input wrong'
+                    : 'input right'
+                }
                 type="text"
                 name="phone"
                 maxLength="11"
-                value={person.phone}
+                value={phone}
                 placeholder="핸드폰 번호"
+                autoComplete="off"
               />
               <input
                 type="date"
-                className="date"
+                className={
+                  birth === ''
+                    ? 'input date'
+                    : birth.length !== 0 && 'input date text right'
+                }
                 name="birth"
-                value={person.birth}
+                value={birth}
                 min="1900-01-01"
                 max="2015-01-01"
                 placeholder="생년월일 (yyyy-mm-dd)"
+                autoComplete="off"
               />
-              <div className="message">
-                {person.birth === '' ? (
-                  <p />
-                ) : person.birth.includes('.') ? (
-                  <p style={{ color: 'red' }}>
-                    "2000-01-01" 형태로 입력해주세요.
-                  </p>
-                ) : (
-                  ''
-                )}
-              </div>
               <input
+                className={
+                  id === ''
+                    ? 'input'
+                    : idRegExp.test(id)
+                    ? 'input right'
+                    : 'input wrong'
+                }
                 type="text"
                 name="id"
-                value={person.id}
+                value={id}
                 placeholder="아이디 (영문 또는 숫자 4-12자리)"
+                autoComplete="off"
               />
               <div className="message">
-                {person.id === '' ? (
+                {id === '' ? (
                   <p />
-                ) : idRegExp.test(person.id) ? (
-                  <p style={{ color: 'green' }}>사용가능한 아이디 입니다.</p>
+                ) : idRegExp.test(id) ? (
+                  <p style={{ color: '#7bbced' }}>사용가능한 아이디 입니다.</p>
                 ) : (
                   <p style={{ color: 'red' }}>
                     4-12사이 영문 또는 숫자만 입력해 주세요.
@@ -143,9 +195,16 @@ const Register = () => {
               </div>
               <div className="password-shown">
                 <input
+                  className={
+                    pw === ''
+                      ? 'input'
+                      : passwordRegExp.test(pw)
+                      ? 'input right'
+                      : 'input wrong'
+                  }
                   type={passwordShown ? 'password' : 'text'}
                   name="pw"
-                  value={person.pw}
+                  value={pw}
                   placeholder="비밀번호 입력(영문,숫자,특수문자 조합 8-16자)"
                 />
 
@@ -157,9 +216,9 @@ const Register = () => {
                 />
               </div>
               <div className="message">
-                {person.pw === '' ? (
+                {pw === '' ? (
                   ''
-                ) : !passwordRegExp.test(person.pw) ? (
+                ) : !passwordRegExp.test(pw) ? (
                   <div>
                     <p style={{ color: 'red' }}>
                       영어(소문자),숫자,특수문자를 포함한 8-16자로 입력해주세요
@@ -167,15 +226,22 @@ const Register = () => {
                     <p style={{ color: 'red' }}>조합 8-16자로 입력해주세요</p>
                   </div>
                 ) : (
-                  <p style={{ color: 'green' }}>안전한 비밀번호 입니다.</p>
+                  <p style={{ color: '#7bbced' }}>안전한 비밀번호 입니다.</p>
                 )}
               </div>
               <div className="password-shown">
                 <input
+                  className={
+                    pwConfirmed === ''
+                      ? 'input'
+                      : pwConfirmed === pw
+                      ? 'input right'
+                      : 'input wrong'
+                  }
                   type={passwordShownCon ? 'password' : 'text'}
                   id="pw"
                   name="pwConfirmed"
-                  value={person.pwConfirmed}
+                  value={pwConfirmed}
                   placeholder="비밀번호 확인"
                 />
                 <i
@@ -186,12 +252,12 @@ const Register = () => {
                 />
               </div>
               <div className="message">
-                {person.pwConfirmed === '' ? (
+                {pwConfirmed === '' ? (
                   ''
-                ) : person.pw !== person.pwConfirmed ? (
+                ) : pw !== pwConfirmed ? (
                   <p style={{ color: 'red' }}>비밀번호가 다릅니다.</p>
                 ) : (
-                  <p style={{ color: 'green' }}>비밀번호가 같습니다.</p>
+                  <p style={{ color: '#7bbced' }}>비밀번호가 같습니다.</p>
                 )}
               </div>
             </div>

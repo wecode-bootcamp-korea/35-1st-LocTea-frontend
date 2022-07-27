@@ -54,8 +54,8 @@ const Login = () => {
       <div className="login-header">
         <div className="login-nav">
           <h1>로그인</h1>
-          <button type="submit">
-            <i class="fa-solid fa-xmark" />
+          <button type="submit" onClick={() => navigate('/')}>
+            <i className="fa-solid fa-xmark" />
           </button>
         </div>
       </div>
@@ -71,6 +71,7 @@ const Login = () => {
                 name="id"
                 value={person.id}
                 placeholder="아이디 입력"
+                autoComplete="off"
               />
               <div className="password-Show">
                 <input
@@ -96,6 +97,15 @@ const Login = () => {
           <div className="login-footer-border">
             <div className="login-footer">
               <Sns />
+            </div>
+          </div>
+          <div className="to-register-box">
+            <div>아직 회원이 아니세요?</div>
+            <div
+              className="register-hover"
+              onClick={() => navigate('/register')}
+            >
+              회원가입
             </div>
           </div>
         </div>

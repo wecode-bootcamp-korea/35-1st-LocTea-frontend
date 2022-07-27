@@ -9,15 +9,19 @@
   .login-nav {
     @include flex;
     border-bottom: 1px solid #f0f0f0;
+    position: relative;
     h1 {
-      padding: 10px 170px;
+      padding: 20px 170px;
       font-size: 17px;
       font-weight: 500;
     }
     button {
+      position: absolute;
+      right: 35%;
       border: 0;
       background-color: white;
       font-size: 20px;
+      cursor: pointer;
     }
   }
 }
@@ -55,6 +59,8 @@
           border-radius: 6px;
           border: 1px solid #dad6d6;
           appearance: none;
+          &:focus {
+          }
         }
         .password-Show {
           position: relative;
@@ -62,6 +68,7 @@
             position: absolute;
             right: 20px;
             top: 17px;
+            color: #7e7e7e;
           }
         }
       }
@@ -84,6 +91,9 @@
     }
     .login-footer-border {
       @include flex;
+      width: 100%;
+      border-bottom: 1px solid rgb(237, 237, 237);
+      padding-bottom: 10px;
       .login-footer {
         @include flex($justify: space-between);
         width: 300px;
@@ -95,7 +105,7 @@
             margin-bottom: 3px;
             font-size: 13px;
           }
-          .hiddenT {
+          .not-visible {
             font-size: 13px;
             color: white;
           }
@@ -103,6 +113,26 @@
         img {
           width: 40px;
           margin-bottom: 10px;
+        }
+      }
+    }
+    .to-register-box {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+
+      width: 400px;
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px solid #dad6d6;
+      height: 50px;
+      .register-hover {
+        &:hover {
+          color: #2363c4;
+          font-size: 15px;
+          font-weight: 600;
         }
       }
     }
