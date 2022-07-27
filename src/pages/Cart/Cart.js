@@ -3,6 +3,7 @@ import CartControlBar from './components/CartControlBar';
 import CartProduct from './components/CartProduct';
 import CartPrice from './components/CartPrice';
 import './Cart.scss';
+import { Navigate } from 'react-router-dom';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
@@ -34,6 +35,31 @@ function Cart() {
       });
   }, []);
 
+  const letOrder = () => {
+    fetch(`http://10.58.0.74:8000/orders/order`, {
+      method: 'POST',
+      headers: { autorizaion: localStorage.getItem('token') },
+    })
+      .then(response => response.json())
+      .then(data => {
+        const idList = data.map(({ product_id }) => product_id);
+        setSelectedList(idList);
+        Navigate();
+      });
+  };
+
+  // const removeCart = id => {
+  //   fetch(`http://10.58.7.133:8000/carts/cart/${cart_id}`, {
+  //     method: 'DELETE',
+  //     headers: { autorizaion: localStorage.getItem('token') },
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       const idList = data.map(({ product_id }) => product_id);
+  //       setSelectedList(idList);
+  //     });
+  // };
+
   const cartListCopy = [...cartList];
 
   //수량 증가
@@ -55,9 +81,10 @@ function Cart() {
     setCartList(cartListCopy.filter(cartListCopy => cartListCopy.stock !== 0));
   };
 
-  const deleteSelected = () => {
-    setCartList(cartListCopy.filter(cartListCopy => cartListCopy.stock !== 0));
-  };
+  //선택 삭제를 하고 싶어요...
+  // const deleteSelected = id => {
+  //   setSelectedList(cartListCopy.filter(productId => productId === id));
+  // };
 
   //선택한 상품아이디를 배열로 반환
   const selectProduct = id => {
@@ -114,7 +141,9 @@ function Cart() {
               <div className="cart-btn-box">
                 <div className="cart-btn-item">
                   <button className="cart-btn sel-buy">선택상품 주문</button>
-                  <button className="cart-btn all-buy">전체상품 주문</button>
+                  <button className="cart-btn all-buy" letOrder={letOrder}>
+                    전체상품 주문
+                  </button>
                 </div>
               </div>
             </div>

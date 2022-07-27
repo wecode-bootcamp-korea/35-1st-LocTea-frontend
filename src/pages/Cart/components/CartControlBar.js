@@ -1,12 +1,7 @@
 import React from 'react';
 import './CartControlBar.scss';
 
-const CartControlBar = ({
-  deleteSoldOut,
-  deleteSelected,
-  isAllSelected,
-  checkAll,
-}) => {
+const CartControlBar = ({ deleteSoldOut, isAllSelected, checkAll }) => {
   return (
     <div className="cart-chk">
       <div className="left-box">
@@ -32,12 +27,7 @@ const CartControlBar = ({
         >
           품절 삭제
         </button>
-        <button
-          type="button"
-          className="del-btn sel-del-btn"
-          title="선택 삭제"
-          onClick={deleteSelected}
-        >
+        <button type="button" className="del-btn sel-del-btn" title="선택 삭제">
           선택 삭제
         </button>
       </div>
