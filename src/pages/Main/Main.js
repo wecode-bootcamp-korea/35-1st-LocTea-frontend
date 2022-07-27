@@ -10,25 +10,27 @@ const Main = () => {
   const [timeSaleData, setTimeSaleData] = useState([]);
   useEffect(() => {
     // fetch('data/summerData.json')
-    fetch('http://10.58.7.200:8000/products/list?summer-gift=true')
+    fetch('http://10.58.7.200:8000/products/list?second-category=5&limit=7')
       .then(res => res.json())
       .then(data => setMainData(data.products));
   }, []);
 
   useEffect(() => {
-    fetch('http://10.58.7.200:8000/products/list?time-sale=true')
+    fetch('http://10.58.7.200:8000/products/list?limit=1&sort=discount')
       .then(res => res.json())
       .then(data => setTimeSaleData(data.products));
   }, []);
 
   const weekBestData = () => {
-    fetch('http://10.58.7.200:8000/products/list?popular-gift=true')
+    fetch(
+      'http://10.58.7.200:8000/products/list?first-category=1&limit=7&sort=discount'
+    )
       .then(res => res.json())
       .then(data => setMainData(data.products));
   };
 
   const summerData = () => {
-    fetch('http://10.58.7.200:8000/products/list?summer-gift=true')
+    fetch('http://10.58.7.200:8000/products/list?second-category=5&limit=7')
       .then(res => res.json())
       .then(data => setMainData(data.products));
   };

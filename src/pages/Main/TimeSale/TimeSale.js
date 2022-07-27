@@ -16,9 +16,12 @@ const TimeSale = ({ timeSaleData }) => {
     return () => clearInterval(timeInterval);
   }, []);
 
-  const { id, discount, price, thumbnail_images, title } = timeSaleData;
   const goToItemDetail = () => navigate(`/itemdetail/${id}`);
+
   if (Object.keys(timeSaleData).length === 0) return <>Loading...</>;
+
+  const { id, discount, price, thumbnail_images, title } = timeSaleData[0];
+
   return (
     <div className="timesale">
       <div className="timesale-main">
