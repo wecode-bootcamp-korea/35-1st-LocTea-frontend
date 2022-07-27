@@ -92,6 +92,10 @@ function Nav() {
                 {LoginisHovering ? (
                   <div className="nav-login-box">
                     <div className="nav-register-box">
+                      <div className="text" onClick={() => navigate('/login')}>
+                        로그인
+                      </div>
+
                       <div
                         className="text"
                         onClick={() => navigate('/register')}
