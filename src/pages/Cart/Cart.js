@@ -22,28 +22,28 @@ function Cart() {
   });
 
   useEffect(() => {
-    //http://10.58.7.60:8000/cart
+    //http://10.58.1.251:8000/cart
     fetch('data/cartData.json', {
       method: 'GET',
-      headers: { autorizaion: localStorage.getItem('token') },
+      headers: { authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
       .then(data => {
         const idList = data.map(({ product_id }) => product_id);
-        setCartList(data);
+        setCartList(data.result);
         setSelectedList(idList);
       });
   }, []);
 
-  const letOrder = () => {
-    fetch(`http://10.58.0.74:8000/orders/order`, {
+  const letOrder = e => {
+    e.preventDefault();
+    fetch(`http://10.58.0.74:8000/orders`, {
       method: 'POST',
-      headers: { autorizaion: localStorage.getItem('token') },
+      headers: { authorization: localStorage.getItem('access_token') },
     })
       .then(response => response.json())
       .then(data => {
-        const idList = data.map(({ product_id }) => product_id);
-        setSelectedList(idList);
+        setSelectedList(data);
         Navigate();
       });
   };
@@ -132,6 +132,7 @@ function Cart() {
                         minusCount={() => minusCount(item.product_id)}
                         selectProduct={() => selectProduct(item.product_id)}
                         isChecked={selectedList.includes(item.product_id)}
+                        letOrder={letOrder}
                       />
                     );
                   })}
@@ -149,7 +150,10 @@ function Cart() {
             </div>
             {/* 가격 정보 */}
             <div className="cart-price">
-              <CartPrice selectedProducts={selectedProducts} />
+              <CartPrice
+                selectedProducts={selectedProducts}
+                letOrder={letOrder}
+              />
             </div>
           </div>
         </div>

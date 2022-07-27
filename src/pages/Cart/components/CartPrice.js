@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartPrice.scss';
 
-function CartPrice({ selectedProducts }) {
+function CartPrice({ selectedProducts, letOrder }) {
   const totalPrice = selectedProducts.reduce(
     (acc, cur) => acc + cur.price * cur.quantity,
     0
@@ -61,7 +61,7 @@ function CartPrice({ selectedProducts }) {
         </p>
       </div>
       <div className="list-btn">
-        <button type="submit" className="list-buy-btn">
+        <button type="submit" className="list-buy-btn" letOrder={letOrder}>
           <span className="view-payAmount">{total.toLocaleString()}</span>원
           주문하기
         </button>
