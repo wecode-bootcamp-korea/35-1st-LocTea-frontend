@@ -48,12 +48,10 @@ const ItemDetail = () => {
   const isData = Object.keys(itemData).length !== 0;
 
   const navigateFirstCategory = e => {
-    const category = e.target.innerHTML;
-    Navigate(`/products/list?first-category=${first_category[category]}`);
+    Navigate(`/products/list?first-category=${itemData.first_category.id}`);
   };
   const navigateSecondCategory = e => {
-    const category = e.target.innerHTML;
-    Navigate(`/products/list?second-category=${second_category[category]}`);
+    Navigate(`/products/list?second-category=${second_category.id}`);
   };
 
   if (!isData) return <>Loading...</>;
@@ -88,14 +86,12 @@ const ItemDetail = () => {
           <div className="item-explain">
             <div className="item-categories">
               <ul className="item-categories-link">
-                <li onClick={navigateFirstCategory}>
-                  {Object.keys(first_category)[0]}
-                </li>
+                <li onClick={navigateFirstCategory}>{first_category.title}</li>
                 <li>
                   <i className="fa-solid fa-angle-right" />
                 </li>
                 <li onClick={navigateSecondCategory}>
-                  {Object.keys(second_category)[0]}
+                  {second_category.title}
                 </li>
               </ul>
             </div>
