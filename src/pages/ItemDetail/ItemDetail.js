@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 // import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './ItemDetail.scss';
 
 const ItemDetail = () => {
   const [itemData, setItemData] = useState({});
   const [currentTab, setCurrentTab] = useState('상품상세');
   const [quantity, setQuantity] = useState(1);
+  const Navigate = useNavigate();
   // const params = useParams();
 
   useEffect(() => {
     // fetch(`http://10.58.7.130:8000/products/${params.id}`)
     fetch('/data/itemData.json')
       .then(res => res.json())
-      .then(data => setItemData(data));
+      .then(data => setItemData(data.result));
   }, []);
 
   const {
@@ -44,6 +46,15 @@ const ItemDetail = () => {
   const discountPrice = price * ((100 - discount) / 100);
 
   const isData = Object.keys(itemData).length !== 0;
+
+  const navigateFirstCategory = e => {
+    const category = e.target.innerHTML;
+    Navigate(`/products/list?first-category=${first_category[category]}`);
+  };
+  const navigateSecondCategory = e => {
+    const category = e.target.innerHTML;
+    Navigate(`/products/list?second-category=${second_category[category]}`);
+  };
 
   if (!isData) return <>Loading...</>;
 
@@ -77,11 +88,15 @@ const ItemDetail = () => {
           <div className="item-explain">
             <div className="item-categories">
               <ul className="item-categories-link">
-                <li>{first_category}</li>
+                <li onClick={navigateFirstCategory}>
+                  {Object.keys(first_category)[0]}
+                </li>
                 <li>
                   <i className="fa-solid fa-angle-right" />
                 </li>
-                <li>{second_category}</li>
+                <li onClick={navigateSecondCategory}>
+                  {Object.keys(second_category)[0]}
+                </li>
               </ul>
             </div>
             <div className="item-name">
@@ -167,14 +182,16 @@ const ItemDetail = () => {
           </li>
         </ul>
       </div>
-      <div className="explain-imgbox">
-        <img src={detail_images[0]} alt="상품상세이미지1" />
-      </div>
-      <div className="explain-imgbox">
-        <img src={detail_images[1]} alt="상품상세이미지2" />
-      </div>
-      <div className="explain-imgbox">
-        <img src={detail_images[2]} alt="상품상세이미지3" />
+      <div className="product-detail">
+        <div className="explain-imgbox">
+          <img src={detail_images[0]} alt="상품상세이미지1" />
+        </div>
+        <div className="explain-imgbox">
+          <img src={detail_images[1]} alt="상품상세이미지2" />
+        </div>
+        <div className="explain-imgbox">
+          <img src={detail_images[2]} alt="상품상세이미지3" />
+        </div>
       </div>
     </>
   );

@@ -234,10 +234,18 @@
     }
   }
 }
-.explain-imgbox {
+.product-detail {
   @include flex;
+  flex-direction: column;
 
-  img {
-    width: 1200px;
+  .explain-imgbox {
+    @include flex;
+    max-width: 1200px;
+    margin: 10px 0;
+    img {
+      @include flex;
+      flex-wrap: wrap;
+      width: 80%;
+    }
   }
 }
