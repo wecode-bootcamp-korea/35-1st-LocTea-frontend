@@ -201,6 +201,14 @@
           font-size: 20px;
           cursor: pointer;
         }
+        .sold-out {
+          width: 85%;
+          height: 50px;
+          color: #fff;
+          background-color: #313131;
+          font-size: 20px;
+          cursor: not-allowed;
+        }
       }
     }
   }

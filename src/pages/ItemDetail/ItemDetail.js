@@ -24,6 +24,7 @@ const ItemDetail = () => {
     price,
     thumbnail_images,
     detail_images,
+    stock,
   } = itemData;
 
   const plusPrice = () => {
@@ -130,8 +131,16 @@ const ItemDetail = () => {
               </div>
             </div>
             <div className="item-purchase-button">
-              <button className="item-purchase-button-cart">장바구니</button>
-              <button className="item-purchase-button-pay">바로구매</button>
+              {stock !== 0 ? (
+                <>
+                  <button className="item-purchase-button-cart">
+                    장바구니
+                  </button>
+                  <button className="item-purchase-button-pay">바로구매</button>
+                </>
+              ) : (
+                <button className="sold-out">일시품절</button>
+              )}
             </div>
           </div>
         </div>
