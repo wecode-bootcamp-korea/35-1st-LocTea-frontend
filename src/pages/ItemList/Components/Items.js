@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Items.scss';
 
 const Items = ({ items }) => {
+  console.log(items);
   return (
     <div className="items">
       {items.map((item, index) => {
@@ -14,7 +15,7 @@ const Items = ({ items }) => {
             price={Number(item.price)}
             thumbnailImage={item.thumbnail_images}
             types={item.types}
-            discount={Number(item.discount)}
+            discount={item.discount}
           />
         );
       })}
@@ -25,37 +26,58 @@ const Items = ({ items }) => {
 const ItemCard = ({ id, name, price, thumbnailImage, discount }) => {
   const rand_0_100 = Math.floor(Math.random() * 101);
   const rand_0_99 = Math.floor(Math.random() * 100);
+  console.log(discount);
+
   return (
-    <Link to={`/itemdetail/${id}`}>
-      <div className="item">
+    <div className="item">
+      <Link to={`/itemdetail/${id}`}>
         {name && (
           <>
-            <img
-              src={thumbnailImage[0]}
-              alt="제품이미지"
-              className="imageUnhover"
-            />
-            <img
-              src={thumbnailImage[1]}
-              alt="제품이미지"
-              className="imageHover"
-            />
-            <p>{name}</p>
-            <p>{(price - (price * discount) / 100).toLocaleString()}원</p>
-            <div className="likeComment">
-              <div className="likeNumber">
-                <i class="fa-regular fa-heart" alt="좋아요" />
-                <span>{rand_0_100}</span>
+            <div className="imgWrapper">
+              <img
+                src={thumbnailImage[0]}
+                alt="제품이미지"
+                className="imageUnhover"
+              />
+              <img
+                src={thumbnailImage[1]}
+                alt="제품이미지"
+                className="imageHover"
+              />
+            </div>
+            <div className="itemBottom">
+              <div className="nameDiv">
+                <p>{name}</p>
               </div>
-              <div className="commentNumber">
-                <i class="fa-regular fa-comment" alt="댓글" />
-                <span>{rand_0_99}</span>
+              <p className="price">
+                {(price - (price * discount) / 100).toLocaleString()}원
+              </p>
+              <div className="discoutnNumber">
+                {discount != 0 && (
+                  <>
+                    <span className="beforeDiscount">
+                      {price.toLocaleString()}원
+                    </span>
+                    <span className="afterDiscount">({discount}%↓)</span>
+                  </>
+                )}
+              </div>
+
+              <div className="likeComment">
+                <div className="likeNumber">
+                  <i class="fa-regular fa-heart" alt="좋아요" />
+                  <span>{rand_0_100}</span>
+                </div>
+                <div className="commentNumber">
+                  <i class="fa-regular fa-comment" alt="댓글" />
+                  <span>{rand_0_99}</span>
+                </div>
               </div>
             </div>
           </>
         )}
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 

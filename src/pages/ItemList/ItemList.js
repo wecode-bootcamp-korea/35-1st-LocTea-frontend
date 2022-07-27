@@ -54,7 +54,7 @@ const ItemList = () => {
       }
     }
     fetch(
-      `http://10.58.4.134:8000/products/list?${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}${typeUrl}`
+      `http://10.58.7.200:8000/products/list?${whichProductRender.category}=${whichProductRender.id}&sort=${whatOrder}${typeUrl}`
     )
       .then(res => res.json())
       .then(result => {
