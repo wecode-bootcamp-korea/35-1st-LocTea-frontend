@@ -7,11 +7,11 @@ function BtnSlider({ direction, moveSlide }) {
         onClick={moveSlide}
         className={direction === 'next' ? 'btn-slide next' : 'btn-slide prev'}
       >
-        {direction === 'prev' ? (
-          <i className="fa-solid fa-angle-left" />
-        ) : (
-          <i className="fa-solid fa-chevron-right" />
-        )}
+        <i
+          className={`fa-solid fa-${
+            direction === 'prev' ? 'angle-left' : 'chevron-right'
+          }`}
+        />
       </button>
     </div>
   );

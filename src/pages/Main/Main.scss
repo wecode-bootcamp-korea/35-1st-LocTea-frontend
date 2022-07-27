@@ -1,8 +1,10 @@
 .main-header {
   position: relative;
+
   .slider-container {
     position: relative;
     height: 33.021vw;
+
     .btn-slide {
       position: absolute;
       top: 50%;
@@ -10,37 +12,45 @@
       font-size: 30px;
       color: #d3d2d6;
     }
+
     .next {
       right: 50px;
     }
+
     .prev {
       left: 50px;
     }
+
     .slide {
       position: absolute;
       transition: opacity ease-in-out 0.4s;
       opacity: 0;
       z-index: none;
+
       .main-header-text {
         position: absolute;
         top: 30%;
         left: 10%;
+
         h1 {
           font-size: 36px;
           font-weight: 600;
           margin-top: 10px;
         }
+
         h2 {
           font-size: 16px;
           margin-top: 15px;
           font-weight: 350;
           width: 300px;
         }
+
         h3 {
           font-size: 13px;
           margin-top: 20px;
           font-weight: 800;
         }
+
         .event-btn {
           font-size: 13px;
           margin-top: 5px;
@@ -50,15 +60,18 @@
         }
       }
     }
+
     .active-ani {
       opacity: 1;
     }
+
     .under-container {
       position: absolute;
       display: flex;
       left: 50%;
       transform: translate(-50%, 0%);
       bottom: 40px;
+
       .under-button {
         border: 1px solid rgba(51, 51, 51, 0.1);
         background-color: rgba(51, 51, 51, 0.1);
@@ -66,6 +79,7 @@
         transition: opacity ease-in-out 0.3s;
         cursor: pointer;
       }
+
       .active {
         border: 1px solid black;
       }
