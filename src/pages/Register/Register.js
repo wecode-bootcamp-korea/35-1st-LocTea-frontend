@@ -110,7 +110,7 @@ const Register = () => {
                 ) : name.length < 2 ? (
                   <p style={{ color: 'red' }}>2글자 이상 입력해주세요!</p>
                 ) : (
-                  <p style={{ color: '#7bbced' }}> 환영합니다!</p>
+                  <p style={{ color: '#5aa3da' }}> 환영합니다!</p>
                 )}
               </div>
               <input
@@ -131,7 +131,7 @@ const Register = () => {
                 {email === '' ? (
                   ''
                 ) : REGEXEMAIL.test(email) ? (
-                  <p style={{ color: '#7bbced' }}>환영합니다!</p>
+                  <p style={{ color: '#5aa3da' }}>환영합니다!</p>
                 ) : (
                   <p style={{ color: 'red' }}>
                     loctea@gmail.com 형식으로 작성해주세요.
@@ -186,7 +186,7 @@ const Register = () => {
                 {id === '' ? (
                   <p />
                 ) : idRegExp.test(id) ? (
-                  <p style={{ color: '#7bbced' }}>사용가능한 아이디 입니다.</p>
+                  <p style={{ color: '#5aa3da' }}>사용가능한 아이디 입니다.</p>
                 ) : (
                   <p style={{ color: 'red' }}>
                     4-12사이 영문 또는 숫자만 입력해 주세요.
@@ -226,7 +226,7 @@ const Register = () => {
                     <p style={{ color: 'red' }}>조합 8-16자로 입력해주세요</p>
                   </div>
                 ) : (
-                  <p style={{ color: '#7bbced' }}>안전한 비밀번호 입니다.</p>
+                  <p style={{ color: '#5aa3da' }}>안전한 비밀번호 입니다.</p>
                 )}
               </div>
               <div className="password-shown">
@@ -257,7 +257,7 @@ const Register = () => {
                 ) : pw !== pwConfirmed ? (
                   <p style={{ color: 'red' }}>비밀번호가 다릅니다.</p>
                 ) : (
-                  <p style={{ color: '#7bbced' }}>비밀번호가 같습니다.</p>
+                  <p style={{ color: '#5aa3da' }}>비밀번호가 같습니다.</p>
                 )}
               </div>
             </div>

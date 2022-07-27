@@ -30,7 +30,7 @@
   min-height: 80vh;
 
   .content {
-    margin-top: 40px;
+    margin-top: 20px;
 
     .inputs {
       @include flex($align: flex-start);
@@ -56,10 +56,10 @@
         }
       }
       .right {
-        border: 3px solid #7bbced;
+        border: 3px solid #5aa3da;
         &:focus {
           outline: none;
-          border: 3px solid #7bbced;
+          border: 3px solid #5aa3da;
         }
       }
 
