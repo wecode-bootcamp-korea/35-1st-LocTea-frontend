@@ -36,7 +36,7 @@ const Register = () => {
   const passwordRegExp =
     /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[a-z\d$@$!%*#?&]{8,16}$/;
   const idRegExp = /^[a-z]+[a-z0-9]{4,12}$/;
-  const REGEXEMAIL = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  const REGEXEMAIL = /^([a-z0-9_.-]+)@([\da-z.-]+)\.([a-z.]{2,6})$/;
 
   // 통신 회원가입
 
