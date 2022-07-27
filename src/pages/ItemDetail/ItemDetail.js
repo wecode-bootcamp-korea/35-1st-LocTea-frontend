@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './ItemDetail.scss';
 
@@ -8,14 +8,14 @@ const ItemDetail = () => {
   const [currentTab, setCurrentTab] = useState('상품상세');
   const [quantity, setQuantity] = useState(1);
   const Navigate = useNavigate();
-  // const params = useParams();
+  const params = useParams();
 
   useEffect(() => {
-    // fetch(`http://10.58.7.130:8000/products/${params.id}`)
-    fetch('/data/itemData.json')
+    fetch(`http://10.58.7.200:8000/products/${params.id}`)
+      // fetch('/data/itemData.json')
       .then(res => res.json())
       .then(data => setItemData(data.result));
-  }, []);
+  }, [params.id]);
 
   const {
     first_category,
@@ -103,7 +103,7 @@ const ItemDetail = () => {
               <h3>{title}</h3>
             </div>
             <div className="item-name-explain">{description}</div>
-            {!discount ? (
+            {discount === '0' ? (
               <div className="item-price-name">
                 <strong className="price">
                   {Number(price).toLocaleString()}
