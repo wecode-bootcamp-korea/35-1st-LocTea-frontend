@@ -70,8 +70,12 @@
   }
 
   .cart-inner {
-    padding-right: 340px;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    .cart-content {
+      min-width: 610px;
+      width: 100%;
+    }
   }
 
   .cart-btn-box {

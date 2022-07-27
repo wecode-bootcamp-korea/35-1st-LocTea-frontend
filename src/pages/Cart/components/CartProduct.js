@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import './CartProduct.scss';
 
-function CartProduct({ cartList, plusCount, minusCount }) {
+function CartProduct({
+  cartList,
+  plusCount,
+  minusCount,
+  selectProduct,
+  isChecked,
+}) {
   const {
     product_id,
     thumbnail_images,
@@ -33,7 +39,9 @@ function CartProduct({ cartList, plusCount, minusCount }) {
   // const inputCount = () => {
   //   setCountInput(countInput);
   // };
-
+  // const test = e => {
+  //   console.log(e.target.checked);
+  // };
   if (product_id === null || product_id === undefined) {
     return (
       <li className="list-item no-cart" key={product_id}>
@@ -47,7 +55,11 @@ function CartProduct({ cartList, plusCount, minusCount }) {
         key={product_id}
       >
         <label className="inp-chk">
-          <input type="checkbox" id="check-all" />
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={() => selectProduct(product_id)}
+          />
           <span className="inp-box">
             <i className="fa-solid fa-check" />
           </span>
