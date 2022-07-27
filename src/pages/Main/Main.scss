@@ -4,6 +4,8 @@
   .slider-container {
     position: relative;
     height: 33.021vw;
+    display: flex;
+    justify-content: center;
 
     .btn-slide {
       position: absolute;
@@ -26,8 +28,12 @@
       transition: opacity ease-in-out 0.4s;
       opacity: 0;
       z-index: none;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
 
       .main-header-text {
+        width: 1200px;
         position: absolute;
         top: 30%;
         left: 10%;
