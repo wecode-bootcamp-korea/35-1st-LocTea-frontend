@@ -33,5 +33,4 @@ function Router() {
     </BrowserRouter>
   );
 }
-// outlet 사용
 export default Router;
