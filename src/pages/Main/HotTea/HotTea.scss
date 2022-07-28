@@ -121,21 +121,6 @@
                 width: 90%;
                 height: 90%;
               }
-
-              .hover-icon {
-                @include flex;
-                width: 30px;
-                height: 30px;
-                position: absolute;
-                bottom: 35px;
-                right: 35px;
-                color: #fff;
-                background-color: #666;
-                border-radius: 50%;
-                font-size: 15px;
-                cursor: pointer;
-                z-index: 3;
-              }
             }
           }
 

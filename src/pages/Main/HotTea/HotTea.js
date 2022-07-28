@@ -107,9 +107,6 @@ const HotTea = ({ data, summerData, weekData }) => {
                         alt="상품이미지2"
                         className="items-hover-img"
                       />
-                      <div className="hover-icon">
-                        <i className="fa-solid fa-cart-shopping" />
-                      </div>
                     </div>
                   </div>
                   {discount !== '0' ? (
