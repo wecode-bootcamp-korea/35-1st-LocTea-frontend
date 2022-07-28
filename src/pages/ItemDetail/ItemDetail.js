@@ -104,7 +104,7 @@ const ItemDetail = () => {
       .then(data => {
         if (data.message === 'CREATE_SUCCESS') {
           alert('바로구매 결제페이지로 이동합니다.');
-          Navigate('./purchase');
+          Navigate('./order');
         } else {
           alert('치지지지지....직....문제가....생김....');
         }
