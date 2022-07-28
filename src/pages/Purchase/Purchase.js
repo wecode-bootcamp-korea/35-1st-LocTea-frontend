@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Purchase.scss';
 
 const Purchase = () => {
   const [purchaseData, setPurchaseData] = useState([]);
-  const [orderId, setOrderId] = useState([]);
+  // const [orderId, setOrderId] = useState([]);
   const [purchaseInfo, setPurchaseInfo] = useState({
     userName: '',
     sendingName: '',
@@ -14,6 +15,7 @@ const Purchase = () => {
     deliveryRequest: '',
     requestPlus: '',
   });
+  const navigate = useNavigate();
   const handleInput = e => {
     const { name, value } = e.target;
     setPurchaseInfo({ ...purchaseInfo, [name]: value });
@@ -56,14 +58,14 @@ const Purchase = () => {
       .then(data => setPurchaseData(data.result));
   }, []);
 
-  useEffect(() => {
-    fetch('http://10.58.4.175:8000/orders', {
-      method: 'GET',
-      headers: { Authorization: localStorage.getItem('access_token') },
-    })
-      .then(res => res.json())
-      .then(data => setOrderId(data.result));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://10.58.4.175:8000/orders', {
+  //     method: 'GET',
+  //     headers: { Authorization: localStorage.getItem('access_token') },
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setOrderId(data.result));
+  // }, []);
 
   if (Object.keys(purchaseData).length === 0) return <>Loading...</>;
 
@@ -89,19 +91,23 @@ const Purchase = () => {
         recipient_contact: receiverPhone,
         sender: sendingName,
         cart_id: purchaseData[0].cart_id,
-        order_id: orderId.orderId,
+        order_id: 1,
       }),
     })
       .then(res => res.json())
-      .then(data => data.message === 'SUCCESS' && alert('성공!'));
+      .then(data =>
+        data.message === 'SUCCESS'
+          ? (alert('구매해주셔서 감사합니다.'), navigate('/endpage'))
+          : alert('구매실패 다시확인해주세요.')
+      );
   };
 
-  const idDisabled =
+  const isDisabled =
     userName.length !== 0 &&
     sendingPhone.length === 8 &&
     sendingName.length !== 0 &&
     receiverName.length !== 0 &&
-    receiverPhone === 8 &&
+    receiverPhone.length === 8 &&
     address.length !== 0 &&
     deliveryRequest.length !== 0;
 
@@ -351,7 +357,7 @@ const Purchase = () => {
                 </p>
               </div>
               <div className="purchase">
-                <button onClick={postPurchaseInfo} disabled={!idDisabled}>
+                <button onClick={postPurchaseInfo} disabled={!isDisabled}>
                   결제하기
                 </button>
               </div>

@@ -7,13 +7,25 @@ import FOOTER_UTIL from './FooterUtilData';
 import './Footer.scss';
 
 function Footer() {
+  const token = localStorage.getItem('access_token');
+  const logOut = () => {
+    localStorage.removeItem('access_token');
+    alert('로그아웃 되었습니다.');
+  };
   return (
     <footer>
       <div className="footer-top">
         <div className="link-wrap footer-wrap">
-          <Link className="footer-login" to="/login">
-            로그인
-          </Link>
+          {token ? (
+            <Link className="footer-login" to="/login" onClick={logOut}>
+              로그아웃
+            </Link>
+          ) : (
+            <Link className="footer-login" to="/login">
+              로그인
+            </Link>
+          )}
+
           {FOOTER_SNS.map(sns => {
             return (
               <Link className="footer-icon" key={sns.id} to={sns.url}>

@@ -6,6 +6,7 @@ const CartControlBar = ({
   deleteSelected,
   isAllSelected,
   checkAll,
+  selectedArr,
 }) => {
   return (
     <div className="cart-chk">
@@ -37,7 +38,7 @@ const CartControlBar = ({
           type="button"
           className="del-btn sel-del-btn"
           title="선택 삭제"
-          onClick={deleteSelected}
+          onClick={selectedArr}
         >
           선택 삭제
         </button>

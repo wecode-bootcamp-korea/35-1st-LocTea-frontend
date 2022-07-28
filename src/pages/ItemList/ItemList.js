@@ -45,7 +45,7 @@ const ItemList = () => {
       }
     }
     fetch(
-      `http://10.58.3.45:8000/products/list?${params.category}=${params.id}&sort=${whatOrder}${typeUrl}`
+      `http://10.58.4.175:8000/products/list?${params.category}=${params.id}&sort=${whatOrder}${typeUrl}`
     )
       .then(res => res.json())
       .then(result => {

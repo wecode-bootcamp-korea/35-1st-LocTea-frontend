@@ -4,7 +4,7 @@ import './Items.scss';
 
 const Items = ({ items }) => {
   return (
-    <div className="items">
+    <div className="itemss">
       {items.map((item, index) => {
         return (
           <ItemCard
