@@ -3,7 +3,7 @@ import './Purchase.scss';
 
 const Purchase = () => {
   const [purchaseData, setPurchaseData] = useState([]);
-
+  const [orderId, setOrderId] = useState([]);
   const [purchaseInfo, setPurchaseInfo] = useState({
     userName: '',
     sendingName: '',
@@ -55,6 +55,16 @@ const Purchase = () => {
       .then(res => res.json())
       .then(data => setPurchaseData(data.result));
   }, []);
+
+  useEffect(() => {
+    fetch('http://10.58.4.175:8000/orders', {
+      method: 'GET',
+      headers: { Authorization: localStorage.getItem('access_token') },
+    })
+      .then(res => res.json())
+      .then(data => setOrderId(data.result));
+  }, []);
+
   if (Object.keys(purchaseData).length === 0) return <>Loading...</>;
 
   const priceArr = purchaseData.map(data => Number(data.price) * data.quantity);
@@ -79,6 +89,7 @@ const Purchase = () => {
         recipient_contact: receiverPhone,
         sender: sendingName,
         cart_id: purchaseData[0].cart_id,
+        order_id: orderId.orderId,
       }),
     })
       .then(res => res.json())
