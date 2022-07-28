@@ -9,8 +9,6 @@ function Cart() {
   const [cartList, setCartList] = useState([]);
   const [selectedList, setSelectedList] = useState([]);
 
-  console.log(cartList);
-
   useEffect(() => {
     fetch('data/cartData.json', {
       method: 'GET',
