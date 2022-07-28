@@ -1,28 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import CartControlBar from './components/CartControlBar';
 import CartProduct from './components/CartProduct';
 import CartPrice from './components/CartPrice';
 import './Cart.scss';
-import { Navigate } from 'react-router-dom';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
   const [selectedList, setSelectedList] = useState([]);
 
-  const selectedProducts = [];
-  cartList.forEach(product => {
-    if (selectedList.includes(product.product_id)) {
-      selectedProducts.push({
-        id: product.product_id,
-        price: product.price,
-        discount: product.discount,
-        quantity: product.quantity,
-      });
-    }
-  });
-
   useEffect(() => {
-    //http://10.58.1.251:8000/cart
     fetch('data/cartData.json', {
       method: 'GET',
       headers: { authorization: localStorage.getItem('access_token') },
@@ -40,6 +27,7 @@ function Cart() {
     fetch(`http://10.58.0.74:8000/orders`, {
       method: 'POST',
       headers: { authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify(),
     })
       .then(response => response.json())
       .then(data => {
@@ -49,9 +37,9 @@ function Cart() {
   };
 
   // const removeCart = id => {
-  //   fetch(`http://10.58.7.133:8000/carts/cart/${cart_id}`, {
+  //   fetch(`http://10.58.0.74:8000/carts/cart/${cart_id}`, {
   //     method: 'DELETE',
-  //     headers: { autorizaion: localStorage.getItem('token') },
+  //     headers: { autorizaion: localStorage.getItem('access_token') },
   //   })
   //     .then(response => response.json())
   //     .then(data => {
@@ -59,6 +47,18 @@ function Cart() {
   //       setSelectedList(idList);
   //     });
   // };
+
+  const selectedProducts = [];
+  cartList.forEach(product => {
+    if (selectedList.includes(product.product_id)) {
+      selectedProducts.push({
+        id: product.product_id,
+        price: product.price,
+        discount: product.discount,
+        quantity: product.quantity,
+      });
+    }
+  });
 
   const cartListCopy = [...cartList];
 
@@ -81,10 +81,10 @@ function Cart() {
     setCartList(cartListCopy.filter(cartListCopy => cartListCopy.stock !== 0));
   };
 
-  //선택 삭제를 하고 싶어요...
-  // const deleteSelected = id => {
-  //   setSelectedList(cartListCopy.filter(productId => productId === id));
-  // };
+  //선택 삭제
+  const deleteSelected = id => {
+    setSelectedList(selectedList.filter(productId => productId !== id));
+  };
 
   //선택한 상품아이디를 배열로 반환
   const selectProduct = id => {
@@ -104,6 +104,7 @@ function Cart() {
   };
 
   const isAllSelected = selectedList.length === cartList.length;
+
   return (
     <main className="main shop-cart">
       {/* 타이틀 */}
@@ -117,6 +118,7 @@ function Cart() {
               {/* 장바구니 리스트 상단 */}
               <CartControlBar
                 deleteSoldOut={deleteSoldOut}
+                deleteSelected={deleteSelected}
                 isAllSelected={isAllSelected}
                 checkAll={checkAll}
               />

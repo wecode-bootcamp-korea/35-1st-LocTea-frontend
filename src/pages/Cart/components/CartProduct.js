@@ -57,7 +57,7 @@ function CartProduct({
         <label className="inp-chk">
           <input
             type="checkbox"
-            checked={isChecked}
+            defaultChecked={isChecked}
             onChange={() => selectProduct(product_id)}
           />
           <span className="inp-box">
