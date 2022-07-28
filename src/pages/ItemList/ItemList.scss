@@ -1,0 +1,34 @@
+.contents {
+  font-family: 'Gowun Dodum', sans-serif;
+  .upper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 480px;
+
+    .upperImage {
+      object-fit: cover;
+      width: 100%;
+      overflow: hidden;
+    }
+    h2 {
+      position: absolute;
+      top: 50%;
+      font-size: 48px;
+      color: white;
+    }
+  }
+  .main {
+    display: flex;
+    max-width: 100%;
+    margin-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    article {
+      position: relative;
+      padding-left: 40px;
+      width: 100%;
+    }
+  }
+}
