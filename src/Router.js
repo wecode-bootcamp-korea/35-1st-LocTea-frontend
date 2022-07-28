@@ -28,12 +28,11 @@ function Router() {
           <Route path="/" element={<Main />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/itemdetail/:id" element={<ItemDetail />} />
-          <Route path="/itemlist" element={<ItemList />} />
           <Route path="/order" element={<Purchase />} />
+          <Route path="/itemlist/:category/:id" element={<ItemList />} />
         </Route>
       </Routes>
     </BrowserRouter>
   );
 }
-
 export default Router;

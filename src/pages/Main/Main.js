@@ -1,7 +1,14 @@
 import React from 'react';
+import SliderImg from './Slider';
 import './Main.scss';
+import Slide from './slide/slide';
 const Main = () => {
-  return <div />;
+  return (
+    <div className="main-header">
+      <SliderImg />
+      <Slide />
+    </div>
+  );
 };
 
 export default Main;

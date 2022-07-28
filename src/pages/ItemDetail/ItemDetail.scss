@@ -6,7 +6,7 @@
   @include flex($justify: space-between);
   font-family: 'Nanum Gothic', sans-serif;
   padding: 0 30px;
-  margin: 70px auto;
+  margin: 170px auto 70px auto;
   max-width: 1200px;
 
   .item-img-ul {
@@ -40,6 +40,10 @@
         color: #505051;
         margin: 10px 0 0;
         width: 50%;
+
+        i {
+          margin-right: 5px;
+        }
       }
     }
   }
@@ -201,6 +205,14 @@
           font-size: 20px;
           cursor: pointer;
         }
+        .sold-out {
+          width: 85%;
+          height: 50px;
+          color: #fff;
+          background-color: #313131;
+          font-size: 20px;
+          cursor: not-allowed;
+        }
       }
     }
   }
@@ -226,10 +238,18 @@
     }
   }
 }
-.explain-imgbox {
+.product-detail {
   @include flex;
+  flex-direction: column;
 
-  img {
-    width: 1200px;
+  .explain-imgbox {
+    @include flex;
+    max-width: 1200px;
+    margin: 10px 0;
+    img {
+      @include flex;
+      flex-wrap: wrap;
+      width: 80%;
+    }
   }
 }
