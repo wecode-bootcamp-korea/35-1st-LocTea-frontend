@@ -2,6 +2,7 @@
 
 .register-header {
   min-width: 500px;
+  font-family: 'Gowun Dodum', sans-serif;
 
   .register-nav {
     @include flex;
@@ -28,6 +29,7 @@
 .register-body {
   @include flex;
   min-height: 80vh;
+  font-family: 'Gowun Dodum', sans-serif;
 
   .content {
     margin-top: 20px;
