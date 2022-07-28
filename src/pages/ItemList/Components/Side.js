@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Side.scss';
 
-const Side = ({ renderCategory }) => {
+const Side = (setWhichProductRender, whichProductRender) => {
   const [whichSelected, setwhichSelected] = useState('teashop');
+  const navigate = useNavigate();
   return (
     <div className="side">
       <p className="listTitle">제품</p>
@@ -12,7 +14,7 @@ const Side = ({ renderCategory }) => {
           id="1"
           onClick={e => {
             setwhichSelected('teashop');
-            renderCategory(e);
+            navigate(`/itemlist/${e.target.dataset.category}/${e.target.id}`);
           }}
           className={
             whichSelected === 'teashop'
@@ -26,42 +28,77 @@ const Side = ({ renderCategory }) => {
               <li
                 data-category="first-category"
                 id="1"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teashop');
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 전체상품
               </li>
               <li
                 data-category="second-category"
                 id="1"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teashop');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 티 세트
               </li>
               <li
                 data-category="second-category"
                 id="2"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teashop');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 녹차/말차
               </li>
               <li
                 data-category="second-category"
                 id="3"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teashop');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 블렌디드 티
               </li>
               <li
                 data-category="second-category"
                 id="4"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teashop');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 허브티
               </li>
               <li
                 data-category="second-category"
                 id="5"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teashop');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 밀크티/아이스티
               </li>
@@ -72,11 +109,11 @@ const Side = ({ renderCategory }) => {
           data-category="first-category"
           id="2"
           onClick={e => {
-            setwhichSelected('bakery');
-            renderCategory(e);
+            setwhichSelected('teafood');
+            navigate(`/itemlist/${e.target.dataset.category}/${e.target.id}`);
           }}
           className={
-            whichSelected === 'bakery'
+            whichSelected === 'teafood'
               ? 'activatedTabBakery'
               : 'unactivatedTabBakery'
           }
@@ -87,28 +124,51 @@ const Side = ({ renderCategory }) => {
               <li
                 data-category="first-category"
                 id="2"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teafood');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 전체상품
               </li>
               <li
                 data-category="second-category"
                 id="6"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 과자/초콜릿
               </li>
               <li
                 data-category="second-category"
                 id="7"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teafood');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 베이커리
               </li>
               <li
                 data-category="second-category"
                 id="8"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teafood');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 아이스크림
               </li>
@@ -119,11 +179,12 @@ const Side = ({ renderCategory }) => {
           data-category="first-category"
           id="3"
           onClick={e => {
-            setwhichSelected('themashop');
-            renderCategory(e);
+            setwhichSelected('teawear');
+            e.stopPropagation();
+            navigate(`/itemlist/${e.target.dataset.category}/${e.target.id}`);
           }}
           className={
-            whichSelected === 'themashop'
+            whichSelected === 'teawear'
               ? 'activatedTabThemaShop'
               : 'unactivatedTabThemaShop'
           }
@@ -134,35 +195,65 @@ const Side = ({ renderCategory }) => {
               <li
                 data-category="first-category"
                 id="3"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teawear');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 전체상품
               </li>
               <li
                 data-category="second-category"
                 id="9"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teawear');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 티팟
               </li>
               <li
                 data-category="second-category"
                 id="10"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teawear');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 소도구
               </li>
               <li
                 data-category="second-category"
                 id="11"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teawear');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 티푸드/플레이트
               </li>
               <li
                 data-category="second-category"
                 id="12"
-                onClick={e => renderCategory(e)}
+                onClick={e => {
+                  setwhichSelected('teawear');
+                  e.stopPropagation();
+                  navigate(
+                    `/itemlist/${e.target.dataset.category}/${e.target.id}`
+                  );
+                }}
               >
                 찻잔
               </li>

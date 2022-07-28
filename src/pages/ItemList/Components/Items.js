@@ -50,7 +50,7 @@ const ItemCard = ({ id, name, price, thumbnailImage, discount }) => {
                 {(price - (price * discount) / 100).toLocaleString()}원
               </p>
               <div className="discoutnNumber">
-                {discount !== 0 && (
+                {discount !== '0' && (
                   <>
                     <span className="beforeDiscount">
                       {price.toLocaleString()}원
