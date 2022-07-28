@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "title": "프리미엄 티 컬렉션",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "28000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/HC/LW/20201027143838409ZN.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/adminImage/GB/FM/20220609110635898TW.png?quality=80&shrink=304:340"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "산호섬 아이스티",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "13000.000",
+    "stock": 10,
+    "discount": 15,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/RX/RC/20200708145231541HL.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/item_overImg/6187.png?quality=80&shrink=240:268"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "러블리 티 박스",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "20000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/HB/XA/20211026141423508CU.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/adminImage/HK/AS/20211026141426702YO.png?quality=80&shrink=240:268"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "삼다 꿀배 티",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "9500.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/BM/BK/20201007123353062WR.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/adminImage/MH/WY/20200911134500854AJ.png?quality=80&shrink=240:268"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "삼다 꿀배 아이스 텀블러 키트",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "18000.000",
+    "stock": 10,
+    "discount": 30,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/BN/PO/20220623175406184ER.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/adminImage/CO/KX/20220623175414317SE.png?quality=80&shrink=240:268"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "콤부차 피치동백&제주영귤 4입",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "16000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/BS/XP/20220705092306045SP.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/adminImage/XH/QS/20220617142554410SC.png?quality=80&shrink=240:268"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "스트로베리 그린티 케이크",
+    "description": "신비로운 섬 제주의 다채로운 향기와 이야기를 품은, 취향 걱정없이 선물하기 좋은 고급스러운 구성의 선물 세트",
+    "first_category": "티 제품",
+    "second_category": "티 세트",
+    "price": "32000.000",
+    "stock": 10,
+    "discount": null,
+    "thumbnail_images": [
+      "https://www.osulloc.com/upload/kr/ko/adminImage/IE/EF/20220120172110895WE.png?quality=80",
+      "https://www.osulloc.com/upload/kr/ko/adminImage/CP/KX/20220120172114132FV.png?quality=80&shrink=304:340"
+    ],
+    "detail_images": [
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139902/daniels-joffe--SmCKTIcH5E-unsplash_pltgg3.jpg",
+      "https://res.cloudinary.com/dxeibizaf/image/upload/v1634139720/photo-1534082753658-1dcb40af5719_ysynoa.jpg"
+    ]
+  }
+]

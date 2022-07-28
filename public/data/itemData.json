@@ -1,27 +1,18 @@
 {
-  "result": {
-    "id": 45,
-    "title": "킨토 유니티 논슬립 트레이",
-    "description": "둥그런 원목의 나무결이 돋보이는 트레이 입니다.",
-    "first_category": {
-      "id": 3,
-      "title": "티제품"
-    },
-    "second_category": {
-      "id": 1,
-      "title": "티세트"
-    },
-    "price": "17000.000",
-    "stock": 10,
-    "discount": 0,
-    "thumbnail_images": [
-      "https://images.pexels.com/photos/2672942/pexels-photo-2672942.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "https://images.pexels.com/photos/2957761/pexels-photo-2957761.jpeg?auto=compress&cs=tinysrgb&w=1600"
-    ],
-    "detail_images": [
-      "/images/Footer/LocTea.png",
-      "https://images.pexels.com/photos/2672942/pexels-photo-2672942.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      "https://images.pexels.com/photos/2957761/pexels-photo-2957761.jpeg?auto=compress&cs=tinysrgb&w=1600"
-    ]
-  }
+  "description": "즐겁고 행복한 티타임을 선사하는 달콤하고 향긋한 오설록 만의 특별한 블렌디드 티선물 세트",
+  "detail_images": [
+    "https://res.cloudinary.com/dxeibizaf/image/upload/v1591088754/jason-leem-50bzI1F6urA-unsplash_rg1ay7.jpg",
+    "https://res.cloudinary.com/dxeibizaf/image/upload/v1590889938/jay-mantri-TFyi0QOx08c-unsplash_qdp0ob.jpg",
+    "https://res.cloudinary.com/dxeibizaf/image/upload/v1590889796/sample.jpg"
+  ],
+  "discount": null,
+  "first_category": "티제품",
+  "second_category": "티세트",
+  "title": "러블리 티 박스",
+  "price": 20000,
+  "stock": 10,
+  "thumbnail_images": [
+    "https://www.osulloc.com/upload/kr/ko/adminImage/HB/XA/20211026141423508CU.png?quality=80",
+    "https://www.osulloc.com/upload/kr/ko/adminImage/HB/XA/20211026141423508CU.png?quality=80"
+  ]
 }

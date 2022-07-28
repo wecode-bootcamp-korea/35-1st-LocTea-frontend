@@ -1,0 +1,72 @@
+@import '../../../styles/variable.scss';
+
+.notice {
+  @include flex;
+  font-family: 'Gowun Dodum', sans-serif;
+
+  .main-notice {
+    @include flex($justify: flex-start);
+    padding: 14px 16px;
+    margin: 30px 20px;
+    background-color: #f6f6f6;
+    color: #333;
+    border-radius: 4px;
+    width: 1200px;
+
+    .notice {
+      width: 10%;
+      font-size: 14px;
+      margin-right: 12px;
+      color: #999;
+    }
+
+    .notice-list-info {
+      @include flex($justify: space-between);
+      width: 100%;
+      overflow: hidden;
+
+      .notice-list {
+        @include flex($align: flex-start, $justify: flex-start);
+        flex-direction: column;
+        height: 18px;
+        width: 90%;
+        top: 0;
+        font-size: 14px;
+        position: relative;
+        line-height: 19px;
+        animation: scroll 14s infinite;
+
+        @keyframes scroll {
+          18% {
+            top: 0px;
+          }
+          27% {
+            top: -19px;
+          }
+          45% {
+            top: -19px;
+          }
+          54% {
+            top: -38px;
+          }
+          72% {
+            top: -38px;
+          }
+          81% {
+            top: -57px;
+          }
+          99% {
+            top: -57px;
+          }
+          100% {
+            top: 0px;
+          }
+        }
+      }
+
+      .notice-info {
+        color: #999;
+      }
+    }
+  }
+}
