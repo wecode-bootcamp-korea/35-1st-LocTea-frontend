@@ -32,7 +32,7 @@ const ItemList = () => {
     let typeUrl = '';
     if (whichProductRender.button === false) {
       typeUrl = '';
-    } else if (whatType.all === true) {
+    } else if (whatType.all) {
       typeUrl = '&type=tealeaf&type=pyramid&type=teabag&type=powder';
     } else {
       for (let i = 0; i < whatTypeKeys.length - 1; i++) {

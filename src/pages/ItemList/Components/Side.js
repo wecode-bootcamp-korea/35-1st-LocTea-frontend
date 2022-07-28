@@ -138,6 +138,7 @@ const Side = (setWhichProductRender, whichProductRender) => {
                 data-category="second-category"
                 id="6"
                 onClick={e => {
+                  setwhichSelected('teafood');
                   e.stopPropagation();
                   navigate(
                     `/itemlist/${e.target.dataset.category}/${e.target.id}`
