@@ -1,0 +1,137 @@
+.main-header {
+  position: relative;
+  font-family: 'Gowun Dodum', sans-serif;
+
+  .slider-container {
+    position: relative;
+    height: 33.021vw;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .btn-slide {
+      position: absolute;
+      top: 50%;
+
+      transform: translate(0%, -50%);
+      font-size: 30px;
+      color: #d3d2d6;
+    }
+
+    .next {
+      right: 3%;
+    }
+
+    .prev {
+      left: 3%;
+    }
+
+    .slide {
+      position: absolute;
+      transition: opacity ease-in-out 0.4s;
+      opacity: 0;
+      z-index: none;
+      width: 100%;
+      .main-header-img {
+        position: relative;
+        img {
+          position: absolute;
+          height: 33.021vw;
+          overflow: hidden;
+        }
+        .img1 {
+          right: 0;
+        }
+        .img2 {
+          right: 120px;
+        }
+        .img3 {
+          right: 100px;
+        }
+        .img4 {
+          right: 100px;
+        }
+        .img5 {
+          right: 100px;
+        }
+      }
+      .main-header-text-container {
+        position: relative;
+        height: 33.021vw;
+        .main-header-text {
+          width: 1200px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+
+          h1 {
+            font-size: 43px;
+            font-weight: 600;
+            margin-top: 10px;
+          }
+
+          h2 {
+            font-size: 25px;
+            margin-top: 15px;
+            font-weight: 350;
+            width: 300px;
+          }
+
+          h3 {
+            font-size: 18px;
+            margin-top: 20px;
+            font-weight: 800;
+          }
+
+          .event-btn {
+            font-size: 13px;
+            margin-top: 15px;
+            border: 1px solid black;
+            padding: 5px 15px;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+    .num1 {
+      background-color: #fefefe;
+    }
+    .num2 {
+      background-color: #fbeede;
+    }
+    .num3 {
+      background-color: #f8fbfc;
+    }
+    .num4 {
+      background-color: #f1f4f5;
+    }
+    .num5 {
+      background-color: #f7f7f7;
+    }
+
+    .active-ani {
+      opacity: 1;
+    }
+
+    .under-container {
+      position: absolute;
+      display: flex;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      bottom: 40px;
+
+      .under-button {
+        border: 1px solid rgba(51, 51, 51, 0.1);
+        background-color: rgba(51, 51, 51, 0.1);
+        width: 65px;
+        transition: opacity ease-in-out 0.3s;
+        cursor: pointer;
+      }
+
+      .active {
+        border: 1px solid black;
+      }
+    }
+  }
+}
