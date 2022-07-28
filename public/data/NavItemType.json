@@ -1,0 +1,70 @@
+{
+  "result": [
+    {
+      "first_category_id": 1,
+      "second_categories": [
+        {
+          "second_category_id": 1,
+          "title": "티 세트"
+        },
+        {
+          "second_category_id": 2,
+          "title": "녹차/말차"
+        },
+        {
+          "second_category_id": 3,
+          "title": "블렌디드 티"
+        },
+        {
+          "second_category_id": 4,
+          "title": "허브티"
+        },
+        {
+          "second_category_id": 5,
+          "title": "밀크티/아이스티"
+        }
+      ],
+      "title": "티 제품"
+    },
+    {
+      "first_category_id": 2,
+      "second_categories": [
+        {
+          "second_category_id": 6,
+          "title": "과자/초콜릿"
+        },
+        {
+          "second_category_id": 7,
+          "title": "베이커리"
+        },
+        {
+          "second_category_id": 8,
+          "title": "아이스크림"
+        }
+      ],
+      "title": "티 푸드"
+    },
+    {
+      "first_category_id": 3,
+      "second_categories": [
+        {
+          "second_category_id": 9,
+          "title": "티팟"
+        },
+        {
+          "second_category_id": 10,
+          "title": "소도구"
+        },
+        {
+          "second_category_id": 11,
+          "title": "티푸드/플레이트"
+        },
+        {
+          "second_category_id": 12,
+          "title": "찻잔"
+        }
+      ],
+      "title": "티웨어"
+    }
+  ]
+}
