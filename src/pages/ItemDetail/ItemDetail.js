@@ -11,8 +11,8 @@ const ItemDetail = () => {
   const params = useParams();
 
   useEffect(() => {
-    // fetch(`http://10.58.7.200:8000/products/${params.id}`)
-    fetch('/data/itemData.json')
+    fetch(`http://10.58.3.45:8000/products/${params.id}`)
+      // fetch('/data/itemData.json')
       .then(res => res.json())
       .then(data => setItemData(data.result));
   }, [params.id]);
@@ -117,7 +117,14 @@ const ItemDetail = () => {
               <h3>{title}</h3>
             </div>
             <div className="item-name-explain">{description}</div>
-            {discount ? (
+            {discount === '0' ? (
+              <div className="item-price-name">
+                <strong className="price">
+                  {Number(price).toLocaleString()}
+                </strong>
+                <span className="won">원</span>
+              </div>
+            ) : (
               <div className="item-sale-price">
                 <div className="price-top">
                   <p>{Number(price).toLocaleString()}</p>
@@ -129,13 +136,6 @@ const ItemDetail = () => {
                   </strong>
                   원<span className="discount-percent">{discount}%</span>
                 </div>
-              </div>
-            ) : (
-              <div className="item-price-name">
-                <strong className="price">
-                  {Number(price).toLocaleString()}
-                </strong>
-                <span className="won">원</span>
               </div>
             )}
           </div>
