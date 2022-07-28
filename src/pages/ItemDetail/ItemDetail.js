@@ -49,10 +49,10 @@ const ItemDetail = () => {
   const isData = Object.keys(itemData).length !== 0;
 
   const navigateFirstCategory = e => {
-    Navigate(`/itemList/first-category=${itemData.first_category.id}`);
+    Navigate(`/itemlist/first-category/${first_category.id}`);
   };
   const navigateSecondCategory = e => {
-    Navigate(`/products/second-category=${second_category.id}`);
+    Navigate(`/itemlist/second-category/${second_category.id}`);
   };
 
   const goCart = () => {
