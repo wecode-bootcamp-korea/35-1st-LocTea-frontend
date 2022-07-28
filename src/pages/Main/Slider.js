@@ -42,9 +42,9 @@ function SliderImg() {
             </div>
             <div className="main-header-text-container">
               <div className="main-header-text">
-                <h1>다다일상 홈카페</h1>
-                <h2>VIP, VVIP 고객 대상 멤버십 혜택</h2>
-                <h3>07.20 ~ 10.31</h3>
+                <h1>{info.text1}</h1>
+                <h2>{info.text2}</h2>
+                <h3>{info.text3}</h3>
                 <button className="event-btn">이벤트 전체보기</button>
               </div>
             </div>

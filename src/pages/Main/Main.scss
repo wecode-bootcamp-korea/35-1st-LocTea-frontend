@@ -1,5 +1,6 @@
 .main-header {
   position: relative;
+  font-family: 'Gowun Dodum', sans-serif;
 
   .slider-container {
     position: relative;
@@ -65,27 +66,27 @@
           transform: translate(-50%, -50%);
 
           h1 {
-            font-size: 36px;
+            font-size: 43px;
             font-weight: 600;
             margin-top: 10px;
           }
 
           h2 {
-            font-size: 16px;
+            font-size: 25px;
             margin-top: 15px;
             font-weight: 350;
             width: 300px;
           }
 
           h3 {
-            font-size: 13px;
+            font-size: 18px;
             margin-top: 20px;
             font-weight: 800;
           }
 
           .event-btn {
             font-size: 13px;
-            margin-top: 5px;
+            margin-top: 15px;
             border: 1px solid black;
             padding: 5px 15px;
             border-radius: 5px;
