@@ -15,26 +15,25 @@ export default function ItemType({ values }) {
         >
           {info.title}
         </button>
-        <button>
-          <div className="item-lists-container">
-            {info.second_categories.map(input => {
-              return (
-                <li key={input.second_category_id}>
-                  <button
-                    className="item"
-                    onClick={() =>
-                      navigate(
-                        `/products/list?second-category=${input.second_category_id}`
-                      )
-                    }
-                  >
-                    {input.title}
-                  </button>
-                </li>
-              );
-            })}
-          </div>
-        </button>
+
+        <div className="item-lists-container">
+          {info.second_categories.map(input => {
+            return (
+              <li key={input.second_category_id}>
+                <button
+                  className="item"
+                  onClick={() =>
+                    navigate(
+                      `/products/list?second-category=${input.second_category_id}`
+                    )
+                  }
+                >
+                  {input.title}
+                </button>
+              </li>
+            );
+          })}
+        </div>
       </div>
     );
   });

@@ -3,9 +3,9 @@ import './CartControlBar.scss';
 
 const CartControlBar = ({
   deleteSoldOut,
+  deleteSelected,
   isAllSelected,
   checkAll,
-  deleteSelected,
 }) => {
   return (
     <div className="cart-chk">
@@ -14,8 +14,9 @@ const CartControlBar = ({
           <input
             type="checkbox"
             id="check-all"
-            defaultChecked={isAllSelected}
+            checked={isAllSelected}
             onClick={checkAll}
+            readOnly
           />
           <span className="inp-box">
             <i className="fa-solid fa-check" />

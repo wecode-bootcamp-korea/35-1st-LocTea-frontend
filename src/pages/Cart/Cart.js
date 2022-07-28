@@ -9,6 +9,8 @@ function Cart() {
   const [cartList, setCartList] = useState([]);
   const [selectedList, setSelectedList] = useState([]);
 
+  console.log(cartList);
+
   useEffect(() => {
     fetch('data/cartData.json', {
       method: 'GET',
@@ -17,36 +19,10 @@ function Cart() {
       .then(res => res.json())
       .then(data => {
         const idList = data.map(({ product_id }) => product_id);
-        setCartList(data.result);
+        setCartList(data);
         setSelectedList(idList);
       });
   }, []);
-
-  const letOrder = e => {
-    e.preventDefault();
-    fetch(`http://10.58.0.74:8000/orders`, {
-      method: 'POST',
-      headers: { authorization: localStorage.getItem('access_token') },
-      body: JSON.stringify(),
-    })
-      .then(response => response.json())
-      .then(data => {
-        setSelectedList(data);
-        Navigate();
-      });
-  };
-
-  // const removeCart = id => {
-  //   fetch(`http://10.58.0.74:8000/carts/cart/${cart_id}`, {
-  //     method: 'DELETE',
-  //     headers: { autorizaion: localStorage.getItem('access_token') },
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       const idList = data.map(({ product_id }) => product_id);
-  //       setSelectedList(idList);
-  //     });
-  // };
 
   const selectedProducts = [];
   cartList.forEach(product => {
@@ -59,6 +35,23 @@ function Cart() {
       });
     }
   });
+
+  const letorder = e => {
+    e.preventDefault();
+    fetch(`http://10.58.3.45:8000/orders`, {
+      method: 'POST',
+      headers: { authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        product_id: cartList.product_id,
+        quantity: cartList.quantity,
+      })
+        .then(res => res.json())
+        .then(data => {
+          setSelectedList(data);
+          Navigate();
+        }),
+    });
+  };
 
   const cartListCopy = [...cartList];
 
@@ -82,8 +75,28 @@ function Cart() {
   };
 
   //선택 삭제
-  const deleteSelected = id => {
-    setSelectedList(selectedList.filter(productId => productId !== id));
+  const deleteSelected = () => {
+    const filteredList = cartList.filter(
+      product => !selectedList.includes(product.product_id)
+    );
+
+    fetch('http://10.58.3.45:8000/cart', {
+      method: 'DELETE',
+      headers: {
+        authorization: localStorage.getItem('access_token'),
+      },
+      body: JSON.stringify({
+        cart_id: cartList.cart_id,
+      }).then(res => {
+        if (res.status === 200) {
+          alert('삭제가 완료되었습니다.');
+          setCartList(filteredList);
+          setSelectedList([]);
+        } else {
+          alert('다시 시도해주세요!');
+        }
+      }),
+    });
   };
 
   //선택한 상품아이디를 배열로 반환
@@ -95,6 +108,7 @@ function Cart() {
     }
   };
 
+  //전체 선택/해제
   const checkAll = () => {
     if (isAllSelected) {
       setSelectedList([]);
@@ -134,7 +148,6 @@ function Cart() {
                         minusCount={() => minusCount(item.product_id)}
                         selectProduct={() => selectProduct(item.product_id)}
                         isChecked={selectedList.includes(item.product_id)}
-                        letOrder={letOrder}
                       />
                     );
                   })}
@@ -143,8 +156,16 @@ function Cart() {
               {/* 주문하기 버튼 */}
               <div className="cart-btn-box">
                 <div className="cart-btn-item">
-                  <button className="cart-btn sel-buy">선택상품 주문</button>
-                  <button className="cart-btn all-buy" letOrder={letOrder}>
+                  <button
+                    className="cart-btn sel-buy"
+                    onClick={() => letorder()}
+                  >
+                    선택상품 주문
+                  </button>
+                  <button
+                    className="cart-btn all-buy"
+                    onClick={() => letorder()}
+                  >
                     전체상품 주문
                   </button>
                 </div>
@@ -154,7 +175,7 @@ function Cart() {
             <div className="cart-price">
               <CartPrice
                 selectedProducts={selectedProducts}
-                letOrder={letOrder}
+                letorder={letorder}
               />
             </div>
           </div>

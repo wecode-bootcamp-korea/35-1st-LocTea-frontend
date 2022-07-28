@@ -42,7 +42,7 @@ function CartProduct({
   // const test = e => {
   //   console.log(e.target.checked);
   // };
-  if (product_id === null || product_id === undefined) {
+  if (product_id === null || product_id === undefined || cartList === '[]') {
     return (
       <li className="list-item no-cart" key={product_id}>
         장바구니가 비어 있습니다.
@@ -57,8 +57,9 @@ function CartProduct({
         <label className="inp-chk">
           <input
             type="checkbox"
-            defaultChecked={isChecked}
+            checked={isChecked}
             onChange={() => selectProduct(product_id)}
+            readOnly
           />
           <span className="inp-box">
             <i className="fa-solid fa-check" />
@@ -94,6 +95,7 @@ function CartProduct({
                 value={quantity}
                 min="1"
                 max="1000"
+                readOnly
               />
               <button
                 type="button"

@@ -1,7 +1,7 @@
 import React from 'react';
 import './CartPrice.scss';
 
-function CartPrice({ selectedProducts, letOrder }) {
+function CartPrice({ selectedProducts, letorder }) {
   const totalPrice = selectedProducts.reduce(
     (acc, cur) => acc + cur.price * cur.quantity,
     0
@@ -21,13 +21,21 @@ function CartPrice({ selectedProducts, letOrder }) {
         <li className="item">
           <p className="item-name">상품 금액</p>
           <p className="item-val prd-price">
-            +<span className="view-price">{totalPrice.toLocaleString()}</span>원
+            +
+            <span className="view-price">
+              {totalPrice > 0 ? totalPrice.toLocaleString() : 0}
+            </span>
+            원
           </p>
         </li>
         <li className="item">
           <p className="item-name">상품 할인</p>
           <p className="item-val prd-sale">
-            -<span className="view-dc">{totalDiscount.toLocaleString()}</span>원
+            -
+            <span className="view-dc">
+              {totalDiscount > 0 ? totalDiscount.toLocaleString() : 0}
+            </span>
+            원
           </p>
         </li>
         <li className="item">
@@ -56,14 +64,18 @@ function CartPrice({ selectedProducts, letOrder }) {
       <div className="expected-price">
         <p className="item-name">결제 예상 금액</p>
         <p className="item-val">
-          <span className="view-payAmount">{total.toLocaleString()}</span>
+          <span className="view-payAmount">
+            {total > 0 ? total.toLocaleString() : 0}
+          </span>
           <span className="unit">원</span>
         </p>
       </div>
       <div className="list-btn">
-        <button type="submit" className="list-buy-btn" letOrder={letOrder}>
-          <span className="view-payAmount">{total.toLocaleString()}</span>원
-          주문하기
+        <button type="submit" className="list-buy-btn" onClick={letorder}>
+          <span className="view-payAmount">
+            {total > 0 ? total.toLocaleString() : 0}
+          </span>
+          원 주문하기
         </button>
       </div>
     </div>
