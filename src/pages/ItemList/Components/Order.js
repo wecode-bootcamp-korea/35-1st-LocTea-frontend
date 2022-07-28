@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './Order.scss';
 
 const Order = ({ whichProductRender, whatOrder, setWhatOrder }) => {
