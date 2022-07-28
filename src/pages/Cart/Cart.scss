@@ -1,0 +1,108 @@
+@import '../../styles/variable.scss';
+
+// 전체선택
+.main {
+  min-height: 480px;
+  padding: 80px 0 60px;
+  color: #000;
+  font-family: 'Gowun Dodum', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  label {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 0;
+    input[type='checkbox'] {
+      appearance: none;
+      margin-right: 5px;
+    }
+    .inp-box {
+      @include flex;
+      width: 22px;
+      height: 22px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-right: 4px;
+      transition: 0.2s;
+      color: #fff;
+    }
+    input[type='checkbox']:checked + .inp-box {
+      border-color: #6c801a;
+      background-color: #6c801a;
+    }
+  }
+  input[type='checkbox'] + label::before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    vertical-align: middle;
+    margin-right: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  input[type='checkbox']:checked + label::before {
+    background-color: #6c801a;
+    border-color: #fff;
+  }
+  .inp-chk .fa-check {
+    transform: scale(1);
+    color: #fff;
+  }
+}
+
+.shop-cart {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+  .page-tit {
+    padding: 48px 0 30px;
+    font-size: 28px;
+    font-weight: 600;
+  }
+
+  .cart-inner {
+    display: flex;
+    justify-content: space-between;
+    .cart-content {
+      min-width: 610px;
+      width: 100%;
+    }
+  }
+
+  .cart-btn-box {
+    padding: 30px 20px 20px;
+    border-top: 1px solid #e6e6e6;
+    .cart-btn-item {
+      @include flex;
+      .cart-btn {
+        display: block;
+        flex: 0 0 160px;
+        width: 160px;
+        margin: 0 4px;
+        height: 48px;
+        border-radius: 4px;
+        font-size: 15px;
+      }
+      .sel-buy {
+        border: 1px solid #ddd;
+        color: #333;
+        text-align: center;
+      }
+      .all-buy {
+        background-color: #6c801a;
+        border-color: #6c801a;
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -77,13 +77,13 @@ function Nav() {
           <div className="right-box">
             <div className="right-icons">
               <div className="icon">
-                <i class="fa-solid fa-magnifying-glass" />
+                <i className="fa-solid fa-magnifying-glass" />
               </div>
               <div className="icon">
-                <i class="fa-solid fa-cart-shopping" />
+                <i className="fa-solid fa-cart-shopping" />
               </div>
               <div className="icon">
-                <i class="fa-solid fa-ellipsis-vertical" />
+                <i className="fa-solid fa-ellipsis-vertical" />
               </div>
             </div>
             <div className="right-content">

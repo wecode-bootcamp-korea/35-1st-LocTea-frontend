@@ -1,0 +1,57 @@
+[
+  {
+    "username": 83,
+    "product_id": 1,
+    "cart_id": 32,
+    "thumbnail_images": "../images/green-tea.jpg",
+    "title": "베스트 티박스",
+    "price": 19000,
+    "discount": null,
+    "quantity": 1,
+    "stock": 1000
+  },
+  {
+    "username": 83,
+    "product_id": 2,
+    "cart_id": 32,
+    "thumbnail_images": "../images/matcha-tea.jpg",
+    "title": "프리미엄 티 컬렉션",
+    "price": 20000,
+    "discount": 10,
+    "quantity": 2,
+    "stock": 250
+  },
+  {
+    "username": 83,
+    "product_id": 3,
+    "cart_id": 32,
+    "thumbnail_images": "../images/green-tea-bag.jpg",
+    "title": "가루 녹차",
+    "price": 35000,
+    "discount": 25,
+    "quantity": 1,
+    "stock": 99
+  },
+  {
+    "username": 83,
+    "product_id": 4,
+    "cart_id": 32,
+    "thumbnail_images": "../images/matcha-tea.jpg",
+    "title": "제주 순수 녹차",
+    "price": 30000,
+    "discount": 25,
+    "quantity": 3,
+    "stock": 99
+  },
+  {
+    "username": 83,
+    "product_id": 5,
+    "cart_id": 32,
+    "thumbnail_images": "../images/green-tea.jpg",
+    "title": "찬물 녹차",
+    "price": 28000,
+    "discount": 25,
+    "quantity": 1,
+    "stock": 0
+  }
+]
