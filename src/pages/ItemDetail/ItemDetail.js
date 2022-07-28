@@ -11,13 +11,14 @@ const ItemDetail = () => {
   const params = useParams();
 
   useEffect(() => {
-    fetch(`http://10.58.7.200:8000/products/${params.id}`)
-      // fetch('/data/itemData.json')
+    // fetch(`http://10.58.7.200:8000/products/${params.id}`)
+    fetch('/data/itemData.json')
       .then(res => res.json())
       .then(data => setItemData(data.result));
   }, [params.id]);
 
   const {
+    id,
     first_category,
     second_category,
     title,
@@ -48,12 +49,29 @@ const ItemDetail = () => {
   const isData = Object.keys(itemData).length !== 0;
 
   const navigateFirstCategory = e => {
-    Navigate(`/products/list?first-category=${itemData.first_category.id}`);
+    Navigate(`/itemList/first-category=${itemData.first_category.id}`);
   };
   const navigateSecondCategory = e => {
-    Navigate(`/products/list?second-category=${second_category.id}`);
+    Navigate(`/products/second-category=${second_category.id}`);
   };
 
+  const goCart = () => {
+    fetch('http://10.58.2.146:8000/cart', {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        product_id: id,
+        quantity: quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === 'CREATE_SUCCESS') alert('장바구니에 담겼습니다.');
+        else if (data.message === 'UPDATE_SUCCESS')
+          alert('장바구니에 담겼습니다.');
+        else alert('통신 실패.');
+      });
+  };
   if (!isData) return <>Loading...</>;
 
   return (
@@ -99,14 +117,7 @@ const ItemDetail = () => {
               <h3>{title}</h3>
             </div>
             <div className="item-name-explain">{description}</div>
-            {discount === '0' ? (
-              <div className="item-price-name">
-                <strong className="price">
-                  {Number(price).toLocaleString()}
-                </strong>
-                <span className="won">원</span>
-              </div>
-            ) : (
+            {discount ? (
               <div className="item-sale-price">
                 <div className="price-top">
                   <p>{Number(price).toLocaleString()}</p>
@@ -118,6 +129,13 @@ const ItemDetail = () => {
                   </strong>
                   원<span className="discount-percent">{discount}%</span>
                 </div>
+              </div>
+            ) : (
+              <div className="item-price-name">
+                <strong className="price">
+                  {Number(price).toLocaleString()}
+                </strong>
+                <span className="won">원</span>
               </div>
             )}
           </div>
@@ -144,7 +162,10 @@ const ItemDetail = () => {
             <div className="item-purchase-button">
               {stock !== 0 ? (
                 <>
-                  <button className="item-purchase-button-cart">
+                  <button
+                    className="item-purchase-button-cart"
+                    onClick={goCart}
+                  >
                     장바구니
                   </button>
                   <button className="item-purchase-button-pay">바로구매</button>
