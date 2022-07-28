@@ -1,0 +1,215 @@
+@import '../../../styles/variable.scss';
+
+.subscribe {
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 60px;
+
+  .subscribe-main {
+    width: 1200px;
+    padding: 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+
+    h3 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .subscribe-title-bottom {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #999;
+    }
+  }
+  .subscribe-articles {
+    @include flex($align: flex-end);
+    width: 100%;
+    overflow: hidden;
+
+    .subscribe-article {
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      margin: 0 10px;
+
+      &:hover .article-textbox {
+        display: none;
+      }
+
+      &:hover .article-hover-box {
+        transform: translateY(0px);
+      }
+
+      .article-imgbox {
+        @include flex($align: flex-end);
+        img {
+          width: 386px;
+          height: 480px;
+        }
+      }
+
+      .article-textbox {
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        left: 30px;
+        top: 76%;
+
+        .textbox-top {
+          font-size: 22px;
+          color: #fff;
+          font-weight: bold;
+        }
+
+        .textbox-bottom {
+          display: flex;
+          align-items: center;
+          margin-top: 20px;
+          color: #fff;
+
+          .textbox-bottom-front {
+            font-size: 13px;
+            margin-left: 5px;
+          }
+
+          .textbox-bottom-price {
+            font-size: 22px;
+            margin-left: 5px;
+            font-weight: 700;
+          }
+
+          .textbox-bottom-tag {
+            display: block;
+            width: 80px;
+            font-size: 13px;
+            margin-top: 0;
+            margin-left: 16px;
+            text-align: center;
+            height: 22px;
+            background-color: #a1af1b;
+            border-radius: 2px;
+            line-height: 22px;
+          }
+        }
+      }
+
+      .article-hover-box {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        padding: 0 30px 40px;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: 0.4s ease-in-out;
+        transform: translateY(500px);
+        z-index: 10;
+
+        .article-hover-textbox {
+          flex-direction: column;
+          position: absolute;
+          width: 85%;
+          left: 30px;
+          top: 40%;
+          padding-bottom: 25px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+          .hover-textbox-top {
+            font-size: 22px;
+            color: #fff;
+            font-weight: bold;
+          }
+
+          .hover-textbox-bottom {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            color: #fff;
+
+            .hover-textbox-bottom-front {
+              font-size: 13px;
+              margin-left: 5px;
+            }
+
+            .hover-textbox-bottom-price {
+              font-size: 22px;
+              margin-left: 5px;
+              margin-right: 16px;
+              font-weight: 700;
+            }
+
+            .hover-textbox-bottom-tag {
+              display: block;
+              width: 80px;
+              font-size: 13px;
+              margin-top: 0;
+              text-align: center;
+              height: 22px;
+              background-color: #a1af1b;
+              border-radius: 2px;
+              line-height: 1.5;
+            }
+          }
+        }
+
+        p {
+          @include flex;
+          position: absolute;
+          top: 65%;
+          color: #fff;
+          font-size: 16px;
+          word-break: keep-all;
+          line-height: 1.5;
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          position: absolute;
+          top: 85%;
+          color: #fff;
+          line-height: 1.5;
+
+          li {
+            &::before {
+              content: '';
+              display: inline-block;
+              margin-right: 8px;
+              vertical-align: middle;
+              width: 4px;
+              height: 4px;
+              border-radius: 100%;
+              background-color: rgba(255, 255, 255, 0.7);
+            }
+          }
+
+          span {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  .article-more {
+    margin-top: 40px;
+    text-align: center;
+
+    button {
+      width: auto;
+      padding: 0 60px;
+      height: 48px;
+      line-height: 48px;
+      font-size: 15px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      color: #666;
+      background-color: #fff;
+    }
+  }
+}
