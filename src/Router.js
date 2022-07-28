@@ -8,6 +8,7 @@ import ItemList from './pages/ItemList/ItemList';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Footer from './Components/Footer/Footer';
+import Purchase from './pages/Purchase/Purchase';
 
 const NavbarLayout = () => (
   <>
@@ -27,6 +28,7 @@ function Router() {
           <Route path="/" element={<Main />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/itemdetail/:id" element={<ItemDetail />} />
+          <Route path="/order" element={<Purchase />} />
           <Route path="/itemlist/:category/:id" element={<ItemList />} />
         </Route>
       </Routes>
