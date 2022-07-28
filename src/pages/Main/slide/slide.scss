@@ -1,0 +1,98 @@
+.slide-container {
+  display: flex;
+  justify-content: center;
+  .contents {
+    width: 1300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    h2 {
+      font-size: 25px;
+      font-weight: 550;
+      padding-left: 50px;
+    }
+    .MainSlideComment {
+      font-size: 18px;
+      color: gray;
+      margin-top: 20px;
+      padding-left: 50px;
+    }
+    .slidePart {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .coverSlideContainer {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        width: 1200px;
+        .slideContainer {
+          display: flex;
+          align-items: center;
+          position: relative;
+          padding-bottom: 30px;
+          margin-bottom: 30px;
+          height: 400px;
+          .slideWrapper {
+            height: 300px;
+            width: 500px;
+            margin: 0 10px 0 10px;
+            .imgWrapper {
+              overflow: hidden;
+              height: 250px;
+              width: 386px;
+              .slideImage {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+              }
+            }
+            .bigWord {
+              margin-top: 15px;
+              font-size: 20px;
+              font-weight: 500;
+            }
+            .smallWord {
+              margin-top: 10px;
+              color: gray;
+            }
+          }
+        }
+      }
+    }
+    .slideBottom {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 1200px;
+      bottom: 0;
+      button {
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 15px 70px 15px 70px;
+        background-color: white;
+        color: gray;
+      }
+    }
+  }
+  .num1 {
+    padding-right: 15px;
+  }
+  .fa-less-than,
+  .fa-greater-than {
+    display: block;
+    font-size: 300%;
+    color: black;
+    opacity: 0.5;
+    z-index: 2;
+  }
+  .fa-less-than {
+    top: 30%;
+    left: 0;
+  }
+  .fa-greater-than {
+    top: 30%;
+    right: 0;
+  }
+}

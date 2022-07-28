@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './ItemDetail.scss';
 
 const ItemDetail = () => {
   const [itemData, setItemData] = useState({});
   const [currentTab, setCurrentTab] = useState('상품상세');
   const [quantity, setQuantity] = useState(1);
-  const Navigate = useNavigate();
   const params = useParams();
+  const Navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://10.58.3.45:8000/products/${params.id}`)
-      // fetch('/data/itemData.json')
+    fetch(`http://10.58.4.134:8000/products/${params.id}`)
       .then(res => res.json())
       .then(data => setItemData(data.result));
-  }, [params.id]);
+  }, []);
 
   const {
     id,
