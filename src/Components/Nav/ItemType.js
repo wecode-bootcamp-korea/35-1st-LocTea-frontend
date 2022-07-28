@@ -18,7 +18,7 @@ export default function ItemType({ values }) {
           {info.second_categories.map(input => {
             return (
               <li key={input.second_category_id}>
-                <button
+                <div
                   className="item"
                   onClick={() =>
                     navigate(
@@ -27,7 +27,7 @@ export default function ItemType({ values }) {
                   }
                 >
                   {input.title}
-                </button>
+                </div>
               </li>
             );
           })}
