@@ -471,16 +471,21 @@
             display: flex;
             align-items: center;
             border-bottom: 1px solid #ddd;
+            padding: 10px 0;
 
             &:last-child {
               border: none;
             }
 
             .product-imgbox {
+              @include flex;
               width: 25%;
+              height: 150px;
+              background-color: #f6f6f6;
 
               img {
-                width: 100%;
+                width: 90%;
+                height: 130px;
               }
             }
 
@@ -493,6 +498,7 @@
               margin-right: 10px;
 
               .name {
+                margin-left: 10px;
                 font-size: 18px;
                 font-weight: 900;
               }

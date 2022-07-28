@@ -3,6 +3,7 @@ import './Purchase.scss';
 
 const Purchase = () => {
   const [purchaseData, setPurchaseData] = useState([]);
+
   const [purchaseInfo, setPurchaseInfo] = useState({
     userName: '',
     sendingName: '',
@@ -13,13 +14,6 @@ const Purchase = () => {
     deliveryRequest: '',
     requestPlus: '',
   });
-
-  useEffect(() => {
-    fetch('/data/purchaseData.json')
-      .then(res => res.json())
-      .then(data => setPurchaseData(data));
-  }, []);
-
   const handleInput = e => {
     const { name, value } = e.target;
     setPurchaseInfo({ ...purchaseInfo, [name]: value });
@@ -52,22 +46,61 @@ const Purchase = () => {
       .replace(/[^0-9.]/g, '')
       .replace(/(\..*)\./g, '$1');
   };
-  if (purchaseData.length === 0) return <>Loading...</>;
 
-  const priceArr = purchaseData.map(data => data.price);
+  useEffect(() => {
+    fetch('http://10.58.4.175:8000/cart', {
+      method: 'GET',
+      headers: { Authorization: localStorage.getItem('access_token') },
+    })
+      .then(res => res.json())
+      .then(data => setPurchaseData(data.result));
+  }, []);
+  if (Object.keys(purchaseData).length === 0) return <>Loading...</>;
+
+  const priceArr = purchaseData.map(data => Number(data.price) * data.quantity);
+
   const discountArr = purchaseData.map(data => {
     return data.price * (data.discount / 100);
   });
+
   const totalDiscount = discountArr.reduce((x, y) => x + y);
+
   const totalPrice = priceArr.reduce((x, y) => x + y);
-  const deliveryFee = 2500;
+
+  const deliveryFee = totalPrice > 30000 ? 0 : 2500;
+
+  const postPurchaseInfo = () => {
+    fetch('http://10.58.4.175:8000/orders', {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        address: address,
+        recipient: receiverName,
+        recipient_contact: receiverPhone,
+        sender: sendingName,
+        cart_id: purchaseData[0].cart_id,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => data.message === 'SUCCESS' && alert('성공!'));
+  };
+
+  const idDisabled =
+    userName.length !== 0 &&
+    sendingPhone.length === 8 &&
+    sendingName.length !== 0 &&
+    receiverName.length !== 0 &&
+    receiverPhone === 8 &&
+    address.length !== 0 &&
+    deliveryRequest.length !== 0;
+
   return (
     <div className="order-page">
       <div className="nonusers">
         <div className="nonusers-title">
           <h2>결제하기</h2>
         </div>
-        <form name="form-order" className="form-order" onChange={handleInput}>
+        <div name="form-order" className="form-order" onChange={handleInput}>
           <div className="form-order-left">
             <div className="order-user-info">
               <div className="order-user-title">
@@ -307,11 +340,13 @@ const Purchase = () => {
                 </p>
               </div>
               <div className="purchase">
-                <button>결제하기</button>
+                <button onClick={postPurchaseInfo} disabled={!idDisabled}>
+                  결제하기
+                </button>
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
