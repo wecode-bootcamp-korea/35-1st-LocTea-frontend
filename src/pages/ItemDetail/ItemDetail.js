@@ -66,10 +66,48 @@ const ItemDetail = () => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.message === 'CREATE_SUCCESS') alert('장바구니에 담겼습니다.');
+        if (data.message === 'CREATE_SUCCESS')
+          if (
+            window.confirm(
+              '장바구니에 물건이 담겼습니다. 장바구니로 이동하시겠습니까?'
+            )
+          ) {
+            alert('장바구니로 이동합니다.');
+            Navigate('./cart');
+          } else {
+            alert('현재 페이지에 머뭅니다.');
+          }
         else if (data.message === 'UPDATE_SUCCESS')
-          alert('장바구니에 담겼습니다.');
-        else alert('통신 실패.');
+          if (
+            window.confirm(
+              '장바구니에 물건이 추가되었습니다. 장바구니로 이동하시겠습니까?'
+            )
+          ) {
+            alert('장바구니로 이동합니다.');
+            Navigate('./cart');
+          } else {
+            alert('현재 페이지에 머뭅니다.');
+          }
+        else alert('치지지지지....직....문제가....생김....');
+      });
+  };
+  const goPurchase = () => {
+    fetch('http://10.58.2.146:8000/cart', {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        product_id: id,
+        quantity: quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === 'CREATE_SUCCESS') {
+          alert('바로구매 결제페이지로 이동합니다.');
+          Navigate('./purchase');
+        } else {
+          alert('치지지지지....직....문제가....생김....');
+        }
       });
   };
   if (!isData) return <>Loading...</>;
@@ -168,7 +206,12 @@ const ItemDetail = () => {
                   >
                     장바구니
                   </button>
-                  <button className="item-purchase-button-pay">바로구매</button>
+                  <button
+                    className="item-purchase-button-pay"
+                    onClick={goPurchase}
+                  >
+                    바로구매
+                  </button>
                 </>
               ) : (
                 <button className="sold-out">일시품절</button>
