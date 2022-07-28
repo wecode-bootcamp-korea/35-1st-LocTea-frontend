@@ -3,6 +3,8 @@ import HotTea from './HotTea/HotTea';
 import Notice from './Notice/Notice';
 import TimeSale from './TimeSale/TimeSale';
 import Subscribe from './Subscribe/Subscribe';
+import SliderImg from './Slider';
+import Slide from './slide/slide';
 import './Main.scss';
 
 const Main = () => {
@@ -37,10 +39,14 @@ const Main = () => {
 
   return (
     <div>
+      <div className="main-header">
+        <SliderImg />
+      </div>
       <Notice />
       <HotTea data={mainData} summerData={summerData} weekData={weekBestData} />
       <TimeSale timeSaleData={timeSaleData} />
       <Subscribe />
+      <Slide />
     </div>
   );
 };
