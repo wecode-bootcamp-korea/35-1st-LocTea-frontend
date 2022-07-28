@@ -61,7 +61,7 @@ function Nav() {
                 <button className="nav-title">선물추천</button>
               </div>
               <div className="title-item-box">
-                <button className="nav-title">다다일상</button>
+                <button className="nav-title">코드일상</button>
               </div>
               <div className="title-item-box">
                 <button className="nav-title">브랜드</button>
