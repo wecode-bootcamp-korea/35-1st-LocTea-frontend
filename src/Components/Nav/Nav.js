@@ -8,12 +8,18 @@ function Nav() {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch('/data/NavItemType.json')
+    fetch('http://10.58.3.45:8000/nav')
       .then(res => res.json())
       .then(data => {
         setItems(data.result);
       });
   }, []);
+
+  const token = localStorage.getItem('access_token');
+  const logOut = () => {
+    localStorage.removeItem('access_token');
+    alert('로그아웃 되었습니다.');
+  };
 
   // 마우스 호버
   const [isHovering, setIsHovering] = useState(false);
@@ -86,24 +92,40 @@ function Nav() {
                 onMouseEnter={LoginHandleMouseOver}
                 onMouseLeave={LoginHandleMouseOut}
               >
-                <div className="login-text" onClick={() => navigate('/login')}>
-                  로그인
-                </div>
+                {token ? (
+                  <div className="login-text" onClick={logOut}>
+                    로그아웃
+                  </div>
+                ) : (
+                  <div
+                    className="login-text"
+                    onClick={() => navigate('/login')}
+                  >
+                    로그인
+                  </div>
+                )}
                 {LoginisHovering ? (
-                  <div className="nav-login-box">
-                    <div className="nav-register-box">
-                      <div className="text" onClick={() => navigate('/login')}>
-                        로그인
-                      </div>
+                  token ? (
+                    <div />
+                  ) : (
+                    <div className="nav-login-box">
+                      <div className="nav-register-box">
+                        <div
+                          className="text"
+                          onClick={() => navigate('/login')}
+                        >
+                          로그인
+                        </div>
 
-                      <div
-                        className="text"
-                        onClick={() => navigate('/register')}
-                      >
-                        회원가입
+                        <div
+                          className="text"
+                          onClick={() => navigate('/register')}
+                        >
+                          회원가입
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )
                 ) : (
                   <div className="nav-login-box up">
                     <div className="nav-register-box">
