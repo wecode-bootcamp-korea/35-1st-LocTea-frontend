@@ -21,10 +21,6 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/itemdetail/:id" element={<ItemDetail />} />
-        <Route path="/itemlist/:category/:id" element={<ItemList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route element={<NavbarLayout />}>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './ItemDetail.scss';
 
 const ItemDetail = () => {
@@ -7,6 +7,7 @@ const ItemDetail = () => {
   const [currentTab, setCurrentTab] = useState('상품상세');
   const [quantity, setQuantity] = useState(1);
   const params = useParams();
+  const Navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://10.58.4.134:8000/products/${params.id}`)
@@ -15,6 +16,7 @@ const ItemDetail = () => {
   }, []);
 
   const {
+    id,
     first_category,
     second_category,
     title,
@@ -23,6 +25,7 @@ const ItemDetail = () => {
     price,
     thumbnail_images,
     detail_images,
+    stock,
   } = itemData;
 
   const plusPrice = () => {
@@ -43,6 +46,68 @@ const ItemDetail = () => {
 
   const isData = Object.keys(itemData).length !== 0;
 
+  const navigateFirstCategory = e => {
+    Navigate(`/itemlist/first-category/${first_category.id}`);
+  };
+  const navigateSecondCategory = e => {
+    Navigate(`/itemlist/second-category/${second_category.id}`);
+  };
+
+  const goCart = () => {
+    fetch('http://10.58.2.146:8000/cart', {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        product_id: id,
+        quantity: quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === 'CREATE_SUCCESS')
+          if (
+            window.confirm(
+              '장바구니에 물건이 담겼습니다. 장바구니로 이동하시겠습니까?'
+            )
+          ) {
+            alert('장바구니로 이동합니다.');
+            Navigate('./cart');
+          } else {
+            alert('현재 페이지에 머뭅니다.');
+          }
+        else if (data.message === 'UPDATE_SUCCESS')
+          if (
+            window.confirm(
+              '장바구니에 물건이 추가되었습니다. 장바구니로 이동하시겠습니까?'
+            )
+          ) {
+            alert('장바구니로 이동합니다.');
+            Navigate('./cart');
+          } else {
+            alert('현재 페이지에 머뭅니다.');
+          }
+        else alert('치지지지지....직....문제가....생김....');
+      });
+  };
+  const goPurchase = () => {
+    fetch('http://10.58.2.146:8000/cart', {
+      method: 'POST',
+      headers: { Authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        product_id: id,
+        quantity: quantity,
+      }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === 'CREATE_SUCCESS') {
+          alert('바로구매 결제페이지로 이동합니다.');
+          Navigate('./order');
+        } else {
+          alert('치지지지지....직....문제가....생김....');
+        }
+      });
+  };
   if (!isData) return <>Loading...</>;
 
   return (
@@ -75,18 +140,20 @@ const ItemDetail = () => {
           <div className="item-explain">
             <div className="item-categories">
               <ul className="item-categories-link">
-                <li>{first_category}</li>
+                <li onClick={navigateFirstCategory}>{first_category.title}</li>
                 <li>
                   <i className="fa-solid fa-angle-right" />
                 </li>
-                <li>{second_category}</li>
+                <li onClick={navigateSecondCategory}>
+                  {second_category.title}
+                </li>
               </ul>
             </div>
             <div className="item-name">
               <h3>{title}</h3>
             </div>
             <div className="item-name-explain">{description}</div>
-            {!discount ? (
+            {discount === '0' ? (
               <div className="item-price-name">
                 <strong className="price">
                   {Number(price).toLocaleString()}
@@ -129,8 +196,24 @@ const ItemDetail = () => {
               </div>
             </div>
             <div className="item-purchase-button">
-              <button className="item-purchase-button-cart">장바구니</button>
-              <button className="item-purchase-button-pay">바로구매</button>
+              {stock !== 0 ? (
+                <>
+                  <button
+                    className="item-purchase-button-cart"
+                    onClick={goCart}
+                  >
+                    장바구니
+                  </button>
+                  <button
+                    className="item-purchase-button-pay"
+                    onClick={goPurchase}
+                  >
+                    바로구매
+                  </button>
+                </>
+              ) : (
+                <button className="sold-out">일시품절</button>
+              )}
             </div>
           </div>
         </div>
@@ -157,14 +240,16 @@ const ItemDetail = () => {
           </li>
         </ul>
       </div>
-      <div className="explain-imgbox">
-        <img src={detail_images[0]} alt="상품상세이미지1" />
-      </div>
-      <div className="explain-imgbox">
-        <img src={detail_images[1]} alt="상품상세이미지2" />
-      </div>
-      <div className="explain-imgbox">
-        <img src={detail_images[2]} alt="상품상세이미지3" />
+      <div className="product-detail">
+        <div className="explain-imgbox">
+          <img src={detail_images[0]} alt="상품상세이미지1" />
+        </div>
+        <div className="explain-imgbox">
+          <img src={detail_images[1]} alt="상품상세이미지2" />
+        </div>
+        <div className="explain-imgbox">
+          <img src={detail_images[2]} alt="상품상세이미지3" />
+        </div>
       </div>
     </>
   );
