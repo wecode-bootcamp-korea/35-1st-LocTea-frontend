@@ -6,6 +6,8 @@
 
 .login-header {
   min-width: 400px;
+  font-family: 'Gowun Dodum', sans-serif;
+
   .login-nav {
     @include flex;
     border-bottom: 1px solid #f0f0f0;
@@ -29,11 +31,14 @@
 .body {
   @include flex;
   min-width: 500px;
+  font-family: 'Gowun Dodum', sans-serif;
+
   .login-container {
     @include flex;
     flex-direction: column;
     margin-top: 50px;
     min-height: 70vh;
+
     .header {
       img {
         height: 150px;
