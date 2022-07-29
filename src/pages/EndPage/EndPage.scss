@@ -1,0 +1,12 @@
+.end-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .imgbox {
+    width: 80vw;
+    height: 100%;
+    position: relative;
+    top: -250px;
+  }
+}

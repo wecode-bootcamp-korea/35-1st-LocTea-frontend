@@ -45,14 +45,14 @@ const ItemList = () => {
       }
     }
     fetch(
-      `http://10.58.3.45:8000/products/list?${params.category}=${params.id}&sort=${whatOrder}${typeUrl}`
+      `http://3.36.114.254:8000/products/list?${params.category}=${params.id}&sort=${whatOrder}${typeUrl}`
     )
       .then(res => res.json())
       .then(result => {
         setItems(result.products);
         setTotal(result.total);
       });
-  }, [whichProductRender, whatOrder, whatType]);
+  }, [whichProductRender, whatOrder, whatType, params.category, params.id]);
 
   useEffect(() => {
     for (let i = 0; i < categoryList.length; i++) {

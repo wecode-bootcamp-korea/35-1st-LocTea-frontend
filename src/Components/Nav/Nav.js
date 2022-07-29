@@ -8,7 +8,7 @@ function Nav() {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch('http://10.58.3.45:8000/nav')
+    fetch('http://3.36.114.254:8000/categories')
       .then(res => res.json())
       .then(data => {
         setItems(data.result);
@@ -19,6 +19,7 @@ function Nav() {
   const logOut = () => {
     localStorage.removeItem('access_token');
     alert('로그아웃 되었습니다.');
+    navigate('/');
   };
 
   // 마우스 호버
@@ -58,7 +59,7 @@ function Nav() {
               >
                 <button
                   className="nav-title"
-                  onClick={() => navigate('/itemlist')}
+                  onClick={() => navigate('/itemlist/first-category/1')}
                 >
                   제품
                 </button>
@@ -79,7 +80,7 @@ function Nav() {
               <div className="icon">
                 <i className="fa-solid fa-magnifying-glass" />
               </div>
-              <div className="icon">
+              <div className="icon" onClick={() => navigate('/cart')}>
                 <i className="fa-solid fa-cart-shopping" />
               </div>
               <div className="icon">

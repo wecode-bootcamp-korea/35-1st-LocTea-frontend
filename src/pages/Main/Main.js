@@ -12,27 +12,27 @@ const Main = () => {
   const [timeSaleData, setTimeSaleData] = useState([]);
   useEffect(() => {
     // fetch('data/summerData.json')
-    fetch('http://10.58.3.45:8000/products/list?second-category=5&limit=7')
+    fetch('http://3.36.114.254:8000/products/list?second-category=5&limit=7')
       .then(res => res.json())
       .then(data => setMainData(data.products));
   }, []);
 
   useEffect(() => {
-    fetch('http://10.58.3.45:8000/products/list?limit=1&sort=discount')
+    fetch('http://3.36.114.254:8000/products/list?limit=1&sort=discount')
       .then(res => res.json())
       .then(data => setTimeSaleData(data.products));
   }, []);
 
   const weekBestData = () => {
     fetch(
-      'http://10.58.3.45:8000/products/list?first-category=1&limit=7&sort=discount'
+      'http://3.36.114.254:8000/products/list?first-category=1&limit=7&sort=discount'
     )
       .then(res => res.json())
       .then(data => setMainData(data.products));
   };
 
   const summerData = () => {
-    fetch('http://10.58.3.45:8000/products/list?second-category=5&limit=7')
+    fetch('http://3.36.114.254:8000/products/list?second-category=5&limit=7')
       .then(res => res.json())
       .then(data => setMainData(data.products));
   };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CartControlBar from './components/CartControlBar';
 import CartProduct from './components/CartProduct';
 import CartPrice from './components/CartPrice';
@@ -8,16 +8,16 @@ import './Cart.scss';
 function Cart() {
   const [cartList, setCartList] = useState([]);
   const [selectedList, setSelectedList] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
-    fetch('data/cartData.json', {
+    fetch('http://3.36.114.254:8000/cart', {
       method: 'GET',
       headers: { authorization: localStorage.getItem('access_token') },
     })
       .then(res => res.json())
       .then(data => {
-        const idList = data.map(({ product_id }) => product_id);
-        setCartList(data);
+        const idList = data.result.map(({ product_id }) => product_id);
+        setCartList(data.result);
         setSelectedList(idList);
       });
   }, []);
@@ -30,25 +30,12 @@ function Cart() {
         price: product.price,
         discount: product.discount,
         quantity: product.quantity,
+        cart_id: product.cart_id,
       });
     }
   });
-
-  const letorder = e => {
-    e.preventDefault();
-    fetch(`http://10.58.3.45:8000/orders`, {
-      method: 'POST',
-      headers: { authorization: localStorage.getItem('access_token') },
-      body: JSON.stringify({
-        product_id: cartList.product_id,
-        quantity: cartList.quantity,
-      })
-        .then(res => res.json())
-        .then(data => {
-          setSelectedList(data);
-          Navigate();
-        }),
-    });
+  const letorder = () => {
+    navigate('/order');
   };
 
   const cartListCopy = [...cartList];
@@ -57,6 +44,16 @@ function Cart() {
   const plusCount = id => {
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
     cartListCopy[selectedIdx].quantity += 1;
+
+    fetch('http://3.36.114.254:8000/cart', {
+      method: 'PATCH',
+      headers: { authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        cart_id: cartListCopy[selectedIdx].cart_id,
+        quantity: cartListCopy[selectedIdx].quantity,
+      }),
+    });
+
     setCartList(cartListCopy);
   };
 
@@ -64,6 +61,15 @@ function Cart() {
   const minusCount = id => {
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
     cartListCopy[selectedIdx].quantity -= 1;
+    fetch('http://3.36.114.254:8000/cart', {
+      method: 'PATCH',
+      headers: { authorization: localStorage.getItem('access_token') },
+      body: JSON.stringify({
+        cart_id: cartListCopy[selectedIdx].cart_id,
+        quantity: cartListCopy[selectedIdx].quantity,
+      }),
+    });
+
     setCartList(cartListCopy);
   };
 
@@ -71,31 +77,32 @@ function Cart() {
   const deleteSoldOut = () => {
     setCartList(cartListCopy.filter(cartListCopy => cartListCopy.stock !== 0));
   };
+  // const cartId = cartList.map(data => data.cart_id);
 
   //선택 삭제
-  const deleteSelected = () => {
-    const filteredList = cartList.filter(
-      product => !selectedList.includes(product.product_id)
-    );
+  // const deleteSelected = () => {
+  //   const filteredList = cartList.filter(
+  //     product => !selectedList.includes(product.product_id)
+  //   );
 
-    fetch('http://10.58.3.45:8000/cart', {
-      method: 'DELETE',
-      headers: {
-        authorization: localStorage.getItem('access_token'),
-      },
-      body: JSON.stringify({
-        cart_id: cartList.cart_id,
-      }).then(res => {
-        if (res.status === 200) {
-          alert('삭제가 완료되었습니다.');
-          setCartList(filteredList);
-          setSelectedList([]);
-        } else {
-          alert('다시 시도해주세요!');
-        }
-      }),
-    });
-  };
+  //   fetch('http://3.36.114.254:8000/cart', {
+  //     method: 'DELETE',
+  //     headers: {
+  //       Authorization: localStorage.getItem('access_token'),
+  //     },
+  //     body: JSON.stringify({
+  //       cart_id: cartId[0],
+  //     }),
+  //   }).then(res => {
+  //     if (res.status === 200) {
+  //       alert('삭제가 완료되었습니다.');
+  //       setCartList(filteredList);
+  //       setSelectedList([]);
+  //     } else {
+  //       alert('다시 시도해주세요!');
+  //     }
+  //   });
+  // };
 
   //선택한 상품아이디를 배열로 반환
   const selectProduct = id => {
@@ -114,7 +121,30 @@ function Cart() {
       setSelectedList(cartList.map(({ product_id }) => product_id));
     }
   };
+  const selectedArr = () => {
+    const filteredList = cartList.filter(
+      product => !selectedList.includes(product.product_id)
+    );
 
+    selectedProducts.map(data => {
+      return fetch('http://3.36.114.254:8000/cart', {
+        method: 'DELETE',
+        headers: {
+          Authorization: localStorage.getItem('access_token'),
+        },
+        body: JSON.stringify({
+          cart_id: data.cart_id,
+        }),
+      }).then(res => {
+        if (res.status === 200) {
+          setCartList(filteredList);
+          setSelectedList([]);
+        } else {
+          alert('다시 시도해주세요!');
+        }
+      });
+    });
+  };
   const isAllSelected = selectedList.length === cartList.length;
 
   return (
@@ -130,9 +160,9 @@ function Cart() {
               {/* 장바구니 리스트 상단 */}
               <CartControlBar
                 deleteSoldOut={deleteSoldOut}
-                deleteSelected={deleteSelected}
                 isAllSelected={isAllSelected}
                 checkAll={checkAll}
+                selectedArr={selectedArr}
               />
               {/* 장바구니 리스트  */}
               <div className="cart-list">
@@ -154,16 +184,10 @@ function Cart() {
               {/* 주문하기 버튼 */}
               <div className="cart-btn-box">
                 <div className="cart-btn-item">
-                  <button
-                    className="cart-btn sel-buy"
-                    onClick={() => letorder()}
-                  >
+                  <button className="cart-btn sel-buy" onClick={letorder}>
                     선택상품 주문
                   </button>
-                  <button
-                    className="cart-btn all-buy"
-                    onClick={() => letorder()}
-                  >
+                  <button className="cart-btn all-buy" onClick={letorder}>
                     전체상품 주문
                   </button>
                 </div>

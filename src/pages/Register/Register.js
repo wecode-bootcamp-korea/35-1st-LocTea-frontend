@@ -44,10 +44,11 @@ const Register = () => {
 
   const signUp = e => {
     e.preventDefault();
-    fetch('http://10.58.3.45:8000/users/signup', {
+    fetch('http://3.36.114.254:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         name: name,
+        email: email,
         username: id,
         password: pw,
         mobile_number: phone,
@@ -60,7 +61,7 @@ const Register = () => {
           navigate('/login');
           alert('회원가입 성공!');
         } else {
-          alert('로그인 실패');
+          alert('회원가입 실패');
         }
       });
   };

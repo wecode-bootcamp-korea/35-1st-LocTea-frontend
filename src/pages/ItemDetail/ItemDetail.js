@@ -10,10 +10,10 @@ const ItemDetail = () => {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://10.58.4.134:8000/products/${params.id}`)
+    fetch(`http://3.36.114.254:8000/products/${params.id}`)
       .then(res => res.json())
       .then(data => setItemData(data.result));
-  }, []);
+  }, [params.id]);
 
   const {
     id,
@@ -54,7 +54,7 @@ const ItemDetail = () => {
   };
 
   const goCart = () => {
-    fetch('http://10.58.2.146:8000/cart', {
+    fetch('http://3.36.114.254:8000/cart', {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -71,7 +71,7 @@ const ItemDetail = () => {
             )
           ) {
             alert('장바구니로 이동합니다.');
-            Navigate('./cart');
+            Navigate('/cart');
           } else {
             alert('현재 페이지에 머뭅니다.');
           }
@@ -82,7 +82,7 @@ const ItemDetail = () => {
             )
           ) {
             alert('장바구니로 이동합니다.');
-            Navigate('./cart');
+            Navigate('/cart');
           } else {
             alert('현재 페이지에 머뭅니다.');
           }
@@ -90,7 +90,7 @@ const ItemDetail = () => {
       });
   };
   const goPurchase = () => {
-    fetch('http://10.58.2.146:8000/cart', {
+    fetch('http://3.36.114.254:8000/cart', {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -100,9 +100,12 @@ const ItemDetail = () => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.message === 'CREATE_SUCCESS') {
+        if (
+          data.message === 'CREATE_SUCCESS' ||
+          data.message === 'UPDATE_SUCCESS'
+        ) {
           alert('바로구매 결제페이지로 이동합니다.');
-          Navigate('./order');
+          Navigate('/order');
         } else {
           alert('치지지지지....직....문제가....생김....');
         }

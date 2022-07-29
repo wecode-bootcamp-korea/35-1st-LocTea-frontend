@@ -25,7 +25,7 @@ const MainSlide = () => {
       <h2>다다일상 기록</h2>
       <p className="MainSlideComment">차를 통해 달라지는 일상을 만나보세요.</p>
       <div className="slidePart">
-        <i class="fa-regular fa-less-than" onClick={moveRight} />
+        <i className="fa-regular fa-less-than" onClick={moveRight} />
         <div className="coverSlideContainer">
           <ul
             className="slideContainer"
@@ -91,7 +91,7 @@ const MainSlide = () => {
             </li>
           </ul>
         </div>
-        <i class="fa-regular fa-greater-than" onClick={moveLeft} />
+        <i className="fa-regular fa-greater-than" onClick={moveLeft} />
         <div className="slideBottom">
           <button>차와 함께하는 삶 더 보기</button>
         </div>

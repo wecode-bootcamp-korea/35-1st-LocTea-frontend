@@ -30,7 +30,7 @@ const Login = () => {
 
   const signIn = e => {
     e.preventDefault();
-    fetch('http://10.58.3.45:8000/users/login', {
+    fetch('http://3.36.114.254:8000/users/login', {
       method: 'POST',
       body: JSON.stringify({
         username: person.id,

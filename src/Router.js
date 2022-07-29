@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Footer from './Components/Footer/Footer';
 import Purchase from './pages/Purchase/Purchase';
+import EndPage from './pages/EndPage/EndPage';
 
 const NavbarLayout = () => (
   <>
@@ -24,6 +25,7 @@ function Router() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/endpage" element={<EndPage />} />
         <Route element={<NavbarLayout />}>
           <Route path="/" element={<Main />} />
           <Route path="/cart" element={<Cart />} />

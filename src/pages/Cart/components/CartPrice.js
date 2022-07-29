@@ -65,7 +65,7 @@ function CartPrice({ selectedProducts, letorder }) {
         <p className="item-name">결제 예상 금액</p>
         <p className="item-val">
           <span className="view-payAmount">
-            {total > 0 ? total.toLocaleString() : 0}
+            {total > 0 ? (total + deliveryFee).toLocaleString() : 0}
           </span>
           <span className="unit">원</span>
         </p>
@@ -73,7 +73,7 @@ function CartPrice({ selectedProducts, letorder }) {
       <div className="list-btn">
         <button type="submit" className="list-buy-btn" onClick={letorder}>
           <span className="view-payAmount">
-            {total > 0 ? total.toLocaleString() : 0}
+            {total > 0 ? (total + deliveryFee).toLocaleString() : 0}
           </span>
           원 주문하기
         </button>
