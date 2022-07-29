@@ -15,7 +15,6 @@
   </li>
   <li>2주차에는 추가 구현사항과 코드 리팩토링, 서버 통신 위주로 진행하였습니다.
     <ul>
-      <li>아이디, 비밀번호 찾기</li>
       <li>주문서 작성</li>
     </ul>
   </li>
@@ -37,7 +36,9 @@
 
 <h2>구현 기능</h2>
 <ul>
-  <li>Nav, Login, Register (이금관)</li>
+  <li>Nav, Login, Register (이금관)
+`텍스틑`
+</li>
   <li>Item List (최재홍)</li>
   <li>Main, Item Detail, Find ID, Find PW, Order (김익현)</li>
   <li>Footer, Cart (류승연)</li>
