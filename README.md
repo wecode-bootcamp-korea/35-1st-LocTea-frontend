@@ -37,8 +37,8 @@
 <h2>구현 기능</h2>
 <ul>
   <li>Nav, Login, Register (이금관)
-`텍스틑`
-</li>
+  ```텍스트```
+  </li>
   <li>Item List (최재홍)</li>
   <li>Main, Item Detail, Find ID, Find PW, Order (김익현)</li>
   <li>Footer, Cart (류승연)</li>
