@@ -17,9 +17,12 @@ function Nav() {
 
   const token = localStorage.getItem('access_token');
   const logOut = () => {
-    localStorage.removeItem('access_token');
-    alert('로그아웃 되었습니다.');
-    navigate('/');
+    if (window.confirm('로그아웃 하시겠습니까?')) {
+      alert('로그아웃 합니다.');
+      navigate('/');
+      localStorage.removeItem('access_token');
+    } else {
+    }
   };
 
   // 마우스 호버
