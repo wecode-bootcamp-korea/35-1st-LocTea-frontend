@@ -42,11 +42,13 @@ function CartProduct({
   // const test = e => {
   //   console.log(e.target.checked);
   // };
+
   if (product_id === null || product_id === undefined || cartList === '[]') {
     return (
-      <li className="list-item no-cart" key={product_id}>
-        장바구니가 비어 있습니다.
-      </li>
+      <div className="empty-cart">
+        <i className="fa-solid fa-circle-exclamation" />
+        장바구니에 물건이 없습니다.
+      </div>
     );
   } else {
     return (

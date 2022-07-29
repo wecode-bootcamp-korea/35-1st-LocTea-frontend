@@ -75,6 +75,17 @@
     .cart-content {
       min-width: 610px;
       width: 100%;
+      .cart-list {
+        .empty-cart {
+          @include flex;
+          font-size: 50px;
+          color: #999;
+          height: 300px;
+          i {
+            margin-right: 15px;
+          }
+        }
+      }
     }
   }
 

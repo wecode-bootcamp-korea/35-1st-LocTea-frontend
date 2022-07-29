@@ -8,7 +8,7 @@ function Nav() {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch('http://10.58.4.175:8000/categories')
+    fetch('http://3.36.114.254:8000/categories')
       .then(res => res.json())
       .then(data => {
         setItems(data.result);

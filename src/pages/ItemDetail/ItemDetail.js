@@ -10,7 +10,7 @@ const ItemDetail = () => {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://10.58.4.175:8000/products/${params.id}`)
+    fetch(`http://3.36.114.254:8000/products/${params.id}`)
       .then(res => res.json())
       .then(data => setItemData(data.result));
   }, [params.id]);
@@ -54,7 +54,7 @@ const ItemDetail = () => {
   };
 
   const goCart = () => {
-    fetch('http://10.58.4.175:8000/cart', {
+    fetch('http://3.36.114.254:8000/cart', {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -90,7 +90,7 @@ const ItemDetail = () => {
       });
   };
   const goPurchase = () => {
-    fetch('http://10.58.4.175:8000/cart', {
+    fetch('http://3.36.114.254:8000/cart', {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -100,7 +100,10 @@ const ItemDetail = () => {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.message === 'CREATE_SUCCESS') {
+        if (
+          data.message === 'CREATE_SUCCESS' ||
+          data.message === 'UPDATE_SUCCESS'
+        ) {
           alert('바로구매 결제페이지로 이동합니다.');
           Navigate('/order');
         } else {

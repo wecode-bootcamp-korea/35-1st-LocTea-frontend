@@ -50,7 +50,7 @@ const Purchase = () => {
   };
 
   useEffect(() => {
-    fetch('http://10.58.4.175:8000/cart', {
+    fetch('http://3.36.114.254:8000/cart', {
       method: 'GET',
       headers: { Authorization: localStorage.getItem('access_token') },
     })
@@ -72,7 +72,7 @@ const Purchase = () => {
   const priceArr = purchaseData.map(data => Number(data.price) * data.quantity);
 
   const discountArr = purchaseData.map(data => {
-    return data.price * (data.discount / 100);
+    return data.price * (data.discount / 100) * data.quantity;
   });
 
   const totalDiscount = discountArr.reduce((x, y) => x + y);
@@ -82,7 +82,7 @@ const Purchase = () => {
   const deliveryFee = totalPrice > 30000 ? 0 : 2500;
 
   const postPurchaseInfo = () => {
-    fetch('http://10.58.4.175:8000/orders', {
+    fetch('http://3.36.114.254:8000/orders', {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -297,7 +297,7 @@ const Purchase = () => {
                         <div className="product-name-quantity">
                           <p className="name">{title}</p>
                           <div className="price-quantity">
-                            {discount ? (
+                            {discount !== '0' ? (
                               <>
                                 <p className="discount-price">
                                   {(price * quantity).toLocaleString()}원

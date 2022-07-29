@@ -27,7 +27,7 @@ const Slide = () => {
         </p>
         <div className="contents num1">
           <div className="slidePart">
-            <i class="fa-regular fa-less-than" onClick={moveRight} />
+            <i className="fa-regular fa-less-than" onClick={moveRight} />
             <div className="coverSlideContainer">
               <ul
                 className="slideContainer"
@@ -97,7 +97,7 @@ const Slide = () => {
                 </li>
               </ul>
             </div>
-            <i class="fa-regular fa-greater-than" onClick={moveLeft} />
+            <i className="fa-regular fa-greater-than" onClick={moveLeft} />
             <div className="slideBottom">
               <button>차와 함께하는 삶 더 보기</button>
             </div>

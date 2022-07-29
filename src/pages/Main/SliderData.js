@@ -7,8 +7,8 @@ export const HeaderList = [
   },
   {
     id: 2,
-    text1: '시원한 라떼 같이',
-    text2: '달콤한 이켠',
+    text1: '달콤한 라떼 같이',
+    text2: '부드러운 익현',
     text3: '28세',
   },
   {

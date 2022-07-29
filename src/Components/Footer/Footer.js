@@ -12,12 +12,13 @@ function Footer() {
     localStorage.removeItem('access_token');
     alert('로그아웃 되었습니다.');
   };
+
   return (
     <footer>
       <div className="footer-top">
         <div className="link-wrap footer-wrap">
           {token ? (
-            <Link className="footer-login" to="/login" onClick={logOut}>
+            <Link className="footer-login" to="/" onClick={logOut}>
               로그아웃
             </Link>
           ) : (

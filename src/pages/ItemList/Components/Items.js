@@ -62,11 +62,11 @@ const ItemCard = ({ id, name, price, thumbnailImage, discount }) => {
 
               <div className="likeComment">
                 <div className="likeNumber">
-                  <i class="fa-regular fa-heart" alt="좋아요" />
+                  <i className="fa-regular fa-heart" alt="좋아요" />
                   <span>{rand_0_100}</span>
                 </div>
                 <div className="commentNumber">
-                  <i class="fa-regular fa-comment" alt="댓글" />
+                  <i className="fa-regular fa-comment" alt="댓글" />
                   <span>{rand_0_99}</span>
                 </div>
               </div>

@@ -44,7 +44,7 @@ const Register = () => {
 
   const signUp = e => {
     e.preventDefault();
-    fetch('http://10.58.4.175:8000/users/signup', {
+    fetch('http://3.36.114.254:8000/users/signup', {
       method: 'POST',
       body: JSON.stringify({
         name: name,
