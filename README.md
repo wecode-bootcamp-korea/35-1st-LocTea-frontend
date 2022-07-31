@@ -2,7 +2,8 @@
 
 ![스크린샷 2022-07-29 오후 4 58 12](https://user-images.githubusercontent.com/106301980/181713092-f83ac4cb-9098-484a-8afe-7141db81fce7.png)
 
-
+<h2>사이트 주소</h2>
+http://1st-loctea.s3-website.ap-northeast-2.amazonaws.com/
 <h2>개요</h2>
 <ul>
   <li>오설록 웹페이지 클론코딩 프로젝트</li>
