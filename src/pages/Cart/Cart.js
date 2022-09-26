@@ -4,13 +4,15 @@ import CartControlBar from './components/CartControlBar';
 import CartProduct from './components/CartProduct';
 import CartPrice from './components/CartPrice';
 import './Cart.scss';
+import { API } from '../../Components/Config/Config';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
   const [selectedList, setSelectedList] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
-    fetch('http://3.36.114.254:8000/cart', {
+    fetch(`${API.cart}`, {
       method: 'GET',
       headers: { authorization: localStorage.getItem('access_token') },
     })
@@ -45,7 +47,7 @@ function Cart() {
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
     cartListCopy[selectedIdx].quantity += 1;
 
-    fetch('http://3.36.114.254:8000/cart', {
+    fetch(`${API.cart}`, {
       method: 'PATCH',
       headers: { authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -61,7 +63,7 @@ function Cart() {
   const minusCount = id => {
     const selectedIdx = cartList.findIndex(el => el.product_id === id);
     cartListCopy[selectedIdx].quantity -= 1;
-    fetch('http://3.36.114.254:8000/cart', {
+    fetch(`${API.cart}`, {
       method: 'PATCH',
       headers: { authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -85,7 +87,7 @@ function Cart() {
   //     product => !selectedList.includes(product.product_id)
   //   );
 
-  //   fetch('http://3.36.114.254:8000/cart', {
+  //   fetch(`${API.cart}`, {
   //     method: 'DELETE',
   //     headers: {
   //       Authorization: localStorage.getItem('access_token'),
@@ -127,7 +129,7 @@ function Cart() {
     );
 
     selectedProducts.map(data => {
-      return fetch('http://3.36.114.254:8000/cart', {
+      return fetch(`${API.cart}`, {
         method: 'DELETE',
         headers: {
           Authorization: localStorage.getItem('access_token'),
@@ -146,6 +148,9 @@ function Cart() {
     });
   };
   const isAllSelected = selectedList.length === cartList.length;
+
+  const token = localStorage.getItem('access_token');
+  console.log(cartList);
 
   return (
     <main className="main shop-cart">
@@ -168,7 +173,8 @@ function Cart() {
               <div className="cart-list">
                 <ul className="list">
                   {cartList.map(item => {
-                    return (
+                    //map에서 오류나서 그전에 분기처리 필요
+                    return item ? (
                       <CartProduct
                         key={item.product_id}
                         cartList={item}
@@ -177,6 +183,11 @@ function Cart() {
                         selectProduct={() => selectProduct(item.product_id)}
                         isChecked={selectedList.includes(item.product_id)}
                       />
+                    ) : (
+                      <div className="empty-cart">
+                        <i className="fa-solid fa-circle-exclamation" />
+                        장바구니에 물건이 없습니다.
+                      </div>
                     );
                   })}
                 </ul>

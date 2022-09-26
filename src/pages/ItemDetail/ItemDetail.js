@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ItemDetail.scss';
+import { BASE_URL, API } from '../../Components/Config/Config';
 
 const ItemDetail = () => {
   const [itemData, setItemData] = useState({});
@@ -10,7 +11,7 @@ const ItemDetail = () => {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://3.36.114.254:8000/products/${params.id}`)
+    fetch(`${BASE_URL}/products/${params.id}`)
       .then(res => res.json())
       .then(data => setItemData(data.result));
   }, [params.id]);
@@ -54,7 +55,7 @@ const ItemDetail = () => {
   };
 
   const goCart = () => {
-    fetch('http://3.36.114.254:8000/cart', {
+    fetch(`${API.cart}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({
@@ -90,7 +91,7 @@ const ItemDetail = () => {
       });
   };
   const goPurchase = () => {
-    fetch('http://3.36.114.254:8000/cart', {
+    fetch(`${API.cart}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({

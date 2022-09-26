@@ -6,33 +6,31 @@ import Subscribe from './Subscribe/Subscribe';
 import SliderImg from './Slider';
 import Slide from './slide/slide';
 import './Main.scss';
+import { API } from '../../Components/Config/Config';
 
 const Main = () => {
   const [mainData, setMainData] = useState([]);
   const [timeSaleData, setTimeSaleData] = useState([]);
   useEffect(() => {
-    // fetch('data/summerData.json')
-    fetch('http://3.36.114.254:8000/products/list?second-category=5&limit=7')
+    fetch(`${API.mainData}`)
       .then(res => res.json())
       .then(data => setMainData(data.products));
   }, []);
 
   useEffect(() => {
-    fetch('http://3.36.114.254:8000/products/list?limit=1&sort=discount')
+    fetch(`${API.timeSaleData}`)
       .then(res => res.json())
       .then(data => setTimeSaleData(data.products));
   }, []);
 
   const weekBestData = () => {
-    fetch(
-      'http://3.36.114.254:8000/products/list?first-category=1&limit=7&sort=discount'
-    )
+    fetch(`${API.weekBestData}`)
       .then(res => res.json())
       .then(data => setMainData(data.products));
   };
 
   const summerData = () => {
-    fetch('http://3.36.114.254:8000/products/list?second-category=5&limit=7')
+    fetch(`${API.summerData}`)
       .then(res => res.json())
       .then(data => setMainData(data.products));
   };

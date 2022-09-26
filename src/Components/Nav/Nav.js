@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ItemType from './ItemType';
 import './Nav.scss';
+import { API } from '../Config/Config';
 
 function Nav() {
   // 통신
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch('http://3.36.114.254:8000/categories')
+    fetch(`${API.categories}`)
       .then(res => res.json())
       .then(data => {
         setItems(data.result);

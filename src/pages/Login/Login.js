@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.scss';
 import Sns from './Sns';
+import './Login.scss';
+import { API } from '../../Components/Config/Config';
 
 const Login = () => {
   const [person, setPerson] = useState({
@@ -30,7 +31,7 @@ const Login = () => {
 
   const signIn = e => {
     e.preventDefault();
-    fetch('http://3.36.114.254:8000/users/login', {
+    fetch(`${API.login}`, {
       method: 'POST',
       body: JSON.stringify({
         username: person.id,

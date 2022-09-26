@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Purchase.scss';
+import { API } from '../../Components/Config/Config';
 
 const Purchase = () => {
   const [purchaseData, setPurchaseData] = useState([]);
@@ -50,7 +51,7 @@ const Purchase = () => {
   };
 
   useEffect(() => {
-    fetch('http://3.36.114.254:8000/cart', {
+    fetch(`${API.cart}`, {
       method: 'GET',
       headers: { Authorization: localStorage.getItem('access_token') },
     })
@@ -59,7 +60,7 @@ const Purchase = () => {
   }, []);
 
   // useEffect(() => {
-  //   fetch('http://10.58.4.175:8000/orders', {
+  //   fetch(`${API.orders}`, {
   //     method: 'GET',
   //     headers: { Authorization: localStorage.getItem('access_token') },
   //   })
@@ -82,7 +83,7 @@ const Purchase = () => {
   const deliveryFee = totalPrice > 30000 ? 0 : 2500;
 
   const postPurchaseInfo = () => {
-    fetch('http://3.36.114.254:8000/orders', {
+    fetch(`${API.orders}`, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('access_token') },
       body: JSON.stringify({

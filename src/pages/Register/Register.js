@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './Register.scss';
 import { useNavigate } from 'react-router-dom';
+import './Register.scss';
+import { API } from '../../Components/Config/Config';
 
 const Register = () => {
   // 초기값 세팅 = 아이디, 비밀번호, 비밀번호 확인, 이름, 생년원일, 휴대폰 번호
@@ -44,7 +45,7 @@ const Register = () => {
 
   const signUp = e => {
     e.preventDefault();
-    fetch('http://3.36.114.254:8000/users/signup', {
+    fetch(`${API.signUp}`, {
       method: 'POST',
       body: JSON.stringify({
         name: name,

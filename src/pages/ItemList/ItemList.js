@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Side from './Components/Side';
 import Order from './Components/Order';
 import Filter from './Components/Filter';
 import Items from './Components/Items';
 import categoryList from './categoryList';
 import './ItemList.scss';
-import { useParams } from 'react-router-dom';
+import { API } from '../../Components/Config/Config';
 
 const ItemList = () => {
   const [whichProductRender, setWhichProductRender] = useState(categoryList[0]);
@@ -45,7 +46,7 @@ const ItemList = () => {
       }
     }
     fetch(
-      `http://3.36.114.254:8000/products/list?${params.category}=${params.id}&sort=${whatOrder}${typeUrl}`
+      `${API.products}/list?${params.category}=${params.id}&sort=${whatOrder}${typeUrl}`
     )
       .then(res => res.json())
       .then(result => {

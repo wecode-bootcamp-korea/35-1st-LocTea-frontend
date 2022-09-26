@@ -59,10 +59,10 @@ function Footer() {
               {FOOTER_CATEGORY.map(cate => {
                 return (
                   <li key={cate.id}>
-                    <Link to={cate.url}>
+                    <a href={cate.url}>
                       <img src={cate.imgUrl} alt={cate.category} />
                       <span>{cate.category}</span>
-                    </Link>
+                    </a>
                   </li>
                 );
               })}
